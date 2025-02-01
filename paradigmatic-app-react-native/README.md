@@ -47,21 +47,13 @@ To run your project, navigate to the directory and run one of the following npm 
 ```
 
 * Install expo-font and expo-constants
+* Install axios for networking
+* Install react-native-dotenv for environment variables
 
 ```
 cd paradigmatic-app-react-native
 
-npm install expo-font 
-```
+cd Paradigmatic
 
-* Install axios for networking
-
-```
-npm install axios
-```
-
-* Install react-native-dotenv for environment variables
-
-```
-npm install react-native-dotenv
+npm install expo-font axios react-native-dotenv
 ```
