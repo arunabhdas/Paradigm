@@ -1,5 +1,7 @@
 # Paradigmatic Mobile App
 - Paradigmatic is the mobile app for the open source Paradigmatic platform.
+- Paradigmatic is an agentic AI platform which serves as a marketplace for AI agents
+
 
 
 ## Steps 
