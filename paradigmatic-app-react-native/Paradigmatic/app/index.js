@@ -13,8 +13,14 @@ import {
 const Home = () => {
     const router = useRouter();
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.darkGreen }}>
             <Text>Welcome to Paradigmatic</Text>
+            <Stack.Screen
+            options={{
+                headerStyle: { backgroundColor: COLORS.darkGreen },
+            }}
+            
+            />
         </SafeAreaView>
     );
 };
