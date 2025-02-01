@@ -11,10 +11,11 @@ import {
 
 
 const Home = () => {
+    const router = useRouter();
     return (
-        <View>
+        <SafeAreaView>
             <Text>Welcome to Paradigmatic</Text>
-        </View>
+        </SafeAreaView>
     );
 };
 
