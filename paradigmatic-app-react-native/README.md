@@ -4,7 +4,12 @@
 
 ## Steps 
 
+* Add .gitignore from https://github.com/expo/expo/blob/main/.gitignore
+
+
+* Initialize a new project
 ```
+cd paradigmatic-app-react-native
 npx create-expo-app@latest -e with-router
 ```
 
@@ -39,4 +44,24 @@ To run your project, navigate to the directory and run one of the following npm 
 - npm run android
 - npm run ios
 - npm run web
+```
+
+* Install expo-font and expo-constants
+
+```
+cd paradigmatic-app-react-native
+
+npm install expo-font 
+```
+
+* Install axios for networking
+
+```
+npm install axios
+```
+
+* Install react-native-dotenv for environment variables
+
+```
+npm install react-native-dotenv
 ```
