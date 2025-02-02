@@ -18,6 +18,7 @@ const supplierTypes = ["Onshore", "Nearshore", "Offshore"]
 
 const Welcome = () => {
   const router = useRouter();
+  const [activeSupplierType, setActiveSupplierType] = useState("Onshore");
   return (
   <View>
     <View style={styles.container}>
@@ -46,7 +47,7 @@ const Welcome = () => {
 
     <View style={styles.tabsContainer}>
       <FlatList data={supplierTypes} renderItem={({ item }) => ( 
-        <TouchableOpacity style={styles.tab}>
+        <TouchableOpacity style={styles.tab(activeSupplierType, item)} onPress={() => {}}>
         <Text>{item}</Text> 
         </TouchableOpacity>
         )} 
