@@ -14,6 +14,8 @@ import { useRouter } from 'expo-router';
 import styles from './welcome.style'
 import { icons, SIZES } from '../../../constants'
 
+const supplierTypes = ["Onshore", "Nearshore", "Offshore"]
+
 const Welcome = () => {
   const router = useRouter();
   return (
@@ -43,7 +45,10 @@ const Welcome = () => {
     </View>
 
     <View style={styles.tabsContainer}>
-      <FlatList/>
+      <FlatList data={supplierTypes} renderItem={({ item }) => ( 
+        <Text>{item}</Text> 
+        )} 
+      />
     </View>
     
   </View>
