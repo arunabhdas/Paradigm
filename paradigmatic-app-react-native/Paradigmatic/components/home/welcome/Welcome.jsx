@@ -47,8 +47,11 @@ const Welcome = () => {
 
     <View style={styles.tabsContainer}>
       <FlatList data={supplierTypes} renderItem={({ item }) => ( 
-        <TouchableOpacity style={styles.tab(activeSupplierType, item)} onPress={() => {}}>
-        <Text>{item}</Text> 
+        <TouchableOpacity style={styles.tab(activeSupplierType, item)} onPress={() => {
+          setActiveSupplierType(item)
+          router.push(`/search/${item}`)
+        }}>
+        <Text style={styles.tabText(activeSupplierType, item)}>{item}</Text> 
         </TouchableOpacity>
         )} 
       />
