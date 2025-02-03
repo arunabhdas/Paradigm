@@ -2,8 +2,8 @@ import ScreenHeaderBtn from "./common/header/ScreenHeaderBtn";
 
 // home screen
 import Welcome from "./home/welcome/Welcome";
-import Nearbyjobs from "./home/nearby/Nearbyjobs";
-import Popularjobs from "./home/popular/Popularjobs";
+import Nearbytasks from "./home/nearby/Nearbytasks";
+import Populartasks from "./home/popular/Populartasks";
 
 // job details screen
 import Company from "./jobdetails/company/Company";
@@ -19,8 +19,8 @@ import PopularTaskCard from "./common/cards/popular/PopularTaskCard";
 export {
   ScreenHeaderBtn,
   Welcome,
-  Nearbyjobs,
-  Popularjobs,
+  Nearbytasks,
+  Populartasks,
   Company,
   JobTabs,
   JobAbout,
