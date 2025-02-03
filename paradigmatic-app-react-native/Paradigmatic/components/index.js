@@ -27,5 +27,5 @@ export {
   JobFooter,
   Specifics,
   NearbyTaskCard,
-  PopularProductCard 
+  PopularProductCard,
 };

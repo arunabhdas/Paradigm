@@ -3,10 +3,10 @@ import { View, Text } from 'react-native'
 
 import styles from './popularproductcard.style'
 
-const PopularProductCard = () => {
+const PopularProductCard = ({ }) => {
   return (
     <View>
-      <Text>PopularProductCard</Text>
+      <Text>[PopularProductCard]</Text>
     </View>
   )
 }
