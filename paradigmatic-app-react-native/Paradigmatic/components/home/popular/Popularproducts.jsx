@@ -10,9 +10,10 @@ import { COLORS, SIZES } from '../../../constants';
 import { PopularProductCard } from '../../common/cards/popular/PopularProductCard';
 
 const Popularproducts = () => {
+  const router = useRouter();
   return (
-    <View>
-      <Text>Welcome to Popularproducts</Text>
+    <View styles={styles.container}>
+      <Text>Shop Local</Text>
     </View>
   )
 }

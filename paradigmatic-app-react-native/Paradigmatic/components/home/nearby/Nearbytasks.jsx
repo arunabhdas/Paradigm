@@ -6,7 +6,7 @@ import styles from './nearbytasks.style'
 const Nearbytasks = () => {
   return (
     <View>
-      <Text>Nearbytasks</Text>
+      <Text>Shop Hyper Local</Text>
     </View>
   )
 }

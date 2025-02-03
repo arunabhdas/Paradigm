@@ -14,7 +14,7 @@ import { useRouter } from 'expo-router';
 import styles from './welcome.style'
 import { icons, SIZES } from '../../../constants'
 
-const supplierTypes = ["Onshore", "Nearshore", "Offshore", "Canada", "Mexico", "Brazil", "Australia", "Singapore"]
+const supplierTypes = ["Onions", "Tomato", "Potatoes", "Chilli Peppers", "Green Peppers"]
 
 const Welcome = () => {
   const router = useRouter();
@@ -22,7 +22,7 @@ const Welcome = () => {
   return (
   <View>
     <View style={styles.container}>
-      <Text style={styles.userName}>Paradigmatic</Text>
+      <Text style={styles.userName}>Paradigmatic helps consumers and business find alternate suppliers for their products</Text>
       <Text style={styles.welcomeMessage}>Find alternative supplier and markets</Text>
     </View>
 
