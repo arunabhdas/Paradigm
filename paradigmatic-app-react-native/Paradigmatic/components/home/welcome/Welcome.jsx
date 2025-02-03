@@ -14,7 +14,7 @@ import { useRouter } from 'expo-router';
 import styles from './welcome.style'
 import { icons, SIZES } from '../../../constants'
 
-const supplierTypes = ["Onshore", "Nearshore", "Offshore"]
+const supplierTypes = ["Onshore", "Nearshore", "Offshore", "Canada", "Mexico", "Brazil", "Australia", "Singapore"]
 
 const Welcome = () => {
   const router = useRouter();
@@ -49,11 +49,15 @@ const Welcome = () => {
       <FlatList 
         data={supplierTypes} 
         renderItem={({ item }) => ( 
-        <TouchableOpacity style={styles.tab(activeSupplierType, item)} onPress={() => {
+        <TouchableOpacity 
+          style={styles.tab(activeSupplierType, item)} 
+          onPress={() => {
           setActiveSupplierType(item)
           router.push(`/search/${item}`)
-        }}>
-        <Text style={styles.tabText(activeSupplierType, item)}>{item}</Text> 
+          }}>
+        <Text 
+          style={styles.tabText(activeSupplierType, item)}>{item}
+        </Text> 
         </TouchableOpacity>
         )} 
         keyExtractor={(item) => item}
