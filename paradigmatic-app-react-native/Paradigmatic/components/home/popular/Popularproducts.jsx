@@ -21,6 +21,9 @@ const Popularproducts = () => {
       num_pages: '1',
     }
   )
+
+  console.log(data);
+  
   return (
     <View styles={styles.container}>
       <View style={styles.header}>
