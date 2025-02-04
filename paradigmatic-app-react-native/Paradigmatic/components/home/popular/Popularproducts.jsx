@@ -32,7 +32,7 @@ const Popularproducts = () => {
           renderItem={({ item }) => {
             <PopularProductCard item={item} />
           }}
-          keyExtractor={(item) => item}
+          keyExtractor={(item) => item?.id}
           contentContainerStyle={{ columnGap: SIZES.medium }}
           horizontal
           showsHorizontalScrollIndicator={false}
