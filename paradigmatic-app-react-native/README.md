@@ -2,7 +2,16 @@
 - Paradigmatic is the mobile app for the open source Paradigmatic platform.
 - Paradigmatic is an agentic AI platform which serves as a marketplace for AI agents
 
+# Develop
 
+```
+cd paradigmatic-app-react-native/Paradigmatic
+
+npm run ios
+
+npm run android
+
+```
 
 ## Steps 
 
