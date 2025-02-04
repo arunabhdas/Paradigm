@@ -8,12 +8,19 @@ import styles from './popularproducts.style'
 
 import { COLORS, SIZES } from '../../../constants';
 import PopularProductCard from '../../common/cards/popular/PopularProductCard';
+import useFetch from '../../../hook/useFetch';
+
 const supplierTypes = ["Onions", "Tomato", "Potatoes", "Chilli Peppers", "Green Peppers"]
 
 const Popularproducts = () => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
-  const error = false;
+
+  const { data, isLoading, error, refetch } = useFetch(
+    'search', { 
+      query: 'iOS developer jobs Remote',
+      num_pages: '1',
+    }
+  )
   return (
     <View styles={styles.container}>
       <View style={styles.header}>
