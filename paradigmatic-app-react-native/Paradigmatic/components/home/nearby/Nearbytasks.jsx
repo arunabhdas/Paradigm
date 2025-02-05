@@ -43,7 +43,7 @@ const Nearbytasks = () => {
             <NearbyTaskCard 
               item={item}
               key={`nearby-job-${item?.job_id}`}
-              handleNavigate={() => router.push(`/job-details/${item?.job_id}`)}
+              handleNavigate={() => router.push(`/task-details/${item?.job_id}`)}
             />
           ))
         )} 

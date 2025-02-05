@@ -9,7 +9,7 @@ const NearbyTaskCard = ({ item, handleNavigate }) => {
   return (
     <TouchableOpacity
     style={styles.container}
-    onPress={() => handleNavigate}
+    onPress={() => handleNavigate(item)}
 
     >
       <TouchableOpacity style={styles.logoContainer}>

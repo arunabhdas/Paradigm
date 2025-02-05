@@ -24,7 +24,7 @@ const Popularproducts = () => {
   )
 
   const handleCardPress = (item) => {
-    router.push(`/job-details/${item.job_id}`);
+    router.push(`/task-details/${item.job_id}`);
     setSelectedJob(item.job_id);
   };
 
@@ -34,7 +34,7 @@ const Popularproducts = () => {
     <View styles={styles.container}>
       <Text></Text>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Shop Local</Text>
+        <Text style={styles.headerTitle}>Shop Popular</Text>
         <TouchableOpacity>
           <Text style={styles.headerBtn}>Show All</Text>
         </TouchableOpacity>
