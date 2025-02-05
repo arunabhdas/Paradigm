@@ -14,6 +14,7 @@ const supplierTypes = ["Onions", "Tomato", "Potatoes", "Chilli Peppers", "Green 
 
 const Popularproducts = () => {
   const router = useRouter();
+  const [selectedJob, setSelectedJob] = useState();
 
   const { data, isLoading, error, refetch } = useFetch(
     'search', { 
@@ -21,6 +22,11 @@ const Popularproducts = () => {
       num_pages: '1',
     }
   )
+
+  const handleCardPress = (item) => {
+    router.push(`/job-details/${item.job_id}`);
+    setSelectedJob(item.job_id);
+  };
 
   console.log(data);
   
@@ -38,10 +44,14 @@ const Popularproducts = () => {
           <ActivityIndicator size="large" colors={COLORS.primary} />
         ) : (
           <FlatList 
-          data={supplierTypes}
-          renderItem={({ item }) => {
-            <PopularProductCard item={item} />
-          }}
+          data={data}
+          renderItem={({ item }) => (
+            <PopularProductCard 
+            item={item} 
+            selectedJob={selectedJob}
+            handleCardPress={handleCardPress}
+            />
+        )}
           keyExtractor={(item) => item?.job_id}
           contentContainerStyle={{ columnGap: SIZES.medium }}
           horizontal
