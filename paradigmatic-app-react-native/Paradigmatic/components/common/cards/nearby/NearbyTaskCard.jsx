@@ -24,7 +24,7 @@ const NearbyTaskCard = ({ item, handleNavigate }) => {
         <Text style={styles.jobName} numberOfLines={1}>
           {item.jobName}
         </Text>
-        <Text style={styles.location}>{item.job_country}</Text>
+        <Text style={styles.jobType}>{item.job_employment_type}</Text>
       </View>
     </TouchableOpacity>
   )
