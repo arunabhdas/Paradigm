@@ -14,7 +14,7 @@ import { useRouter } from 'expo-router';
 import styles from './welcome.style'
 import { icons, SIZES } from '../../../constants'
 
-const supplierTypes = ["Onions", "Tomato", "Potatoes", "Chilli Peppers", "Green Peppers"]
+const supplierTypes = ["Ecommerce", "Gaming", "Travel", "Kids", "Education", "Fashion", "Sports", "Media", "Cars", "Pets", "Finance", "Fitness", "CPG"]
 
 const Welcome = () => {
   const router = useRouter();

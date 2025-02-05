@@ -10,7 +10,7 @@ import { COLORS, SIZES } from '../../../constants';
 import PopularProductCard from '../../common/cards/popular/PopularProductCard';
 import useFetch from '../../../hook/useFetch';
 
-const supplierTypes = ["Onions", "Tomato", "Potatoes", "Chilli Peppers", "Green Peppers"]
+const supplierTypes = ["Ecommerce", "Gaming", "Travel", "Kids", "Education", "Fashion", "Sports", "Media", "Cars", "Pets", "Finance", "Fitness", "CPG"]
 
 const Popularproducts = () => {
   const router = useRouter();
