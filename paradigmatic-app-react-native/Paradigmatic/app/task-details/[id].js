@@ -49,9 +49,17 @@ const TaskDetails = () => {
                          iconUrl={icons.share} 
                          dimension="60%"
                      /> 
-                )
+                ),
+                headerTitle: "Details",
             }}
-        ></Stack.Screen>
+        />
+        <>
+            <ScrollView>
+                
+
+            </ScrollView>
+        </>
+
         </SafeAreaView>
     )
 }
