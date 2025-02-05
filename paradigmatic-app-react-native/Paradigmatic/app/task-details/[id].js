@@ -32,7 +32,20 @@ const TaskDetails = () => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightGreen }}>
-        <Stack.Screen></Stack.Screen>
+        <Stack.Screen
+            options={{
+                headerStyle: { backgroundColor: COLORS.lightGreen },
+                headerShadowVisible: false,
+                headerBackVisible: true,
+                headerLeft: () => (
+                   <ScreenHeaderBtn 
+                        iconUrl={icons.menu} 
+                        dimension="60%"
+                        handlePress={() => router.back()}
+                    /> 
+                )
+            }}
+        ></Stack.Screen>
         </SafeAreaView>
     )
 }
