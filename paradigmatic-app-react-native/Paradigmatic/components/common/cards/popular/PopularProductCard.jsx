@@ -1,7 +1,9 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 
-import styles from './popularproductcard.style'
+import styles from './popularproductcard.style';
+
+import { checkImageURL } from '../../../../utils';
 
 const PopularProductCard = ({ item, selectedJob, handleCardPress }) => {
   return (
@@ -11,7 +13,7 @@ const PopularProductCard = ({ item, selectedJob, handleCardPress }) => {
     >
       <TouchableOpacity style={styles.logoContainer(selectedJob, item)}>
         <Image
-          source={{uri: item.employer_logo}}
+          source={{uri: checkImageURL(item.employer_logo) ? item.employer_logo : "https://t4.ftcdn.net/jpg/05/05/08/61/360_F_505086119_1Xy7u1D0gq6pFqzDpQ9uZ8yYwOwL1yjk.jpg"}}
           resizeMode="contain"
           style={styles.logoImage}
         />
