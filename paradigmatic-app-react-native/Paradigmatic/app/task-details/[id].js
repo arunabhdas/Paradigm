@@ -43,6 +43,12 @@ const TaskDetails = () => {
                         dimension="60%"
                         handlePress={() => router.back()}
                     /> 
+                ),
+                headerRight: () => (
+                    <ScreenHeaderBtn 
+                         iconUrl={icons.share} 
+                         dimension="60%"
+                     /> 
                 )
             }}
         ></Stack.Screen>
