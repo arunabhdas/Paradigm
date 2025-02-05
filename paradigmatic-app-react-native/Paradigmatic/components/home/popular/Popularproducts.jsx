@@ -32,6 +32,7 @@ const Popularproducts = () => {
   
   return (
     <View styles={styles.container}>
+      <Text></Text>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Shop Local</Text>
         <TouchableOpacity>

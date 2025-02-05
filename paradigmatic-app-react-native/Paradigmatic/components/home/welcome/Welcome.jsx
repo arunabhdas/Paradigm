@@ -45,6 +45,7 @@ const Welcome = () => {
       </TouchableOpacity>
     </View>
 
+    <Text style={styles.welcomeMessage}>Sectors</Text>
     <View style={styles.tabsContainer}>
       <FlatList 
         data={supplierTypes} 
