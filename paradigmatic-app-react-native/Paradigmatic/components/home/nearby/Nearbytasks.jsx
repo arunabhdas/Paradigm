@@ -6,10 +6,10 @@ import { useRouter } from 'expo-router';
 import styles from './nearbytasks.style'
 
 import { COLORS, SIZES } from '../../../constants';
-import PopularProductCard from '../../common/cards/nearby/NearbyTaskCard';
+import NearbyTaskCard from '../../common/cards/nearby/NearbyTaskCard';
 import useFetch from '../../../hook/useFetch';
 
-const supplierTypes = ["Onions", "Tomato", "Potatoes", "Chilli Peppers", "Green Peppers"]
+const supplierTypes = ["Ecommerce", "Gaming", "Travel", "Kids", "Education", "Fashion", "Sports", "Media", "Cars", "Pets", "Finance", "Fitness", "CPG"]
 
 const Nearbytasks = () => {
   const router = useRouter();
@@ -40,9 +40,10 @@ const Nearbytasks = () => {
           <Text>Something went wrong</Text>
         ) : (
           data?.map((item) => (
-            <PopularProductCard 
-            key={item?.job_id}
-            item={item}
+            <NearbyTaskCard 
+              item={item}
+              key={`nearby-job-${item?.job_id}`}
+              handleNavigate={() => router.push(`/job-details/${item?.job_id}`)}
             />
           ))
         )} 
