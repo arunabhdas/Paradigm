@@ -4,6 +4,7 @@ import { ScrollView, SafeAreaView } from "react-native";
 import { Stack, useRouter } from "expo-router";
 
 import { COLORS, icons, images, SIZES } from "../constants";
+import styles from "../components/home/welcome/welcome.style";
 
 import { 
     Nearbytasks, Popularproducts, ScreenHeaderBtn, Welcome
@@ -13,11 +14,13 @@ import {
 const Home = () => {
     const router = useRouter();
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.darkGreen }}>
-            <Text>Welcome to Paradigmatic</Text>
+        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.darkCharcoal }}>
+            <View style={styles.container}>
+            <Text style={styles.userName}>Welcome to Paradigmatic</Text>
+            </View>
             <Stack.Screen
             options={{
-                headerStyle: { backgroundColor: COLORS.darkGreen },
+                headerStyle: { backgroundColor: COLORS.darkCharcoal },
                 headerShadowVisible: false,
                 headerLeft: () => (
                     <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />

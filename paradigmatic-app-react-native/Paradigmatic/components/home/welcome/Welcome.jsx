@@ -12,7 +12,7 @@ import {
 import { useRouter } from 'expo-router';
 
 import styles from './welcome.style'
-import { icons, SIZES } from '../../../constants'
+import { icons, SIZES, COLORS } from '../../../constants'
 
 const supplierTypes = ["Ecommerce", "Gaming", "Travel", "Kids", "Education", "Fashion", "Sports", "Media", "Cars", "Pets", "Finance", "Fitness", "CPG"]
 
@@ -33,6 +33,7 @@ const Welcome = () => {
           value=""
           onChange={() => {}}
           placeholder="What are you looking for?"
+          placeholderTextColor={COLORS.gray}
         />
       </View>
 

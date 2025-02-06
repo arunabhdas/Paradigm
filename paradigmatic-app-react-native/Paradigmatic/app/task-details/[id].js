@@ -31,10 +31,10 @@ const TaskDetails = () => {
     );
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightGreen }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.background }}>
         <Stack.Screen
             options={{
-                headerStyle: { backgroundColor: COLORS.lightGreen },
+                headerStyle: { backgroundColor: COLORS.background },
                 headerShadowVisible: false,
                 headerBackVisible: true,
                 headerLeft: () => (

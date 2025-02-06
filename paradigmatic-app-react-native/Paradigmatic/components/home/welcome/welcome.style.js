@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   userName: {
     fontFamily: FONT.regular,
     fontSize: SIZES.large,
-    color: COLORS.secondary,
+    color: COLORS.primary,
   },
   welcomeMessage: {
     fontFamily: FONT.bold,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   searchWrapper: {
     flex: 1,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.quad,
     marginRight: SIZES.small,
     justifyContent: "center",
     alignItems: "center",
@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     paddingHorizontal: SIZES.medium,
+    color: COLORS.white,
   },
   searchBtn: {
     width: 50,

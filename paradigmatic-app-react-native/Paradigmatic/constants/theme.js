@@ -1,4 +1,26 @@
 const COLORS = {
+  primary: "#6F85B5",
+  secondary: "#88EAF",
+  tertiary: "#FF7754",
+  quad: "#233C5A",
+
+  gray: "#83829A",
+  gray2: "#C1C0C8",
+
+  white: "#F3F4F8",
+  lightWhite: "#FAFAFC",
+
+  darkCharcoal: "#0F0F0F",
+  lightGreen: "#036D59",
+  skyGreen: "#95FFEB",
+  coralGreen: "#50D1BA",
+  
+  // New dark mode colors
+  background: "#292C41",
+};
+
+/*
+const COLORS = {
   primary: "#312651",
   secondary: "#444262",
   tertiary: "#FF7754",
@@ -17,6 +39,7 @@ const COLORS = {
 
   coralGreen: "50D1BA",
 };
+*/
 
 const FONT = {
   regular: "DMRegular",
