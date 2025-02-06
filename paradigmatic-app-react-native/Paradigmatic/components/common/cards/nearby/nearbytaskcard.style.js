@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, SHADOWS, SIZES } from "../../../../constants";
+import { COLORS, FONT, SHADOWS, SIZES } from "../../../../constants";
 
 const styles = StyleSheet.create({
   container: {
@@ -33,14 +33,19 @@ const styles = StyleSheet.create({
   jobName: {
     fontSize: SIZES.medium,
     fontFamily: "DMBold",
-    color: COLORS.primary,
+    color: COLORS.cello,
+  },
+  companyName: {
+    fontSize: SIZES.medium,
+    fontFamily: FONT.regular,
+    color: "#B3AEC6",
+    marginTop: SIZES.small / 1.5,
   },
   jobType: {
     fontSize: SIZES.small + 2,
     fontFamily: "DMRegular",
-    color: COLORS.gray,
+    color: COLORS.cello,
     marginTop: 3,
-    textTransform: "capitalize",
   },
 });
 

@@ -9,12 +9,11 @@ const useFetch = (endpoint, query) => {
 
     const options = {
         method: 'GET',
-        url: `https://jsearch.p.rapidapi.com/${endpoint}`,
+        url: `https://raw.githubusercontent.com/arunabhdas/Paradigmatic/refs/heads/main/paradigmatic-app-react-native/mock/api/search/response.json`,
         headers: {
             'X-RapidAPI-Key': Constants.expoConfig.extra.rapidApiKey,
             'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
         },
-        /* TODO-FIXME
         params: {
             query: 'iOS developer jobs Remote',
             page: '1',
@@ -23,10 +22,27 @@ const useFetch = (endpoint, query) => {
             date_posted: 'all',
             employment_types: 'CONTRACTOR'
         },
-        */
-        params: { ...query },
     };
 
+    /*
+    const options = {
+        method: 'GET',
+        url: `https://jsearch.p.rapidapi.com/${endpoint}`,
+        headers: {
+            'X-RapidAPI-Key': Constants.expoConfig.extra.rapidApiKey,
+            'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
+        },
+        params: {
+            query: 'iOS developer jobs Remote',
+            page: '1',
+            num_pages: '1',
+            country: 'us',
+            date_posted: 'all',
+            employment_types: 'CONTRACTOR'
+        },
+        params: { ...query },
+    };
+    */
     const fetchData = async () => {
         setIsLoading(true);
 

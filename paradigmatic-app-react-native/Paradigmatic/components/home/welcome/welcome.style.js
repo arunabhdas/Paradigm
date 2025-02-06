@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   welcomeMessage: {
     fontFamily: FONT.bold,
     fontSize: SIZES.xLarge,
-    color: COLORS.primary,
+    color: COLORS.cello,
     marginTop: 2,
   },
   searchContainer: {

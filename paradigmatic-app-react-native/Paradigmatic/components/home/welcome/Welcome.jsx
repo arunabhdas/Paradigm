@@ -22,6 +22,7 @@ const Welcome = () => {
   return (
   <View>
     <View style={styles.container}>
+      <Text style={styles.userName}>Welcome to Paradigmatic</Text>
       <Text style={styles.userName}>Paradigmatic helps consumers and business find alternate suppliers for their products</Text>
       <Text style={styles.welcomeMessage}>Find alternative supplier and markets</Text>
     </View>

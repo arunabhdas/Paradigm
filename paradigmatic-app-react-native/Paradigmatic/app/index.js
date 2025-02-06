@@ -15,9 +15,6 @@ const Home = () => {
     const router = useRouter();
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.darkCharcoal }}>
-            <View style={styles.container}>
-            <Text style={styles.userName}>Welcome to Paradigmatic</Text>
-            </View>
             <Stack.Screen
             options={{
                 headerStyle: { backgroundColor: COLORS.darkCharcoal },
