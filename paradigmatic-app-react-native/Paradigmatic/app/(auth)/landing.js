@@ -1,6 +1,6 @@
 import { View, Text, SafeAreaView, ScrollView } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
-import { COLORS, SIZES } from '../../constants';
+import { COLORS, SIZES, icons } from '../../constants';
 import { ScreenHeaderBtn } from '../../components';
 
 const Landing = () => {
@@ -12,7 +12,7 @@ const Landing = () => {
                 options={{
                     headerStyle: { backgroundColor: COLORS.darkCharcoal },
                     headerShadowVisible: false,
-                    headerTitle: "Search Results",
+                    headerTitle: "Landing",
                     headerTitleStyle: { color: COLORS.lightWhite },
                     headerRight: () => (
                         <ScreenHeaderBtn
