@@ -1,10 +1,8 @@
-import 'react-native-gesture-handler';
 import { Stack } from "expo-router";
 import { useCallback, useEffect } from "react";
 import { useFonts } from "expo-font";
 import { View } from 'react-native';
 import * as SplashScreen from "expo-splash-screen";
-
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
