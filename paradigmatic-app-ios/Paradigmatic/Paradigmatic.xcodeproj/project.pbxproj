@@ -13,6 +13,8 @@
 		C20D77F524B665D8002E7AEA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C20D77F424B665D8002E7AEA /* Preview Assets.xcassets */; };
 		C20D77FD24B668F4002E7AEA /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D77FC24B668F4002E7AEA /* CircleImage.swift */; };
 		C20D77FF24B67FB3002E7AEA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D77FE24B67FB3002E7AEA /* MapView.swift */; };
+		DC4082042D56A179006D1AC0 /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4082022D56A172006D1AC0 /* GithubUser.swift */; };
+		DC4082082D56A1CC006D1AC0 /* GithubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4082072D56A1C6006D1AC0 /* GithubService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		C20D77FE24B67FB3002E7AEA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		C2AC4E8924DE1856005E019B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D37C64DBD0434958E334DB7A /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		DC4082022D56A172006D1AC0 /* GithubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUser.swift; sourceTree = "<group>"; };
+		DC4082072D56A1C6006D1AC0 /* GithubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubService.swift; sourceTree = "<group>"; };
 		EAFCC7FAFBD54E954DE59292 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +73,8 @@
 		C20D77EC24B665D7002E7AEA /* Landmarks */ = {
 			isa = PBXGroup;
 			children = (
+				DC4082062D56A1AB006D1AC0 /* Models */,
+				DC4082052D56A198006D1AC0 /* Service */,
 				C20D77ED24B665D7002E7AEA /* LandmarksApp.swift */,
 				C20D77EF24B665D7002E7AEA /* ContentView.swift */,
 				C20D77FC24B668F4002E7AEA /* CircleImage.swift */,
@@ -85,6 +91,22 @@
 				C20D77F424B665D8002E7AEA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DC4082052D56A198006D1AC0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DC4082072D56A1C6006D1AC0 /* GithubService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		DC4082062D56A1AB006D1AC0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC4082022D56A172006D1AC0 /* GithubUser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EE393712D7B336982239DD17 /* Configuration */ = {
@@ -168,7 +190,9 @@
 			files = (
 				C20D77F024B665D7002E7AEA /* ContentView.swift in Sources */,
 				C20D77FF24B67FB3002E7AEA /* MapView.swift in Sources */,
+				DC4082082D56A1CC006D1AC0 /* GithubService.swift in Sources */,
 				C20D77EE24B665D7002E7AEA /* LandmarksApp.swift in Sources */,
+				DC4082042D56A179006D1AC0 /* GithubUser.swift in Sources */,
 				C20D77FD24B668F4002E7AEA /* CircleImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

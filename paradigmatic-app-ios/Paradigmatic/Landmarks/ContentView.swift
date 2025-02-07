@@ -8,21 +8,23 @@ A view showing the details for a landmark.
 import SwiftUI
 
 struct ContentView: View {
+    @State private var user: GitHubUser?
+    @State private var errorMessage: String?
     var body: some View {
         VStack {
             MapView()
                 .frame(height: 300)
 
-            CircleImage()
+            CircleImage(url: URL(string: user?.avatarUrl ?? ""))
                 .offset(y: -130)
                 .padding(.bottom, -130)
 
             VStack(alignment: .leading) {
-                Text("Turtle Rock")
+                Text(user?.name ?? "")
                     .font(.title)
 
                 HStack {
-                    Text("Joshua Tree National Park")
+                    Text(user?.bio ?? "")
                     Spacer()
                     Text("California")
                 }
@@ -31,15 +33,28 @@ struct ContentView: View {
 
                 Divider()
 
-                Text("About Turtle Rock")
+                Text("About \(user?.login ?? "")")
                     .font(.title2)
-                Text("Descriptive text goes here.")
+                Text(user?.bio ?? "")
             }
             .padding()
 
             Spacer()
         }
+        .task {
+            await fetchData()
+        }
     }
+    
+    private func fetchData() async {
+        do {
+            let service = GitHubService()
+            user = try await service.fetchUserProfile()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+    
 }
 
 #Preview {
