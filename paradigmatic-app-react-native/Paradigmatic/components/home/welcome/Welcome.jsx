@@ -38,7 +38,7 @@ const Welcome = () => {
         />
       </View>
 
-      <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+      <TouchableOpacity style={styles.searchBtn} onPress={() => { router.push('/(auth)/landing')}}>
         <Image 
           source={icons.search}
           resizeMode="contain"

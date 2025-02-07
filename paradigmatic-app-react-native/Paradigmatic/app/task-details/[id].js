@@ -55,7 +55,7 @@ const TaskDetails = () => {
         />
         <>
             <ScrollView>
-                
+               <Text>Details</Text> 
 
             </ScrollView>
         </>
