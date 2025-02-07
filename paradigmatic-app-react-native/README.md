@@ -68,3 +68,35 @@ cd Paradigmatic
 
 npm install expo-font axios react-native-dotenv
 ```
+
+## Drawer Navigation
+
+* Steps
+```
+npm install @react-navigation/native
+
+npm install react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+npm install @react-navigation/drawer
+
+npm install react-native-reanimated@~2.2.0
+
+``
+
+Ensure that babel.config.js is as follows 
+
+```
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: ['react-native-reanimated/plugin'],
+  };
+};
+```
+
+Add `import 'react-native-gesture-handler';` to app/_layout.js 
+
+```
+npm install react-native-paper
+```
