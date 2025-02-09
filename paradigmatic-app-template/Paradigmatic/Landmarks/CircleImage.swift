@@ -1,9 +1,4 @@
-/*
-See the LICENSE.txt file for this sample’s licensing information.
 
-Abstract:
-A view that clips an image to a circle and adds a stroke and shadow.
-*/
 
 import SwiftUI
 
@@ -36,4 +31,8 @@ struct CircleImage: View {
             }
         }
     }
+}
+
+#Preview {
+    CircleImage(url: URL(string: "https://api.github.com/users/arunabhdas"))
 }

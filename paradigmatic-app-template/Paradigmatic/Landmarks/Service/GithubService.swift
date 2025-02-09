@@ -1,9 +1,5 @@
 //
 //  GithubService.swift
-//  Landmarks
-//
-//  Created by Coder on 2/7/25.
-//  Copyright © 2025 Apple. All rights reserved.
 //
 
 import SwiftUI
@@ -12,7 +8,7 @@ import SwiftUI
 class GitHubService {
     func fetchUserProfile() async throws -> GitHubUser {
         // Create URL
-        guard let url = URL(string: "https://api.github.com/users/codelabspro") else {
+        guard let url = URL(string: "https://api.github.com/users/arunabhdas") else {
             throw NetworkError.invalidURL
         }
         

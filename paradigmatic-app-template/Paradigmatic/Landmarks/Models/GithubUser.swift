@@ -1,9 +1,5 @@
 //
 //  GithubUser.swift
-//  Landmarks
-//
-//  Created by Coder on 2/7/25.
-//  Copyright © 2025 Apple. All rights reserved.
 //
 
 struct GitHubUser: Codable {
