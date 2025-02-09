@@ -1,8 +1,5 @@
 //
 //  ParadigmaticUITests.swift
-//  ParadigmaticUITests
-//
-//  Created by Coder on 2/7/25.
 //
 
 import XCTest
