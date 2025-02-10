@@ -3,8 +3,15 @@
 //
 import SwiftUI
 
-enum Route: Hashable {
+enum PatientRoute: Hashable {
     
+}
+
+enum Route: Hashable {
+    case patientList
+    case patientAdd
+    case patientDetail
+    case doctor
 }
 
 struct NavigationAction {
