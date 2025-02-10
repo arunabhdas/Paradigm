@@ -3,6 +3,10 @@
 //
 import SwiftUI
 
+struct Patient: Hashable {
+    let name: String
+}
+
 enum PatientRoute: Hashable {
     
 }
