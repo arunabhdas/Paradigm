@@ -3,9 +3,16 @@
 //
 import SwiftUI
 
+enum Route: Hashable {
+    
+}
+
 struct NavigationAction {
     
 }
+
+
+
 
 struct ContentView: View {
     @State private var user: GitHubUser?
