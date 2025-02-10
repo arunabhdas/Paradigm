@@ -2,6 +2,11 @@
 //  ContentView.swift
 //
 import SwiftUI
+
+struct NavigationAction {
+    
+}
+
 struct ContentView: View {
     @State private var user: GitHubUser?
     @State private var errorMessage: String?
@@ -31,6 +36,7 @@ struct ContentView: View {
                 Text("About \(user?.login ?? "")")
                     .font(.title2)
                 Text(user?.bio ?? "")
+                
             }
             .padding()
 
