@@ -3,26 +3,6 @@
 //
 import SwiftUI
 
-struct Patient: Hashable {
-    let name: String
-}
-
-enum PatientRoute: Hashable {
-    
-}
-
-enum Route: Hashable {
-    case patientList
-    case patientAdd
-    case patientDetail
-    case doctor
-}
-
-struct NavigationAction {
-    
-}
-
-
 
 
 struct ContentView: View {
