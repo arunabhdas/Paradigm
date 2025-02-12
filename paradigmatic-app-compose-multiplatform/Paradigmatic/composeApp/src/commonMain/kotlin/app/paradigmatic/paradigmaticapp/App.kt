@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -20,6 +21,7 @@ import paradigmatic.composeapp.generated.resources.compose_multiplatform
 
 import app.paradigmatic.paradigmaticapp.ui.theme.lightScheme
 import app.paradigmatic.paradigmaticapp.ui.theme.darkScheme
+import app.paradigmatic.paradigmaticapp.navigation.MainScreen
 
 
 @Composable
@@ -31,6 +33,8 @@ fun App() {
         darkScheme
     }
     MaterialTheme(colorScheme = colors) {
-
+        Surface {
+            MainScreen()
+        }
     }
 }

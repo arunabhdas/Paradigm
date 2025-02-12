@@ -73,11 +73,5 @@ npm install expo-font axios react-native-dotenv
 ## Paranoid clean
 
 ```
-rm -rf node_modules
-rm -rf package-lock.json
-rm -rf ~/.expo
-
-npm install
-
-npx expo start -c
+rm -rf node_modules && rm -rf package-lock.json && rm -rf ~/.expo && npm install && npx expo start -c
 ```
