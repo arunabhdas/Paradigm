@@ -64,6 +64,9 @@ kotlin {
             implementation(libs.kotlin.coroutines)
             implementation(libs.stately.common)
         }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
+        }
     }
 }
 
