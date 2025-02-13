@@ -57,24 +57,6 @@ class BottomNavigationMainScreen : Screen {
                 )
             },
             bottomBar = {
-                /* TODO-FIXME-CLEANUP
-                NavigationBar {
-                    listOf(
-                        BottomNavItem.Markets,
-                        BottomNavItem.Trending,
-                        BottomNavItem.Home,
-                        BottomNavItem.Bookmarks,
-                        BottomNavItem.More
-                    ).forEachIndexed { index, item ->
-                        NavigationBarItem(
-                            icon = { Icon(item.icon, contentDescription = item.title) },
-                            label = { Text(item.title) },
-                            selected = selectedIndex == index,
-                            onClick = { selectedIndex = index }
-                        )
-                    }
-                }
-                */
                 NavigationBar {
                     listOf(
                         BottomNavigationItem.TabOneItem,
