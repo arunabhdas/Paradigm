@@ -2,22 +2,16 @@ package app.paradigmatic.paradigmaticapp.bottomnavigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Create
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.outlined.AccountCircle
-import androidx.compose.material.icons.outlined.Build
 import androidx.compose.material.icons.outlined.Create
-import androidx.compose.material.icons.outlined.Face
-import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.ui.graphics.vector.ImageVector
-import app.paradigmatic.paradigmaticapp.navigation.BottomNavItem
 
 
 sealed class BottomNavigationItem(
