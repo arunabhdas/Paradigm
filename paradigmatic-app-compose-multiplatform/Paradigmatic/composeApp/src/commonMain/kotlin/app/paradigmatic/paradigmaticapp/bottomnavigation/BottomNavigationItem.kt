@@ -1,10 +1,12 @@
 package app.paradigmatic.paradigmaticapp.bottomnavigation
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Build
 import androidx.compose.material.icons.outlined.Face
 import androidx.compose.material.icons.outlined.Favorite
@@ -48,10 +50,18 @@ val bottomNavigationItems = listOf(
         badges = 0
     ),
     BottomNavigationItem(
-        title = "Notifications",
-        route = "notifications",
+        title = "Alerts",
+        route = "alerts",
         selectedIcon = Icons.Filled.Notifications,
         unselectedIcon = Icons.Outlined.Notifications,
+        hasNews = false,
+        badges = 0
+    ),
+    BottomNavigationItem(
+        title = "Profile",
+        route = "profile",
+        selectedIcon = Icons.Filled.AccountCircle,
+        unselectedIcon = Icons.Outlined.AccountCircle,
         hasNews = false,
         badges = 0
     )

@@ -1,11 +1,13 @@
 package app.paradigmatic.paradigmaticapp.navigation
 
-import androidx.compose.material3.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import app.paradigmatic.paradigmaticapp.navigation.BottomNavItem
 
 @Composable
-fun ParadigmaticBottomNavigation(
+fun BottomNav(
     currentRoute: String,
     onNavigate: (BottomNavItem) -> Unit
 ) {
@@ -18,7 +20,12 @@ fun ParadigmaticBottomNavigation(
             BottomNavItem.More
         ).forEach { item ->
             NavigationBarItem(
-                icon = { Icon(item.icon, contentDescription = item.title) },
+                icon = {
+                    Icon(
+                    imageVector = item.icon,
+                    contentDescription = item.title
+                    )
+                },
                 label = { Text(item.title) },
                 selected = currentRoute == item.route,
                 onClick = { onNavigate(item) }
