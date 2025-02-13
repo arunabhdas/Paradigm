@@ -23,7 +23,24 @@ import paradigmatic.composeapp.generated.resources.compose_multiplatform
 import app.paradigmatic.paradigmaticapp.ui.theme.lightScheme
 import app.paradigmatic.paradigmaticapp.ui.theme.darkScheme
 import app.paradigmatic.paradigmaticapp.navigation.MainScreen
+import cafe.adriel.voyager.navigator.Navigator
 
+/* TODO-FIXME-CLEANUP
+@Composable
+@Preview
+fun App() {
+    val colors = if (!isSystemInDarkTheme()) {
+        lightScheme
+    } else {
+        darkScheme
+    }
+    MaterialTheme(colorScheme = colors) {
+        Surface {
+            MainScreen()
+        }
+    }
+}
+*/
 
 @Composable
 @Preview
@@ -35,8 +52,7 @@ fun App() {
     }
     MaterialTheme(colorScheme = colors) {
         Surface {
-            // TODO-FIXME-CLEANUP MainScreen()
-            BottomNavigationMainScreen()
+            Navigator(BottomNavigationMainScreen())
         }
     }
 }

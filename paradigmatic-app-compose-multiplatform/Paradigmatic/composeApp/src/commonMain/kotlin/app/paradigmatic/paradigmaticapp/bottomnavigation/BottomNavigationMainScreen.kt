@@ -1,102 +1,77 @@
 package app.paradigmatic.paradigmaticapp.bottomnavigation
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.material3.Badge
-import androidx.compose.material3.BadgedBox
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.foundation.layout.fillMaxSize
-import app.paradigmatic.paradigmaticapp.bottomnavigation.bottomNavigationItems
+import app.paradigmatic.paradigmaticapp.navigation.*
+import cafe.adriel.voyager.core.screen.Screen
 
-@Composable
-fun BottomNavigationMainScreen(
-) {
-    var selectedRoute by remember {
-        mutableStateOf(0)
-    }
-    Scaffold (
-        bottomBar = {
-            NavigationBar {
-                bottomNavigationItems.forEachIndexed { index, bottomNavigationItem ->
-                    NavigationBarItem(
-                        selected = index == selectedRoute,
-                        onClick = {
-                            selectedRoute = index
-
-                        },
-                        icon = {
-                            BadgedBox(
-                                badge = {
-                                    if (bottomNavigationItem.badges != 0) {
-                                        Badge {
-                                            Text(text = bottomNavigationItem.badges.toString())
-                                        }
-                                    } else if (bottomNavigationItem.hasNews) {
-                                        Badge()
-                                    }
-                                }
-                            ) {
-                                Icon(
-                                    imageVector =
-                                        if (index == selectedRoute) {
-                                            bottomNavigationItem.selectedIcon
-                                        } else {
-                                            bottomNavigationItem.unselectedIcon
-                                        },
-                                        contentDescription = bottomNavigationItem.title
-                                    )
-                            }
-                        },
-                        label = {
-                            Text(text = bottomNavigationItem.title)
-
+class BottomNavigationMainScreen : Screen {
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    override fun Content() {
+        var selectedIndex by remember { mutableStateOf(0) }
+        
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(text = "Paradigmatic") },
+                    navigationIcon = {
+                        IconButton(onClick = { /* Handle navigation */ }) {
+                            Icon(
+                                imageVector = Icons.Default.Menu,
+                                contentDescription = "Menu"
+                            )
                         }
-                    )
-
+                    },
+                    actions = {
+                        IconButton(onClick = { /* Handle search */ }) {
+                            Icon(
+                                imageVector = Icons.Default.Search,
+                                contentDescription = "Search"
+                            )
+                        }
+                        IconButton(onClick = { /* Handle more options */ }) {
+                            Icon(
+                                imageVector = Icons.Default.MoreVert,
+                                contentDescription = "More options"
+                            )
+                        }
+                    }
+                )
+            },
+            bottomBar = {
+                NavigationBar {
+                    listOf(
+                        BottomNavItem.Markets,
+                        BottomNavItem.Trending,
+                        BottomNavItem.Home,
+                        BottomNavItem.Bookmarks,
+                        BottomNavItem.More
+                    ).forEachIndexed { index, item ->
+                        NavigationBarItem(
+                            icon = { Icon(item.icon, contentDescription = item.title) },
+                            label = { Text(item.title) },
+                            selected = selectedIndex == index,
+                            onClick = { selectedIndex = index }
+                        )
+                    }
                 }
             }
-        },
-        floatingActionButton = {
-            FloatingActionButton(onClick = { /*TODO */ }) {
-
-            }
-        }
-    ) { paddingValues ->
-        val padding = paddingValues
-    }
-    /* TODO-FIXME-CLEANUP-PRIOR-TO-REFACTORING
-    var currentRoute by remember { mutableStateOf(BottomNavItem.Home.route) }
-
-    Scaffold(
-        bottomBar = {
-            BottomNav(
-                currentRoute = currentRoute,
-                onNavigate = { item ->
-                    currentRoute = item.route
+        ) { paddingValues ->
+            Box(modifier = Modifier.padding(paddingValues)) {
+                when (selectedIndex) {
+                    0 -> MarketsScreen()
+                    1 -> TrendingScreen()
+                    2 -> HomeScreen()
+                    3 -> BookmarksScreen()
+                    4 -> MoreScreen()
                 }
-            )
-        }
-    ) { paddingValues ->
-        Box(modifier = Modifier.padding(paddingValues)) {
-            when (currentRoute) {
-                BottomNavItem.Markets.route -> MarketsScreen()
-                BottomNavItem.Trending.route -> TrendingScreen()
-                BottomNavItem.Home.route -> HomeScreen()
-                BottomNavItem.Bookmarks.route -> BookmarksScreen()
-                BottomNavItem.More.route -> MoreScreen()
             }
         }
     }
-    */
 }
-
