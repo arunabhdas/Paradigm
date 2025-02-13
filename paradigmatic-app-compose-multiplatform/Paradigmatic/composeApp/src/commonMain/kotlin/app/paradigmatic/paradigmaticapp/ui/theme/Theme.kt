@@ -309,3 +309,9 @@ val unspecified_scheme = ColorFamily(
     Color.Unspecified, Color.Unspecified, Color.Unspecified, Color.Unspecified
 )
 
+object ThemeUtils {
+    val GradientColors = listOf(
+        primaryDark,
+        secondaryDark
+    )
+}

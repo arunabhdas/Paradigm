@@ -1,5 +1,6 @@
 package app.paradigmatic.paradigmaticapp.bottomnavigation
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.FloatingActionButton
@@ -14,10 +15,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.foundation.layout.fillMaxSize
 import app.paradigmatic.paradigmaticapp.bottomnavigation.bottomNavigationItems
 
 @Composable
-fun BottomNavigationMainScreen() {
+fun BottomNavigationMainScreen(
+) {
     var selectedRoute by remember {
         mutableStateOf(0)
     }
@@ -29,6 +32,7 @@ fun BottomNavigationMainScreen() {
                         selected = index == selectedRoute,
                         onClick = {
                             selectedRoute = index
+
                         },
                         icon = {
                             BadgedBox(

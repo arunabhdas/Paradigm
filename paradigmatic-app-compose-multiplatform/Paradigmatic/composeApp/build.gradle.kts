@@ -100,6 +100,13 @@ android {
 dependencies {
     implementation(libs.androidx.ui.text.google.fonts)
     implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.runtime.android)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.ui.android)
+    implementation(libs.androidx.foundation.android)
+    // Lifecycle dependencies from version catalog
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     debugImplementation(compose.uiTooling)
 }
-
