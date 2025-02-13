@@ -45,6 +45,7 @@ class BottomNavigationMainScreen : Screen {
                 )
             },
             bottomBar = {
+                /* TODO-FIXME-CLEANUP
                 NavigationBar {
                     listOf(
                         BottomNavItem.Markets,
@@ -61,17 +62,36 @@ class BottomNavigationMainScreen : Screen {
                         )
                     }
                 }
+                */
+                NavigationBar {
+                    listOf(
+                        BottomNavigationItem.TabOneItem,
+                        BottomNavigationItem.TabTwoItem,
+                        BottomNavigationItem.TabThreeItem,
+                        BottomNavigationItem.TabFourItem,
+                        BottomNavigationItem.TabFiveItem
+                    ).forEachIndexed { index, item ->
+                        NavigationBarItem(
+                            icon = { Icon(item.selectedIcon, contentDescription = item.title) },
+                            label = { Text(item.title) },
+                            selected = selectedIndex == index,
+                            onClick = { selectedIndex = index }
+                        )
+                    }
+                }
             }
         ) { paddingValues ->
             Box(modifier = Modifier.padding(paddingValues)) {
                 when (selectedIndex) {
-                    0 -> MarketsScreen()
-                    1 -> TrendingScreen()
-                    2 -> HomeScreen()
-                    3 -> BookmarksScreen()
-                    4 -> MoreScreen()
+                    0 -> TabOneScreen()
+                    1 -> TabTwoScreen()
+                    2 -> TabThreeScreen()
+                    3 -> TabFourScreen()
+                    4 -> TabFiveScreen()
                 }
             }
         }
     }
 }
+
+

@@ -1,6 +1,7 @@
 package app.paradigmatic.paradigmaticapp.bottomnavigation
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,24 +30,18 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import cafe.adriel.voyager.core.screen.Screen
 
-class TabOneScreen : Screen {
+class TabOneScreen: Screen {
     @Composable
     override fun Content() {
-        Column(
+        Box(
             modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            contentAlignment = Alignment.Center
         ) {
-            Icon(
-                imageVector = Icons.Default.Favorite,
-                contentDescription = "Markets",
-                modifier = Modifier.size(48.dp)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text("Markets Screen")
+            Text("Markets Screen Text")
         }
     }
 }
+
 
 class TabTwoScreen : Screen {
     @Composable
