@@ -12,30 +12,42 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import app.paradigmatic.paradigmaticapp.data.remote.api.CurrencyApiServiceImpl
+import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
+import cafe.adriel.voyager.core.screen.Screen
 
-@Composable
-fun TabOneScreen() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+class TabOneScreen: Screen {
+    @Composable
+    override fun Content() {
+        LaunchedEffect(Unit) {
+            println("TabOneScreen")
+            CurrencyApiServiceImpl().getLatestExchangeRates()
+        }
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
-            Icon(
-                imageVector = Icons.Default.Menu,
-                contentDescription = "Markets",
-                modifier = Modifier.size(48.dp)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text("Markets Screen")
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Menu,
+                    contentDescription = "Markets",
+                    modifier = Modifier.size(48.dp)
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text("Markets Screen")
+            }
         }
     }
 }
+
+
 
 @Composable
 fun TabTwoScreen() {

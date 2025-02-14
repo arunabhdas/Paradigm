@@ -11,5 +11,5 @@ sealed class RequestState<out T> {
     fun isSuccess(): Boolean = this is Success
 
     fun getSuccessData() = (this as Success).data
-    fun getErrorMessaage(): String = (this as Error).message
+    fun getErrorMessage(): String = (this as Error).message
 }

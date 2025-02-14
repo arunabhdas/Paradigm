@@ -1,6 +1,8 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.io.FileInputStream
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -64,6 +66,12 @@ kotlin {
             implementation(libs.kotlin.coroutines)
             implementation(libs.stately.common)
         }
+
+        androidMain.dependencies {
+            implementation(libs.androidx.activity.compose)
+            implementation(libs.ktor.client.android)
+        }
+
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
         }
@@ -80,7 +88,31 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
-        buildConfigField("String", "CURRENCY_API_KEY", "\"${project.findProperty("CURRENCY_API_KEY") ?: ""}\"")
+
+        // Debug: Print current directory
+        println("Current directory: ${project.projectDir}")
+
+        val localProperties = Properties().apply {
+            val localPropertiesFile = rootProject.file("local.properties")
+            println("Looking for local.properties at: ${localPropertiesFile.absolutePath}")
+            if (localPropertiesFile.exists()) {
+                load(FileInputStream(localPropertiesFile))
+                println("Properties loaded. Available keys: ${propertyNames().toList()}")
+            }
+        }
+
+        val apiKey = localProperties.getProperty("CURRENCY_API_KEY") ?: ""
+        println("API Key found: ${apiKey.isNotBlank()}")
+
+        if (apiKey.isBlank()) {
+            throw GradleException("""
+                Missing CURRENCY_API_KEY in local.properties
+                Please add: CURRENCY_API_KEY=your_api_key_here
+                to your local.properties file at:
+                ${rootProject.file("local.properties").absolutePath}
+            """.trimIndent())
+        }
+        buildConfigField("String", "CURRENCY_API_KEY", "\"$apiKey\"")
     }
     buildFeatures {
         compose = true

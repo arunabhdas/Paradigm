@@ -24,6 +24,7 @@ foundationLayoutAndroid = "1.7.7"
 uiAndroid = "1.7.7"
 foundationAndroid = "1.7.7"
 lifecycle = "2.7.0"
+kotlinx-serialization = "1.6.0"
 
 [libraries]
 
@@ -70,5 +71,5 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 realm-plugin = { id = "io.realm.kotlin", version.ref = "realm" }
+kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinx-serialization" }

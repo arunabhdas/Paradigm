@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ApiResponse (
+data class CurrencyApiResponse (
     val meta: MetaData,
     val data: Map<String, Currency>
 )
@@ -19,3 +19,4 @@ data class Currency(
     val code: String,
     val value: Double
 )
+
