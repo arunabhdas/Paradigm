@@ -74,23 +74,30 @@ fun TabTwoScreen() {
     }
 }
 
-@Composable
-fun TabThreeScreen() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+class TabThreeScreen: Screen, KoinComponent {
+    private val currencyApiService: CurrencyApiService by inject()
+    @Composable
+    override fun Content() {
+        LaunchedEffect(Unit) {
+            println("TabThreeScreen")
+            currencyApiService.getLatestExchangeRates()
+        }
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
-            Icon(
-                imageVector = Icons.Default.Home,
-                contentDescription = "Home",
-                modifier = Modifier.size(48.dp)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text("Home Screen")
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Home,
+                    contentDescription = "Markets",
+                    modifier = Modifier.size(48.dp)
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text("Home")
+            }
         }
     }
 }

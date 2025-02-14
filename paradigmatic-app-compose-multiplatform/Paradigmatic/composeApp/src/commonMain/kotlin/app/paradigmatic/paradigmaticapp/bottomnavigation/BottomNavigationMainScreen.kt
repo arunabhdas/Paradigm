@@ -79,7 +79,7 @@ class BottomNavigationMainScreen : Screen {
                 when (selectedIndex) {
                     0 -> TabOneScreen().Content()
                     1 -> TabTwoScreen()
-                    2 -> TabThreeScreen()
+                    2 -> TabThreeScreen().Content()
                     3 -> TabFourScreen()
                     4 -> TabFiveScreen()
                 }
