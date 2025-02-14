@@ -13,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import app.paradigmatic.paradigmaticapp.bottomnavigation.BottomNavigationMainScreen
+import app.paradigmatic.paradigmaticapp.di.initializeKoin
 import app.paradigmatic.paradigmaticapp.ui.theme.darkScheme
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -45,6 +46,7 @@ fun App() {
 @Composable
 @Preview
 fun App() {
+    initializeKoin()
     val colors = if (!isSystemInDarkTheme()) {
         lightScheme
     } else {
