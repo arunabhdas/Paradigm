@@ -2,6 +2,7 @@ package app.paradigmatic.paradigmaticapp.data.remote.api
 
 import app.paradigmatic.paradigmaticapp.config.ApiConfig
 import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
+import app.paradigmatic.paradigmaticapp.domain.PreferencesRepository
 import app.paradigmatic.paradigmaticapp.domain.model.Currency
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiResponse
 import app.paradigmatic.paradigmaticapp.domain.model.RequestState
@@ -15,7 +16,9 @@ import io.ktor.client.request.headers
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-class CurrencyApiServiceImpl : CurrencyApiService {
+class CurrencyApiServiceImpl(
+    private val preferences: PreferencesRepository
+) : CurrencyApiService {
 
     companion object {
         const val ENDPOINT = "https://api.currencyapi.com/v3/latest"
@@ -51,6 +54,11 @@ class CurrencyApiServiceImpl : CurrencyApiService {
             if (response.status.value == 200) {
                 println("API RESPONSE : ${response.body<String>()}")
                 val apiResponse = Json.decodeFromString<CurrencyApiResponse>(response.body())
+
+                // Persist timestamp in preferences key-value-pair
+                val lastUpdated = apiResponse.meta.lastUpdatedAt
+                preferences.saveLastUpdated(lastUpdated)
+
                 RequestState.Success(data = apiResponse.data.values.toList())
             } else {
                 RequestState.Error(message = "HTTP Error Code: ${response.status}")
