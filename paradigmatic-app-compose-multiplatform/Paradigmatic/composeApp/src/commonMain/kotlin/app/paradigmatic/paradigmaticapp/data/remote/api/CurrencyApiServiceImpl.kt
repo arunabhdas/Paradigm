@@ -5,7 +5,9 @@ import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
 import app.paradigmatic.paradigmaticapp.domain.PreferencesRepository
 import app.paradigmatic.paradigmaticapp.domain.model.Currency
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiResponse
+import app.paradigmatic.paradigmaticapp.domain.model.CurrencyCode
 import app.paradigmatic.paradigmaticapp.domain.model.RequestState
+import co.touchlab.stately.ensureNeverFrozen
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.DefaultRequest
@@ -55,11 +57,26 @@ class CurrencyApiServiceImpl(
                 println("API RESPONSE : ${response.body<String>()}")
                 val apiResponse = Json.decodeFromString<CurrencyApiResponse>(response.body())
 
+                val availableCurrencyCodes = apiResponse.data.keys
+                    .filter {
+                        CurrencyCode.entries
+                            .map { code -> code.name }
+                            .toSet()
+                            .contains(it)
+                    }
+
+                val availableCurrencies = apiResponse.data.values
+                    .filter { currency ->
+                        availableCurrencyCodes.contains(currency.code)
+                    }
+
                 // Persist timestamp in preferences key-value-pair
                 val lastUpdated = apiResponse.meta.lastUpdatedAt
                 preferences.saveLastUpdated(lastUpdated)
 
-                RequestState.Success(data = apiResponse.data.values.toList())
+                // TODO-FIXME-CLEANUP RequestState.Success(data = apiResponse.data.values.toList())
+                RequestState.Success(data = availableCurrencies)
+
             } else {
                 RequestState.Error(message = "HTTP Error Code: ${response.status}")
             }
