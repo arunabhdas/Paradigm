@@ -18,14 +18,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import app.paradigmatic.paradigmaticapp.data.remote.api.CurrencyApiServiceImpl
 import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
+import app.paradigmatic.paradigmaticapp.domain.PreferencesRepository
 import cafe.adriel.voyager.core.screen.Screen
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class TabOneScreen: Screen {
+class TabOneScreen: Screen, KoinComponent {
+    private val currencyApiService: CurrencyApiService by inject()
     @Composable
     override fun Content() {
         LaunchedEffect(Unit) {
             println("TabOneScreen")
-            CurrencyApiServiceImpl().getLatestExchangeRates()
+            currencyApiService.getLatestExchangeRates()
         }
         Box(
             modifier = Modifier.fillMaxSize(),
