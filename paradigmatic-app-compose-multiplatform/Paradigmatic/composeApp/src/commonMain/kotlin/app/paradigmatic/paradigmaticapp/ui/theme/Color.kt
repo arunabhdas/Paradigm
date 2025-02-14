@@ -248,3 +248,5 @@ val onQuadDarkHighContrast = Color(0xFF000000)
 val quadContainerDarkHighContrast = Color(0xFFF2B86D)
 val onQuadContainerDarkHighContrast = Color(0xFF140900)
 
+val freshColor = Color(0xFF44FF78)
+val staleColor = Color(0xFFFF9E44)
