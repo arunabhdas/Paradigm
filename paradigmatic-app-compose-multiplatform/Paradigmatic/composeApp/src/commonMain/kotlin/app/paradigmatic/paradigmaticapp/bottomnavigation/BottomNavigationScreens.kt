@@ -118,7 +118,7 @@ fun TabFourScreen() {
                 modifier = Modifier.size(48.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
-            Text("Bookmarks Screen")
+            Text("Alerts Screen")
         }
     }
 }
