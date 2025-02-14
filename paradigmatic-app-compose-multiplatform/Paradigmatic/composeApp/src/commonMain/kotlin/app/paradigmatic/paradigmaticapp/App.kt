@@ -48,7 +48,10 @@ fun App() {
 fun App() {
     initializeKoin()
     val colors = if (!isSystemInDarkTheme()) {
-        lightScheme
+        // TODO-FIXME
+        // TODO-FIXME-Commenting out to force darkScheme
+        //  lightScheme
+        darkScheme
     } else {
         darkScheme
     }
