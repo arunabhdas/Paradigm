@@ -80,6 +80,11 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+        buildConfigField("String", "CURRENCY_API_KEY", "\"${project.findProperty("CURRENCY_API_KEY") ?: ""}\"")
+    }
+    buildFeatures {
+        compose = true
+        buildConfig = true  // Enable BuildConfig generation
     }
     packaging {
         resources {

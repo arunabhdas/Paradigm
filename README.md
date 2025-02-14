@@ -7,6 +7,11 @@ Paradigmatic app - Privacy focused, selfhosted tech stack for startups and for a
 ## Notes
 Paradigmatic app is based on the ideas outlined in the [Planet Critical Podcast](https://podcasts.apple.com/ca/podcast/planet-critical/id1545009586) 
 
+## Setup
+
+1. Copy `api_keys.properties.template` to `api_keys.properties`
+2. Replace `your_api_key_here` with your actual API key in `api_keys.properties`
+
 ## Links
 
 https://youtu.be/HVub2u8DpDQ?si=IBmFPHPCJTun-WMW
