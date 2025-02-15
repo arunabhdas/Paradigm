@@ -20,13 +20,16 @@ class PreferencesImpl(
 
     @OptIn(ExperimentalSettingsApi::class)
     private val flowSettings: FlowSettings = (settings as ObservableSettings).toFlowSettings()
+    @OptIn(ExperimentalSettingsApi::class)
     override suspend fun saveLastUpdated(lastUpdated: String) {
+        print("saveLastUpdated - Instant.parse(lastUpdated) ${Instant.parse(lastUpdated)}")
         flowSettings.putLong(
             key = TIMESTAMP_KEY,
             value = Instant.parse(lastUpdated).toEpochMilliseconds()
         )
     }
 
+    @OptIn(ExperimentalSettingsApi::class)
     override suspend fun isDataFresh(currentTimestamp: Long): Boolean {
         val savedTimestamp = flowSettings.getLong(
             key = TIMESTAMP_KEY,
@@ -40,7 +43,9 @@ class PreferencesImpl(
             val savedDateTime = savedInstant.toLocalDateTime(TimeZone.currentSystemDefault())
 
             val daysDifference = currentDateTime.date.dayOfYear - savedDateTime.date.dayOfYear
+            print("daysDifference is ${daysDifference}")
             daysDifference < 1
+
         } else false
     }
 

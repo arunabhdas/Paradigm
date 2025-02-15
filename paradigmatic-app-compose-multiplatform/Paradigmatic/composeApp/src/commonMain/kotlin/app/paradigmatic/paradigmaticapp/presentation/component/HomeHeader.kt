@@ -81,15 +81,13 @@ fun RatesStatusPanel(
                 )
             }
         }
-        if (status == RateStatus.Stale) {
-            IconButton(onClick = onRatesRefresh) {
-                Icon(
-                    modifier = Modifier.size(24.dp),
-                    painter = painterResource(Res.drawable.refresh_ic),
-                    contentDescription = "Refresh Icon",
-                    tint = staleColor
-                )
-            }
+       IconButton(onClick = onRatesRefresh) {
+            Icon(
+                modifier = Modifier.size(24.dp),
+                painter = painterResource(Res.drawable.refresh_ic),
+                contentDescription = "Refresh Icon",
+                tint = staleColor
+            )
         }
     }
 }

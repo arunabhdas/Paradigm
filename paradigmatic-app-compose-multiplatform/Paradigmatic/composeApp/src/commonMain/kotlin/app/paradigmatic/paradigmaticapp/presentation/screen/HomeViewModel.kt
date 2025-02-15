@@ -25,7 +25,6 @@ class HomeViewModel(
     init {
         screenModelScope.launch {
             fetchNewRates()
-            getRateStatus()
         }
     }
 
@@ -42,6 +41,8 @@ class HomeViewModel(
     private suspend fun fetchNewRates() {
         try {
             api.getLatestExchangeRates()
+            getRateStatus()
+            println("The RateStatus is ${_rateStatus.value}")
         } catch (e: Exception) {
            println(e.message)
         }
