@@ -99,8 +99,6 @@ class TabThreeScreen: Screen, KoinComponent {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-
-                Spacer(modifier = Modifier.height(16.dp))
                 HomeHeader(
                     status = rateStatus,
                     onRatesRefresh = {
