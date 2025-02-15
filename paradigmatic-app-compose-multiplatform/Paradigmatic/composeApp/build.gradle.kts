@@ -145,5 +145,8 @@ dependencies {
     // Lifecycle dependencies from version catalog
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.foundation.layout.android)
+    implementation(libs.androidx.benchmark.macro)
+    implementation(libs.foundation.android)
     debugImplementation(compose.uiTooling)
 }

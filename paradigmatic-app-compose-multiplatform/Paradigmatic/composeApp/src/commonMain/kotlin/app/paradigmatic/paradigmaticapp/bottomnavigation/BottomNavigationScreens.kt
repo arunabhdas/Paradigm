@@ -19,6 +19,8 @@ import androidx.compose.ui.unit.dp
 import app.paradigmatic.paradigmaticapp.data.remote.api.CurrencyApiServiceImpl
 import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
 import app.paradigmatic.paradigmaticapp.domain.PreferencesRepository
+import app.paradigmatic.paradigmaticapp.domain.model.RateStatus
+import app.paradigmatic.paradigmaticapp.presentation.component.HomeHeader
 import cafe.adriel.voyager.core.screen.Screen
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -90,13 +92,12 @@ class TabThreeScreen: Screen, KoinComponent {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Icon(
-                    imageVector = Icons.Default.Home,
-                    contentDescription = "Markets",
-                    modifier = Modifier.size(48.dp)
-                )
+
                 Spacer(modifier = Modifier.height(16.dp))
-                Text("Home")
+                HomeHeader(
+                    status = RateStatus.Idle,
+                    onRatesRefresh = {}
+                )
             }
         }
     }

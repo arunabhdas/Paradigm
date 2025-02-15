@@ -1,5 +1,7 @@
 package app.paradigmatic.paradigmaticapp.ui.theme
 
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 val primaryLight = Color(0xFF416835)
@@ -250,3 +252,8 @@ val onQuadContainerDarkHighContrast = Color(0xFF140900)
 
 val freshColor = Color(0xFF44FF78)
 val staleColor = Color(0xFFFF9E44)
+
+val headerColor
+    @Composable
+    get() = if (isSystemInDarkTheme()) Color(0xFF0C0C0C)
+    else Color(0xFF283556)
