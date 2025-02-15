@@ -171,7 +171,30 @@ fun TabFiveScreen() {
 }
 
 @Composable
-fun RowScope.CurrencyView(
+fun CurrencyInputsPanel(
+    source: RequestState<Currency>,
+    target: RequestState<Currency>,
+    onSwitchClick: () -> Unit
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        CurrencyViewPanel(
+            placeholder = "from",
+            currency = source,
+            onClick = {}
+        )
+        CurrencyViewPanel(
+            placeholder = "to",
+            currency = target,
+            onClick = {}
+        )
+    }
+}
+
+@Composable
+fun RowScope.CurrencyViewPanel(
     placeholder: String,
     currency: RequestState<Currency>,
     onClick: () -> Unit
