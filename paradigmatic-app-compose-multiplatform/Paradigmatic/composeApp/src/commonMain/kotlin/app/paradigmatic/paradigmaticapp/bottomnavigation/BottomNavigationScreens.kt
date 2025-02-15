@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,6 +45,8 @@ import cafe.adriel.voyager.koin.getScreenModel
 import org.jetbrains.compose.resources.painterResource
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import paradigmatic.composeapp.generated.resources.Res
+import paradigmatic.composeapp.generated.resources.switch_ic
 
 class TabOneScreen: Screen, KoinComponent {
     private val currencyApiService: CurrencyApiService by inject()
@@ -102,7 +105,8 @@ class TabThreeScreen: Screen, KoinComponent {
     override fun Content() {
         val viewModel = getScreenModel<HomeViewModel>()
         val rateStatus by viewModel.rateStatus
-
+        val sourceCurrency by viewModel.sourceCurrency
+        val targetCurrency by viewModel.targetCurrency
         LaunchedEffect(Unit) {
             println("TabThreeScreen")
             currencyApiService.getLatestExchangeRates()
@@ -117,11 +121,14 @@ class TabThreeScreen: Screen, KoinComponent {
             ) {
                 HomeHeader(
                     status = rateStatus,
+                    source = sourceCurrency,
+                    target = targetCurrency,
                     onRatesRefresh = {
                         viewModel.sendEvent(
                             HomeUiEvent.RefreshRates
                         )
-                    }
+                    },
+                    onSwitchClick = {}
                 )
             }
         }
@@ -169,74 +176,3 @@ fun TabFiveScreen() {
         }
     }
 }
-
-@Composable
-fun CurrencyInputsPanel(
-    source: RequestState<Currency>,
-    target: RequestState<Currency>,
-    onSwitchClick: () -> Unit
-) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        CurrencyViewPanel(
-            placeholder = "from",
-            currency = source,
-            onClick = {}
-        )
-        CurrencyViewPanel(
-            placeholder = "to",
-            currency = target,
-            onClick = {}
-        )
-    }
-}
-
-@Composable
-fun RowScope.CurrencyViewPanel(
-    placeholder: String,
-    currency: RequestState<Currency>,
-    onClick: () -> Unit
-) {
-    Column(modifier = Modifier.weight(1f)) {
-        Text(
-            modifier = Modifier.padding(start = 12.dp),
-            text = placeholder,
-            fontSize = MaterialTheme.typography.bodySmall.fontSize,
-            color = Color.White
-        )
-        Spacer(modifier = Modifier.height(4.dp))
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(size = 8.dp))
-                .background(Color.White.copy(alpha = 0.05f))
-                .height(54.dp)
-                .clickable { onClick() },
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
-        ) {
-            if (currency.isSuccess()) {
-                Icon(
-                    modifier = Modifier.size(24.dp),
-                    painter = painterResource(
-                        CurrencyCode.valueOf(
-                            currency.getSuccessData().code
-                        ).flag
-                    ),
-                    tint = Color.Unspecified,
-                    contentDescription = "Country Flag"
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = CurrencyCode.valueOf(currency.getSuccessData().code).name,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = MaterialTheme.typography.titleLarge.fontSize,
-                    color = Color.White
-                )
-            }
-        }
-    }
-}
-

@@ -2,9 +2,11 @@ package app.paradigmatic.paradigmaticapp.presentation.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,8 +23,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import app.paradigmatic.paradigmaticapp.domain.model.Currency
+import app.paradigmatic.paradigmaticapp.domain.model.CurrencyCode
 import app.paradigmatic.paradigmaticapp.domain.model.RateStatus
+import app.paradigmatic.paradigmaticapp.domain.model.RequestState
 import app.paradigmatic.paradigmaticapp.ui.theme.headerColor
 import app.paradigmatic.paradigmaticapp.ui.theme.staleColor
 import org.jetbrains.compose.resources.painterResource
@@ -30,11 +36,15 @@ import paradigmatic.composeapp.generated.resources.Res
 import paradigmatic.composeapp.generated.resources.exchange_illustration
 import app.paradigmatic.paradigmaticapp.util.displayCurrentDateTime
 import paradigmatic.composeapp.generated.resources.refresh_ic
+import paradigmatic.composeapp.generated.resources.switch_ic
 
 @Composable
 fun HomeHeader(
     status: RateStatus,
-    onRatesRefresh: () -> Unit
+    source: RequestState<Currency>,
+    target: RequestState<Currency>,
+    onRatesRefresh: () -> Unit,
+    onSwitchClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -48,6 +58,13 @@ fun HomeHeader(
             status = status,
             onRatesRefresh = onRatesRefresh
         )
+        Spacer(modifier = Modifier.height(24.dp))
+        CurrencyInputsPanel(
+            source = source,
+            target = target,
+            onSwitchClick = onSwitchClick
+        )
+
     }
 
 }
@@ -91,3 +108,87 @@ fun RatesStatusPanel(
         }
     }
 }
+
+
+@Composable
+fun CurrencyInputsPanel(
+    source: RequestState<Currency>,
+    target: RequestState<Currency>,
+    onSwitchClick: () -> Unit
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        CurrencyViewPanel(
+            placeholder = "from",
+            currency = source,
+            onClick = {}
+        )
+        Spacer(modifier = Modifier.height(14.dp))
+        IconButton(
+            modifier = Modifier.padding(top = 24.dp),
+            onClick = onSwitchClick
+        ) {
+            Icon(
+                painter = painterResource(Res.drawable.switch_ic),
+                contentDescription = "Switch Icon",
+                tint = Color.White
+            )
+        }
+        Spacer(modifier = Modifier.height(14.dp))
+        CurrencyViewPanel(
+            placeholder = "to",
+            currency = target,
+            onClick = {}
+        )
+    }
+}
+
+@Composable
+fun RowScope.CurrencyViewPanel(
+    placeholder: String,
+    currency: RequestState<Currency>,
+    onClick: () -> Unit
+) {
+    Column(modifier = Modifier.weight(1f)) {
+        Text(
+            modifier = Modifier.padding(start = 12.dp),
+            text = placeholder,
+            fontSize = MaterialTheme.typography.bodySmall.fontSize,
+            color = Color.White
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(size = 8.dp))
+                .background(Color.White.copy(alpha = 0.05f))
+                .height(54.dp)
+                .clickable { onClick() },
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            if (currency.isSuccess()) {
+                Icon(
+                    modifier = Modifier.size(24.dp),
+                    painter = painterResource(
+                        CurrencyCode.valueOf(
+                            currency.getSuccessData().code
+                        ).flag
+                    ),
+                    tint = Color.Unspecified,
+                    contentDescription = "Country Flag"
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = CurrencyCode.valueOf(currency.getSuccessData().code).name,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = MaterialTheme.typography.titleLarge.fontSize,
+                    color = Color.White
+                )
+            }
+        }
+    }
+}
+
