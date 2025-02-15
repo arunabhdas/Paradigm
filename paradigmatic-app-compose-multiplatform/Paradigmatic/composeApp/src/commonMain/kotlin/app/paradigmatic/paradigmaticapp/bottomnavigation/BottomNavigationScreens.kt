@@ -13,6 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -21,7 +22,10 @@ import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
 import app.paradigmatic.paradigmaticapp.domain.PreferencesRepository
 import app.paradigmatic.paradigmaticapp.domain.model.RateStatus
 import app.paradigmatic.paradigmaticapp.presentation.component.HomeHeader
+import app.paradigmatic.paradigmaticapp.presentation.screen.HomeUiEvent
+import app.paradigmatic.paradigmaticapp.presentation.screen.HomeViewModel
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.koin.getScreenModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -80,6 +84,9 @@ class TabThreeScreen: Screen, KoinComponent {
     private val currencyApiService: CurrencyApiService by inject()
     @Composable
     override fun Content() {
+        val viewModel = getScreenModel<HomeViewModel>()
+        val rateStatus by viewModel.rateStatus
+
         LaunchedEffect(Unit) {
             println("TabThreeScreen")
             currencyApiService.getLatestExchangeRates()
@@ -95,8 +102,12 @@ class TabThreeScreen: Screen, KoinComponent {
 
                 Spacer(modifier = Modifier.height(16.dp))
                 HomeHeader(
-                    status = RateStatus.Idle,
-                    onRatesRefresh = {}
+                    status = rateStatus,
+                    onRatesRefresh = {
+                        viewModel.sendEvent(
+                            HomeUiEvent.RefreshRates
+                        )
+                    }
                 )
             }
         }

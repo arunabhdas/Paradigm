@@ -49,7 +49,7 @@ class CurrencyApiServiceImpl(
 
     override suspend fun getLatestExchangeRates(): RequestState<List<Currency>> {
         println("Starting getLatestExchangeRates")
-        println("Using API Key: $API_KEY")
+        println("Using API Key")
         println("Endpoint: $ENDPOINT")
         return try {
             val response = httpClient.get(ENDPOINT)

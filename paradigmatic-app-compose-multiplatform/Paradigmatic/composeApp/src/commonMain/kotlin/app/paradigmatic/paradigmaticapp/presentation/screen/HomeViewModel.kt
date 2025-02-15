@@ -9,6 +9,7 @@ import app.paradigmatic.paradigmaticapp.domain.model.RateStatus
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.launch
+import kotlinx.datetime.Clock
 
 sealed class HomeUiEvent {
     data object RefreshRates: HomeUiEvent()
@@ -24,6 +25,17 @@ class HomeViewModel(
     init {
         screenModelScope.launch {
             fetchNewRates()
+            getRateStatus()
+        }
+    }
+
+    fun sendEvent(event: HomeUiEvent) {
+        when(event) {
+            HomeUiEvent.RefreshRates -> {
+                screenModelScope.launch {
+                    fetchNewRates()
+                }
+            }
         }
     }
 
@@ -33,5 +45,13 @@ class HomeViewModel(
         } catch (e: Exception) {
            println(e.message)
         }
+    }
+
+    private suspend fun getRateStatus() {
+        _rateStatus.value = if (preferences.isDataFresh(
+            currentTimestamp = Clock.System.now().toEpochMilliseconds()
+            )
+        ) RateStatus.Fresh
+        else RateStatus.Stale
     }
 }
