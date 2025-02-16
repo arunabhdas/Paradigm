@@ -62,33 +62,13 @@ class HomeViewModel(
                     _allCurrencies.addAll(localCache.getSuccessData())
                     if (!preferences.isDataFresh(Clock.System.now().toEpochMilliseconds())) {
                         println("HomeViewModel: DATA NOT FRESH")
-                        val fetchedData = api.getLatestExchangeRates()
-                        if (fetchedData.isSuccess()) {
-                            fetchedData.getSuccessData().forEach {
-                                println("HomeViewModel: ADDING ${it.code}")
-                                mongoDb.insertCurrencyData(it)
-                            }
-                            println("HomeViewModel: UPDATING _allCurrencies")
-                            _allCurrencies.addAll(fetchedData.getSuccessData())
-                        } else if (fetchedData.isError()){
-                            println("HomeViewModel: FETCHING FAILED ${fetchedData.getErrorMessage()}")
-                        }
+                        cacheTheData()
                     } else {
                         println("HomeViewModel: DATA IS FRESH")
                     }
                 } else {
                     println("HomeViewModel: DATABASE NEEDS DATA")
-                    val fetchedData = api.getLatestExchangeRates()
-                    if (fetchedData.isSuccess()) {
-                        fetchedData.getSuccessData().forEach {
-                            println("HomeViewModel: ADDING ${it.code}")
-                            mongoDb.insertCurrencyData(it)
-                        }
-                        println("HomeViewModel: UPDATING _allCurrencies")
-                        _allCurrencies.addAll(fetchedData.getSuccessData())
-                    } else if (fetchedData.isError()){
-                        println("HomeViewModel: FETCHING FAILED ${fetchedData.getErrorMessage()}")
-                    }
+                    cacheTheData()
                 }
             } else if (localCache.isError()){
                 println("HomeViewModel: ERROR READING LOCAL DATABASE ${localCache.getErrorMessage()}")
@@ -98,6 +78,20 @@ class HomeViewModel(
             println("The RateStatus is ${_rateStatus.value}")
         } catch (e: Exception) {
            println(e.message)
+        }
+    }
+
+    private suspend fun cacheTheData() {
+        val fetchedData = api.getLatestExchangeRates()
+        if (fetchedData.isSuccess()) {
+            fetchedData.getSuccessData().forEach {
+                println("HomeViewModel: ADDING ${it.code}")
+                mongoDb.insertCurrencyData(it)
+            }
+            println("HomeViewModel: UPDATING _allCurrencies")
+            _allCurrencies.addAll(fetchedData.getSuccessData())
+        } else if (fetchedData.isError()){
+            println("HomeViewModel: FETCHING FAILED ${fetchedData.getErrorMessage()}")
         }
     }
 
