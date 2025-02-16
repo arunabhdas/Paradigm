@@ -41,4 +41,11 @@ class MongoImpl: MongoRepository {
             ?: flow { CurrencyApiRequestState.Error(message = "Realm not configured.")}
 
     }
+
+    override suspend fun cleanUp() {
+        realm.write {
+            val currencyCollection = this.query<Currency>()
+            delete(currencyCollection)
+        }
+    }
 }

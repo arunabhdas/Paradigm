@@ -84,6 +84,7 @@ class HomeViewModel(
     private suspend fun cacheTheData() {
         val fetchedData = api.getLatestExchangeRates()
         if (fetchedData.isSuccess()) {
+            mongoDb.cleanUp()
             fetchedData.getSuccessData().forEach {
                 println("HomeViewModel: ADDING ${it.code}")
                 mongoDb.insertCurrencyData(it)

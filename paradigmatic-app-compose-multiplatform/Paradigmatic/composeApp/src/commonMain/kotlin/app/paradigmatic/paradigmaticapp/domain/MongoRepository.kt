@@ -8,4 +8,5 @@ interface MongoRepository {
     fun configureTheRealm()
     suspend fun insertCurrencyData(currency: Currency)
     fun readCurrencyData(): Flow<CurrencyApiRequestState<List<Currency>>>
+    suspend fun cleanUp()
 }
