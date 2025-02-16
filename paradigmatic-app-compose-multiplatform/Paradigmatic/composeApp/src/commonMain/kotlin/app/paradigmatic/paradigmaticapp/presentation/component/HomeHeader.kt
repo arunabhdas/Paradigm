@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.Icon
@@ -27,7 +28,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import app.paradigmatic.paradigmaticapp.domain.model.Currency
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyCode
@@ -47,6 +51,8 @@ fun HomeHeader(
     status: RateStatus,
     source: RequestState<Currency>,
     target: RequestState<Currency>,
+    amount: Double,
+    onAmountChange: (Double) -> Unit,
     onRatesRefresh: () -> Unit,
     onSwitchClick: () -> Unit
 ) {
@@ -67,6 +73,11 @@ fun HomeHeader(
             source = source,
             target = target,
             onSwitchClick = onSwitchClick
+        )
+        Spacer(modifier = Modifier.height(24.dp))
+        AmountInput(
+            amount = amount,
+            onAmountChange = onAmountChange
         )
 
     }
@@ -219,6 +230,16 @@ fun AmountInput(
             disabledIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             cursorColor = Color.White
+        ),
+        textStyle = TextStyle(
+            color = Color.White,
+            fontSize = MaterialTheme.typography.titleLarge.fontSize,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
+        ),
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Decimal
         )
     )
 }

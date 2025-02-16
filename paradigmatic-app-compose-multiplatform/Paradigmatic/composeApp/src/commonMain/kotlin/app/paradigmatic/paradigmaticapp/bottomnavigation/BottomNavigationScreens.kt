@@ -17,6 +17,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -88,6 +91,7 @@ class TabThreeScreen: Screen, KoinComponent {
         val rateStatus by viewModel.rateStatus
         val sourceCurrency by viewModel.sourceCurrency
         val targetCurrency by viewModel.targetCurrency
+        var amount by rememberSaveable { mutableStateOf(0.0) }
         LaunchedEffect(Unit) {
             println("TabThreeScreen")
             currencyApiService.getLatestExchangeRates()
@@ -104,6 +108,8 @@ class TabThreeScreen: Screen, KoinComponent {
                     status = rateStatus,
                     source = sourceCurrency,
                     target = targetCurrency,
+                    amount = amount,
+                    onAmountChange = { amount = it },
                     onRatesRefresh = {
                         viewModel.sendEvent(
                             HomeUiEvent.RefreshRates
