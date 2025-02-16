@@ -6,8 +6,7 @@ import app.paradigmatic.paradigmaticapp.domain.PreferencesRepository
 import app.paradigmatic.paradigmaticapp.domain.model.Currency
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiResponse
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyCode
-import app.paradigmatic.paradigmaticapp.domain.model.RequestState
-import co.touchlab.stately.ensureNeverFrozen
+import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiRequestState
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.DefaultRequest
@@ -47,7 +46,7 @@ class CurrencyApiServiceImpl(
         }
     }
 
-    override suspend fun getLatestExchangeRates(): RequestState<List<Currency>> {
+    override suspend fun getLatestExchangeRates(): CurrencyApiRequestState<List<Currency>> {
         println("Starting getLatestExchangeRates")
         println("Using API Key")
         println("Endpoint: $ENDPOINT")
@@ -75,13 +74,13 @@ class CurrencyApiServiceImpl(
                 preferences.saveLastUpdated(lastUpdated)
 
                 // TODO-FIXME-CLEANUP RequestState.Success(data = apiResponse.data.values.toList())
-                RequestState.Success(data = availableCurrencies)
+                CurrencyApiRequestState.Success(data = availableCurrencies)
 
             } else {
-                RequestState.Error(message = "HTTP Error Code: ${response.status}")
+                CurrencyApiRequestState.Error(message = "HTTP Error Code: ${response.status}")
             }
         } catch (e: Exception) {
-            RequestState.Error(message = e.message.toString())
+            CurrencyApiRequestState.Error(message = e.message.toString())
         }
 
     }

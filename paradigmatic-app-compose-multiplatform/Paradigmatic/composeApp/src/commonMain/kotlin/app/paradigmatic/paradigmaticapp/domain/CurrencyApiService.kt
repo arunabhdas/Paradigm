@@ -1,8 +1,8 @@
 package app.paradigmatic.paradigmaticapp.domain
 
 import app.paradigmatic.paradigmaticapp.domain.model.Currency
-import app.paradigmatic.paradigmaticapp.domain.model.RequestState
+import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiRequestState
 
 interface CurrencyApiService {
-    suspend fun getLatestExchangeRates(): RequestState<List<Currency>>
+    suspend fun getLatestExchangeRates(): CurrencyApiRequestState<List<Currency>>
 }
