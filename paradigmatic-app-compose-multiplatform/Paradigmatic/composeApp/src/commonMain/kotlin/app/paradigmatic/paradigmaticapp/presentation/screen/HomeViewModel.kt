@@ -12,6 +12,8 @@ import app.paradigmatic.paradigmaticapp.domain.model.RateStatus
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiRequestState
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
@@ -40,6 +42,8 @@ class HomeViewModel(
     init {
         screenModelScope.launch {
             fetchNewRates()
+            readSourceCurrency()
+            readTargetCurrency()
         }
     }
 
@@ -48,6 +52,32 @@ class HomeViewModel(
             HomeUiEvent.RefreshRates -> {
                 screenModelScope.launch {
                     fetchNewRates()
+                }
+            }
+        }
+    }
+
+    private fun readSourceCurrency() {
+        screenModelScope.launch(Dispatchers.Main) {
+           preferences.readSourceCurrencyCode().collectLatest { currencyCode ->
+               val selectedCurrency = _allCurrencies.find { it.code == currencyCode.name }
+               if (selectedCurrency != null) {
+                   _sourceCurrency.value = CurrencyApiRequestState.Success(data = selectedCurrency)
+               } else {
+                   _sourceCurrency.value = CurrencyApiRequestState.Error(message = "Couldn't find the selected currency")
+               }
+           }
+        }
+    }
+
+    private fun readTargetCurrency() {
+        screenModelScope.launch(Dispatchers.Main) {
+            preferences.readTargetCurrencyCode().collectLatest { currencyCode ->
+                val selectedCurrency = _allCurrencies.find { it.code == currencyCode.name }
+                if (selectedCurrency != null) {
+                    _targetCurrency.value = CurrencyApiRequestState.Success(data = selectedCurrency)
+                } else {
+                    _targetCurrency.value = CurrencyApiRequestState.Error(message = "Couldn't find the selected currency")
                 }
             }
         }
