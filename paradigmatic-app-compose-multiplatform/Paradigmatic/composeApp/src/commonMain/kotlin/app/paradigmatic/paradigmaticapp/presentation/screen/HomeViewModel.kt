@@ -2,6 +2,7 @@ package app.paradigmatic.paradigmaticapp.presentation.screen
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
 import app.paradigmatic.paradigmaticapp.domain.MongoRepository
@@ -11,6 +12,7 @@ import app.paradigmatic.paradigmaticapp.domain.model.RateStatus
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiRequestState
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 
@@ -28,6 +30,9 @@ class HomeViewModel(
 
     private var _sourceCurrency: MutableState<CurrencyApiRequestState<Currency>> = mutableStateOf(CurrencyApiRequestState.Idle)
     val sourceCurrency: State<CurrencyApiRequestState<Currency>> = _sourceCurrency
+
+    private var _allCurrencies = mutableStateListOf<Currency>()
+    val allCurrencies: List<Currency> = _allCurrencies
 
     private var _targetCurrency: MutableState<CurrencyApiRequestState<Currency>> = mutableStateOf(CurrencyApiRequestState.Idle)
     val targetCurrency: State<CurrencyApiRequestState<Currency>> = _targetCurrency
@@ -50,7 +55,45 @@ class HomeViewModel(
 
     private suspend fun fetchNewRates() {
         try {
-            api.getLatestExchangeRates()
+            val localCache = mongoDb.readCurrencyData().first()
+            if (localCache.isSuccess()) {
+                if (localCache.getSuccessData().isNotEmpty()) {
+                    println("HomeViewModel: DATABASE IS FULL")
+                    _allCurrencies.addAll(localCache.getSuccessData())
+                    if (!preferences.isDataFresh(Clock.System.now().toEpochMilliseconds())) {
+                        println("HomeViewModel: DATA NOT FRESH")
+                        val fetchedData = api.getLatestExchangeRates()
+                        if (fetchedData.isSuccess()) {
+                            fetchedData.getSuccessData().forEach {
+                                println("HomeViewModel: ADDING ${it.code}")
+                                mongoDb.insertCurrencyData(it)
+                            }
+                            println("HomeViewModel: UPDATING _allCurrencies")
+                            _allCurrencies.addAll(fetchedData.getSuccessData())
+                        } else if (fetchedData.isError()){
+                            println("HomeViewModel: FETCHING FAILED ${fetchedData.getErrorMessage()}")
+                        }
+                    } else {
+                        println("HomeViewModel: DATA IS FRESH")
+                    }
+                } else {
+                    println("HomeViewModel: DATABASE NEEDS DATA")
+                    val fetchedData = api.getLatestExchangeRates()
+                    if (fetchedData.isSuccess()) {
+                        fetchedData.getSuccessData().forEach {
+                            println("HomeViewModel: ADDING ${it.code}")
+                            mongoDb.insertCurrencyData(it)
+                        }
+                        println("HomeViewModel: UPDATING _allCurrencies")
+                        _allCurrencies.addAll(fetchedData.getSuccessData())
+                    } else if (fetchedData.isError()){
+                        println("HomeViewModel: FETCHING FAILED ${fetchedData.getErrorMessage()}")
+                    }
+                }
+            } else if (localCache.isError()){
+                println("HomeViewModel: ERROR READING LOCAL DATABASE ${localCache.getErrorMessage()}")
+            }
+            // TODO-FIXME-CLEANUP api.getLatestExchangeRates()
             getRateStatus()
             println("The RateStatus is ${_rateStatus.value}")
         } catch (e: Exception) {
