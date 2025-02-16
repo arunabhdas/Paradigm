@@ -43,7 +43,7 @@ class MongoImpl: MongoRepository {
     }
 
     override suspend fun cleanUp() {
-        realm.write {
+        realm?.write {
             val currencyCollection = this.query<Currency>()
             delete(currencyCollection)
         }

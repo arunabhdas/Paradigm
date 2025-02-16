@@ -7,6 +7,8 @@ import app.paradigmatic.paradigmaticapp.domain.model.Currency
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiResponse
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyCode
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiRequestState
+import app.paradigmatic.paradigmaticapp.domain.model.CurrencyDto
+import app.paradigmatic.paradigmaticapp.domain.model.toCurrency
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.DefaultRequest
@@ -67,6 +69,9 @@ class CurrencyApiServiceImpl(
                 val availableCurrencies = apiResponse.data.values
                     .filter { currency ->
                         availableCurrencyCodes.contains(currency.code)
+                    }
+                    .map {
+                       it.toCurrency()
                     }
 
                 // Persist timestamp in preferences key-value-pair
