@@ -5,7 +5,10 @@ import app.paradigmatic.paradigmaticapp.domain.model.Currency
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiRequestState
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
+import io.realm.kotlin.ext.query
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 class MongoImpl: MongoRepository {
     private var realm: Realm? = null
@@ -30,6 +33,12 @@ class MongoImpl: MongoRepository {
     }
 
     override fun readCurrencyData(): Flow<CurrencyApiRequestState<List<Currency>>> {
-        TODO("Not yet implemented")
+        return realm?.query<Currency>()
+            ?.asFlow()
+            ?.map { result ->
+                CurrencyApiRequestState.Success(data = result.list)
+            }
+            ?: flow { CurrencyApiRequestState.Error(message = "Realm not configured.")}
+
     }
 }
