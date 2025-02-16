@@ -10,6 +10,10 @@ import kotlinx.coroutines.flow.Flow
 class MongoImpl: MongoRepository {
     private var realm: Realm? = null
 
+    init {
+        configureTheRealm()
+    }
+
     override fun configureTheRealm() {
         if (realm == null || realm!!.isClosed()) {
            val config = RealmConfiguration.Builder(
