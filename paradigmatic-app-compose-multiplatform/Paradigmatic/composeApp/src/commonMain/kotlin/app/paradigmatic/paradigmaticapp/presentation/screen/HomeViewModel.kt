@@ -4,6 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
+import app.paradigmatic.paradigmaticapp.domain.MongoRepository
 import app.paradigmatic.paradigmaticapp.domain.PreferencesRepository
 import app.paradigmatic.paradigmaticapp.domain.model.Currency
 import app.paradigmatic.paradigmaticapp.domain.model.RateStatus
@@ -19,6 +20,7 @@ sealed class HomeUiEvent {
 
 class HomeViewModel(
     private val preferences: PreferencesRepository,
+    private val mongoDb: MongoRepository,
     private val api: CurrencyApiService
 ): ScreenModel {
     private var _rateStatus: MutableState<RateStatus> = mutableStateOf(RateStatus.Idle)

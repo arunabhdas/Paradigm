@@ -1,5 +1,6 @@
 package app.paradigmatic.paradigmaticapp.di
 
+import app.paradigmatic.paradigmaticapp.data.local.MongoImpl
 import app.paradigmatic.paradigmaticapp.data.local.PreferencesImpl
 import app.paradigmatic.paradigmaticapp.data.remote.api.CurrencyApiServiceImpl
 import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
@@ -11,12 +12,14 @@ import org.koin.core.context.startKoin
 
 val appModule = module {
     single { Settings() }
+    single { MongoImpl() }
     single<PreferencesRepository> { PreferencesImpl(settings = get()) }
     single<CurrencyApiService> { CurrencyApiServiceImpl(preferences = get() )}
 
     factory {
         HomeViewModel(
             preferences = get(),
+            mongoDb = get(),
             api = get()
         )
     }
