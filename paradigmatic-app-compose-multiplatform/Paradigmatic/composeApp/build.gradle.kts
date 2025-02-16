@@ -148,5 +148,6 @@ dependencies {
     implementation(libs.foundation.layout.android)
     implementation(libs.androidx.benchmark.macro)
     implementation(libs.foundation.android)
+    implementation(libs.androidx.animation.android)
     debugImplementation(compose.uiTooling)
 }

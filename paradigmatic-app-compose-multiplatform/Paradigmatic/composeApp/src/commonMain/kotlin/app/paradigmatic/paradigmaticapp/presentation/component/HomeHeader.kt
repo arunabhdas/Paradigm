@@ -1,5 +1,6 @@
 package app.paradigmatic.paradigmaticapp.presentation.component
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,9 +16,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.TextField
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -192,3 +196,29 @@ fun RowScope.CurrencyViewPanel(
     }
 }
 
+
+@Composable
+fun AmountInput(
+    amount: Double,
+    onAmountChange: (Double) -> Unit
+) {
+    TextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(size = 8.dp))
+            .animateContentSize()
+            .height(54.dp),
+        value = "$amount",
+        onValueChange = { onAmountChange(it.toDouble()) },
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = Color.White.copy(alpha = 0.05f),
+            unfocusedContainerColor = Color.White.copy(alpha = 0.05f),
+            disabledContainerColor = Color.White.copy(alpha = 0.05f),
+            errorContainerColor = Color.White.copy(alpha = 0.05f),
+            focusedIndicatorColor = Color.Transparent,
+            disabledIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent,
+            cursorColor = Color.White
+        )
+    )
+}
