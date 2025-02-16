@@ -26,7 +26,7 @@ class MongoImpl: MongoRepository {
     }
 
     override suspend fun insertCurrencyData(currency: Currency) {
-        TODO("Not yet implemented")
+        realm?.write { copyToRealm(currency) }
     }
 
     override fun readCurrencyData(): Flow<CurrencyApiRequestState<List<Currency>>> {
