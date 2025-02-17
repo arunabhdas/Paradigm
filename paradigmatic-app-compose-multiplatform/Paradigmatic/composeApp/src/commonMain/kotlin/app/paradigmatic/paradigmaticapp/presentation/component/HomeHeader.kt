@@ -44,6 +44,7 @@ import app.paradigmatic.paradigmaticapp.domain.model.Currency
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyCode
 import app.paradigmatic.paradigmaticapp.domain.model.RateStatus
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiRequestState
+import app.paradigmatic.paradigmaticapp.domain.model.DisplayResult
 import app.paradigmatic.paradigmaticapp.ui.theme.headerColor
 import app.paradigmatic.paradigmaticapp.ui.theme.staleColor
 import org.jetbrains.compose.resources.painterResource
@@ -204,6 +205,26 @@ fun RowScope.CurrencyViewPanel(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
+            currency.DisplayResult(
+                onSuccess =  { data ->
+                    Icon(
+                        modifier = Modifier.size(24.dp),
+                        painter = painterResource(
+                            CurrencyCode.valueOf(data.code).flag
+                        ),
+                        tint = Color.Unspecified,
+                        contentDescription = "Country Flag"
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = CurrencyCode.valueOf(data.code).name,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = MaterialTheme.typography.titleLarge.fontSize,
+                        color = Color.White
+                    )
+                }
+            )
+            /* TODO-FIXME-CLEANUP
             if (currency.isSuccess()) {
                 Icon(
                     modifier = Modifier.size(24.dp),
@@ -223,6 +244,7 @@ fun RowScope.CurrencyViewPanel(
                     color = Color.White
                 )
             }
+            */
         }
     }
 }
