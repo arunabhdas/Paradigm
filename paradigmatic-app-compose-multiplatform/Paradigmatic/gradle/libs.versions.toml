@@ -29,6 +29,7 @@ foundationLayoutAndroidVersion = "1.7.8"
 benchmarkMacro = "1.3.3"
 foundationAndroidVersion = "1.7.8"
 animationAndroid = "1.7.8"
+animationCoreAndroid = "1.7.8"
 
 [libraries]
 
@@ -72,6 +73,7 @@ foundation-layout-android = { group = "androidx.compose.foundation", name = "fou
 androidx-benchmark-macro = { group = "androidx.benchmark", name = "benchmark-macro", version.ref = "benchmarkMacro" }
 foundation-android = { group = "androidx.compose.foundation", name = "foundation-android", version.ref = "foundationAndroidVersion" }
 androidx-animation-android = { group = "androidx.compose.animation", name = "animation-android", version.ref = "animationAndroid" }
+androidx-animation-core-android = { group = "androidx.compose.animation", name = "animation-core-android", version.ref = "animationCoreAndroid" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
