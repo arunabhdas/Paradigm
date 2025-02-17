@@ -20,6 +20,7 @@ import kotlinx.datetime.Clock
 
 sealed class HomeUiEvent {
     data object RefreshRates: HomeUiEvent()
+    data object SwitchCurrencies: HomeUiEvent()
 }
 
 class HomeViewModel(
@@ -54,7 +55,11 @@ class HomeViewModel(
                     fetchNewRates()
                 }
             }
+            HomeUiEvent.SwitchCurrencies -> {
+
+            }
         }
+
     }
 
     private fun readSourceCurrency() {
@@ -103,7 +108,6 @@ class HomeViewModel(
             } else if (localCache.isError()){
                 println("HomeViewModel: ERROR READING LOCAL DATABASE ${localCache.getErrorMessage()}")
             }
-            // TODO-FIXME-CLEANUP api.getLatestExchangeRates()
             getRateStatus()
             println("The RateStatus is ${_rateStatus.value}")
         } catch (e: Exception) {
