@@ -115,7 +115,11 @@ class TabThreeScreen: Screen, KoinComponent {
                             HomeUiEvent.RefreshRates
                         )
                     },
-                    onSwitchClick = {}
+                    onSwitchClick = {
+                        viewModel.sendEvent(
+                            HomeUiEvent.SwitchCurrencies
+                        )
+                    }
                 )
             }
         }

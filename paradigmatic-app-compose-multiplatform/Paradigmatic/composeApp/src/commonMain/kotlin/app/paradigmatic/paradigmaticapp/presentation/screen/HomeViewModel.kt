@@ -116,10 +116,10 @@ class HomeViewModel(
     }
 
     private suspend fun switchCurrencies() {
-        val source = _sourceCurrency
-        val target = _targetCurrency
-        _sourceCurrency = target
-        _targetCurrency = source
+        val source = _sourceCurrency.value
+        val target = _targetCurrency.value
+        _sourceCurrency.value = target
+        _targetCurrency.value = source
     }
 
     private suspend fun cacheTheData() {
