@@ -56,6 +56,7 @@ class HomeViewModel(
                 }
             }
             HomeUiEvent.SwitchCurrencies -> {
+                println("SwitchCurrencies event was sent to HomeViewModel")
                 screenModelScope.launch {
                     switchCurrencies()
                 }

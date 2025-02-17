@@ -163,7 +163,7 @@ fun CurrencyInputsPanel(
                 },
             onClick = {
                 animationStarted = !animationStarted
-                onSwitchClick
+                onSwitchClick()
             }
         ) {
             Icon(

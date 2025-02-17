@@ -116,6 +116,7 @@ class TabThreeScreen: Screen, KoinComponent {
                         )
                     },
                     onSwitchClick = {
+                        println("onSwitchClick triggered on TabThreeScreen")
                         viewModel.sendEvent(
                             HomeUiEvent.SwitchCurrencies
                         )
