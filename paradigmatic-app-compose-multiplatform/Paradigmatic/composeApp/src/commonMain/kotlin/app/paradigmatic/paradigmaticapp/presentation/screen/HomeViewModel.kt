@@ -115,6 +115,13 @@ class HomeViewModel(
         }
     }
 
+    private suspend fun switchCurrencies() {
+        val source = _sourceCurrency
+        val target = _targetCurrency
+        _sourceCurrency = target
+        _targetCurrency = source
+    }
+
     private suspend fun cacheTheData() {
         val fetchedData = api.getLatestExchangeRates()
         if (fetchedData.isSuccess()) {
