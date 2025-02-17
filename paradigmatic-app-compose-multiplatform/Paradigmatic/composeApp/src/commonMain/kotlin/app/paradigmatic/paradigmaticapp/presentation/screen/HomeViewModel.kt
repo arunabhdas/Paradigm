@@ -56,7 +56,9 @@ class HomeViewModel(
                 }
             }
             HomeUiEvent.SwitchCurrencies -> {
-
+                screenModelScope.launch {
+                    switchCurrencies()
+                }
             }
         }
 
