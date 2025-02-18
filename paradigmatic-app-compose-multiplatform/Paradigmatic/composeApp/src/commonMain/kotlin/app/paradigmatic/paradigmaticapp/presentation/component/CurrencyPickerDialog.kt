@@ -9,6 +9,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -21,10 +22,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import app.paradigmatic.paradigmaticapp.ui.theme.surfaceColor
 import app.paradigmatic.paradigmaticapp.ui.theme.textColor
-
+import paradigmatic.composeapp.generated.resources.Res
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -79,8 +82,29 @@ fun CurrencyPickerDialog (
                             allCurrencies.clear()
                             allCurrencies.addAll(currencies)
                         }
-
-                    }
+                    },
+                    placeholder = {
+                        Text(
+                            text = "Search here",
+                            color = textColor.copy(alpha = 0.38f),
+                            fontSize = MaterialTheme.typography.bodySmall.fontSize
+                        )
+                    },
+                    singleLine = true,
+                    textStyle = TextStyle(
+                        color = textColor,
+                        fontSize = MaterialTheme.typography.bodySmall.fontSize
+                    ),
+                    colors = TextFieldDefaults.colors(
+                        focusedContainerColor = textColor.copy(alpha = 0.1f),
+                        unfocusedContainerColor = textColor.copy(alpha = 0.1f),
+                        disabledContainerColor = textColor.copy(alpha = 0.1f),
+                        errorContainerColor = textColor.copy(alpha = 0.1f),
+                        focusedIndicatorColor = Color.Transparent,
+                        disabledIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        cursorColor = textColor
+                    )
                 )
             }
 
