@@ -132,7 +132,7 @@ fun CurrencyPickerDialog (
                             }
                         }
                     } else {
-
+                        ErrorScreen(modifier = Modifier.height(250.dp))
                     }
                 }
             }
