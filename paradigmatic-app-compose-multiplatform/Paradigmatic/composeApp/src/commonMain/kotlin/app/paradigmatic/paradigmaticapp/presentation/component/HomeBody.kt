@@ -86,7 +86,7 @@ fun HomeBody(
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = "1 ${target.getSuccessData().code} = " +
-                                "${source.getSuccessData().value} " +
+                                "${1.0 / target.getSuccessData().value} " +
                                 source.getSuccessData().code,
                         fontSize = MaterialTheme.typography.bodySmall.fontSize,
                         color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
