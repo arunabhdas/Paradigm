@@ -97,6 +97,7 @@ class HomeViewModel(
             if (localCache.isSuccess()) {
                 if (localCache.getSuccessData().isNotEmpty()) {
                     println("HomeViewModel: DATABASE IS FULL")
+                    _allCurrencies.clear()
                     _allCurrencies.addAll(localCache.getSuccessData())
                     if (!preferences.isDataFresh(Clock.System.now().toEpochMilliseconds())) {
                         println("HomeViewModel: DATA NOT FRESH")
@@ -134,6 +135,7 @@ class HomeViewModel(
                 mongoDb.insertCurrencyData(it)
             }
             println("HomeViewModel: UPDATING _allCurrencies")
+            _allCurrencies.clear()
             _allCurrencies.addAll(fetchedData.getSuccessData())
         } else if (fetchedData.isError()){
             println("HomeViewModel: FETCHING FAILED ${fetchedData.getErrorMessage()}")
