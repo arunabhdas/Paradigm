@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
 import app.paradigmatic.paradigmaticapp.domain.model.Currency
+import app.paradigmatic.paradigmaticapp.presentation.component.HomeBody
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyType
 import app.paradigmatic.paradigmaticapp.presentation.component.CurrencyPickerDialog
 import app.paradigmatic.paradigmaticapp.presentation.component.HomeHeader
@@ -169,6 +170,11 @@ class TabThreeScreen: Screen, KoinComponent {
                         selectedCurrencyType = currencyType
                         dialogOpened = true
                     }
+                )
+                HomeBody(
+                    source = sourceCurrency,
+                    target = targetCurrency,
+                    amount = amount
                 )
             }
         }

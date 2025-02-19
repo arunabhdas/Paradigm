@@ -33,6 +33,8 @@ import app.paradigmatic.paradigmaticapp.domain.model.Currency
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiRequestState
 import app.paradigmatic.paradigmaticapp.ui.theme.headerColor
 import app.paradigmatic.paradigmaticapp.util.DoubleConverter
+import app.paradigmatic.paradigmaticapp.util.calculateExchangeRate
+import app.paradigmatic.paradigmaticapp.util.convertAmountsUsingExchangeRate
 import io.ktor.util.hex
 
 @Composable
@@ -104,7 +106,18 @@ fun HomeBody(
                     color = Color.Unspecified,
                     shape = RoundedCornerShape(99.dp)
                 ),
-            onClick = {},
+            onClick = {
+                if (source.isSuccess() && target.isSuccess()) {
+                    val exchangeRate = calculateExchangeRate(
+                        source = source.getSuccessData().value,
+                        target = target.getSuccessData().value
+                    )
+                    exchangedAmount = convertAmountsUsingExchangeRate(
+                        amount = amount,
+                        exchangeRate = exchangeRate
+                    )
+                }
+            },
             colors = ButtonDefaults.buttonColors(
                 containerColor = headerColor,
                 contentColor = Color.White

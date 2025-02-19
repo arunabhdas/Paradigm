@@ -58,9 +58,11 @@ fun calculateExchangeRate(source: Double, target: Double): Double {
     return target / source
 }
 
-fun convert(amount: Double, exchangeRate: Double): Double {
+fun convertAmountsUsingExchangeRate(amount: Double, exchangeRate: Double): Double {
     return amount * exchangeRate
 }
+
+
 
 fun displayCurrentDateTime(): String {
     val currentTimestamp = Clock.System.now()
