@@ -33,6 +33,7 @@ import app.paradigmatic.paradigmaticapp.domain.model.Currency
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiRequestState
 import app.paradigmatic.paradigmaticapp.ui.theme.headerColor
 import app.paradigmatic.paradigmaticapp.util.DoubleConverter
+import app.paradigmatic.paradigmaticapp.util.GetBebasFontFamily
 import app.paradigmatic.paradigmaticapp.util.calculateExchangeRate
 import app.paradigmatic.paradigmaticapp.util.convertAmountsUsingExchangeRate
 import io.ktor.util.hex
@@ -64,8 +65,8 @@ fun HomeBody(
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = "${(animatedExchangedAmount * 100).toLong() / 100.0}",
-                fontSize = MaterialTheme.typography.displayLarge.fontSize,
-                fontWeight = FontWeight.Bold,
+                fontSize = 60.sp,
+                fontFamily = GetBebasFontFamily(),
                 color = if (isSystemInDarkTheme()) Color.White else Color.Black,
                 textAlign = TextAlign.Center
             )

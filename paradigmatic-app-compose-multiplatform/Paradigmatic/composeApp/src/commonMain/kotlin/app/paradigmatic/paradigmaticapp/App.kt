@@ -18,8 +18,6 @@ import app.paradigmatic.paradigmaticapp.ui.theme.darkScheme
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-import paradigmatic.composeapp.generated.resources.Res
-import paradigmatic.composeapp.generated.resources.compose_multiplatform
 
 import app.paradigmatic.paradigmaticapp.ui.theme.lightScheme
 import app.paradigmatic.paradigmaticapp.ui.theme.darkScheme
