@@ -18,12 +18,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
+import app.paradigmatic.paradigmaticapp.domain.model.CurrencyType
+import app.paradigmatic.paradigmaticapp.presentation.component.CurrencyPickerDialog
 import app.paradigmatic.paradigmaticapp.presentation.component.HomeHeader
 import app.paradigmatic.paradigmaticapp.presentation.screen.HomeUiEvent
 import app.paradigmatic.paradigmaticapp.presentation.screen.HomeViewModel
@@ -89,9 +92,30 @@ class TabThreeScreen: Screen, KoinComponent {
     override fun Content() {
         val viewModel = getScreenModel<HomeViewModel>()
         val rateStatus by viewModel.rateStatus
+        val allCurrencies by viewModel.allCurrencies
         val sourceCurrency by viewModel.sourceCurrency
         val targetCurrency by viewModel.targetCurrency
         var amount by rememberSaveable { mutableStateOf(0.0) }
+
+        var selectedCurrencyType: CurrencyType by remember {
+            mutableStateOf(CurrencyType.None)
+        }
+
+        var dialogOpened by remember { mutableStateOf(true) }
+
+        if (dialogOpened) {
+            CurrencyPickerDialog(
+                currencies = allCurrencies,
+                currencyType = selectedCurrencyType,
+                onPositiveClick = {
+                    dialogOpened = false
+                },
+                onDismiss = {
+                    dialogOpened = false
+                }
+            )
+        }
+
         LaunchedEffect(Unit) {
             println("TabThreeScreen")
             currencyApiService.getLatestExchangeRates()
