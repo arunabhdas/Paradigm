@@ -38,6 +38,7 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.android)
+            implementation(libs.timber)  // Add Timber for logging
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -65,11 +66,6 @@ kotlin {
             implementation(libs.mongodb.realm)
             implementation(libs.kotlin.coroutines)
             implementation(libs.stately.common)
-        }
-
-        androidMain.dependencies {
-            implementation(libs.androidx.activity.compose)
-            implementation(libs.ktor.client.android)
         }
 
         iosMain.dependencies {

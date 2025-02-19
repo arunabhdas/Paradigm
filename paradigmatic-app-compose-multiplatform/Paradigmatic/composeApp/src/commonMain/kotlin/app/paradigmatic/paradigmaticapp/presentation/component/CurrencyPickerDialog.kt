@@ -153,7 +153,12 @@ fun CurrencyPickerDialog (
             }
         },
         confirmButton = {
-            TextButton(onClick = onDismiss) {
+            TextButton(
+                onClick = {
+                    onConfirmClick(selectedCurrencyCode)
+                    onDismiss()
+                }
+            ) {
                 Text(
                     text = "Confirm",
                     color = MaterialTheme.colorScheme.outline

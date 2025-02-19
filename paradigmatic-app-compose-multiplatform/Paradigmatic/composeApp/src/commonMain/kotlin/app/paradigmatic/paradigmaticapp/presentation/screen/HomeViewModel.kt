@@ -13,6 +13,7 @@ import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiRequestState
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -21,6 +22,9 @@ import kotlinx.datetime.Clock
 sealed class HomeUiEvent {
     data object RefreshRates: HomeUiEvent()
     data object SwitchCurrencies: HomeUiEvent()
+    data class SaveSourceCurrencyCode(val code: String): HomeUiEvent()
+    data class SaveTargetCurrencyCode(val code: String): HomeUiEvent()
+
 }
 
 class HomeViewModel(
@@ -60,6 +64,15 @@ class HomeViewModel(
                 screenModelScope.launch {
                     switchCurrencies()
                 }
+            }
+
+            is HomeUiEvent.SaveSourceCurrencyCode -> {
+               println("Saving source currency code ${event.code} ")
+               saveSourceCurrencyCode(event.code)
+            }
+            is HomeUiEvent.SaveTargetCurrencyCode -> {
+                println("Saving target currency code ${event.code} ")
+                saveTargetCurrencyCode(event.code)
             }
         }
 
@@ -124,6 +137,18 @@ class HomeViewModel(
         val target = _targetCurrency.value
         _sourceCurrency.value = target
         _targetCurrency.value = source
+    }
+
+    private fun saveSourceCurrencyCode(code: String) {
+        screenModelScope.launch(Dispatchers.IO) {
+           preferences.saveSourceCurrencyCode(code)
+        }
+    }
+
+    private fun saveTargetCurrencyCode(code: String) {
+        screenModelScope.launch(Dispatchers.IO) {
+            preferences.saveTargetCurrencyCode(code)
+        }
     }
 
     private suspend fun cacheTheData() {

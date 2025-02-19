@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
+import app.paradigmatic.paradigmaticapp.domain.model.Currency
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyType
 import app.paradigmatic.paradigmaticapp.presentation.component.CurrencyPickerDialog
 import app.paradigmatic.paradigmaticapp.presentation.component.HomeHeader
@@ -104,14 +105,32 @@ class TabThreeScreen: Screen, KoinComponent {
 
         var dialogOpened by remember { mutableStateOf(false) }
 
-        if (dialogOpened) {
+        if (dialogOpened && selectedCurrencyType != CurrencyType.None) {
             CurrencyPickerDialog(
                 currencies = allCurrencies,
                 currencyType = selectedCurrencyType,
-                onConfirmClick = {
+                onConfirmClick = { currencyCode ->
+                    if (selectedCurrencyType is CurrencyType.Source) {
+                        println("---------source currencyCode ${currencyCode}")
+                        viewModel.sendEvent(
+                            HomeUiEvent.SaveSourceCurrencyCode(
+                                code = currencyCode.name
+                            )
+                        )
+                    } else if (selectedCurrencyType is CurrencyType.Target) {
+                        println("---------target currencyCode ${currencyCode}")
+                        viewModel.sendEvent(
+                            HomeUiEvent.SaveTargetCurrencyCode(
+                                code = currencyCode.name
+                            )
+                        )
+                    }
+
+                    selectedCurrencyType = CurrencyType.None
                     dialogOpened = false
                 },
                 onDismiss = {
+                    selectedCurrencyType = CurrencyType.None
                     dialogOpened = false
                 }
             )

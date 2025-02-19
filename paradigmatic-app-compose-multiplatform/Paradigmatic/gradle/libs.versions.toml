@@ -31,6 +31,7 @@ foundationAndroidVersion = "1.7.8"
 animationAndroid = "1.7.8"
 animationCoreAndroid = "1.7.8"
 uiAndroidVersion = "1.7.8"
+timber = "5.0.1"
 
 [libraries]
 
@@ -76,6 +77,7 @@ foundation-android = { group = "androidx.compose.foundation", name = "foundation
 androidx-animation-android = { group = "androidx.compose.animation", name = "animation-android", version.ref = "animationAndroid" }
 androidx-animation-core-android = { group = "androidx.compose.animation", name = "animation-core-android", version.ref = "animationCoreAndroid" }
 ui-android = { group = "androidx.compose.ui", name = "ui-android", version.ref = "uiAndroidVersion" }
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
