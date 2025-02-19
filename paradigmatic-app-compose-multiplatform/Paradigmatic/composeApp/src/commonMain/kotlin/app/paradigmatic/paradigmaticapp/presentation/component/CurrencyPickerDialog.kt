@@ -127,8 +127,12 @@ fun CurrencyPickerDialog (
                             items(
                                 items = availableCurrencies,
                                 key = { it._id.toHexString() }
-                            ) {
-
+                            ) { currency ->
+                                CurrencyCodePickerView(
+                                    code = CurrencyCode.valueOf(currency.code),
+                                    isSelected = selectedCurrencyCode.name == currency.code,
+                                    onSelect = { selectedCurrencyCode = it }
+                                )
                             }
                         }
                     } else {
