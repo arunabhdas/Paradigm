@@ -108,7 +108,7 @@ class TabThreeScreen: Screen, KoinComponent {
             CurrencyPickerDialog(
                 currencies = allCurrencies,
                 currencyType = selectedCurrencyType,
-                onPositiveClick = {
+                onConfirmClick = {
                     dialogOpened = false
                 },
                 onDismiss = {
@@ -146,7 +146,8 @@ class TabThreeScreen: Screen, KoinComponent {
                             HomeUiEvent.SwitchCurrencies
                         )
                     },
-                    onCurrencyTypeSelect = {
+                    onCurrencyTypeSelect = { currencyType ->
+                        selectedCurrencyType = currencyType
                         dialogOpened = true
                     }
                 )

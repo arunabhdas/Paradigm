@@ -41,7 +41,7 @@ import paradigmatic.composeapp.generated.resources.Res
 fun CurrencyPickerDialog (
     currencies: List<Currency>,
     currencyType: CurrencyType,
-    onPositiveClick: (CurrencyCode) -> Unit,
+    onConfirmClick: (CurrencyCode) -> Unit,
     onDismiss: () -> Unit
 ) {
     val allCurrencies = remember {
