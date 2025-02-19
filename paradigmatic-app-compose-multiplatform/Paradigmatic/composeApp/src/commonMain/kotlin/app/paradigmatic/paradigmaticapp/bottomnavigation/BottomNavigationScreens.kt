@@ -102,7 +102,7 @@ class TabThreeScreen: Screen, KoinComponent {
             mutableStateOf(CurrencyType.None)
         }
 
-        var dialogOpened by remember { mutableStateOf(true) }
+        var dialogOpened by remember { mutableStateOf(false) }
 
         if (dialogOpened) {
             CurrencyPickerDialog(
@@ -145,6 +145,9 @@ class TabThreeScreen: Screen, KoinComponent {
                         viewModel.sendEvent(
                             HomeUiEvent.SwitchCurrencies
                         )
+                    },
+                    onCurrencyTypeSelect = {
+                        dialogOpened = true
                     }
                 )
             }

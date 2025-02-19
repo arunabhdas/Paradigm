@@ -44,6 +44,7 @@ import app.paradigmatic.paradigmaticapp.domain.model.Currency
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyCode
 import app.paradigmatic.paradigmaticapp.domain.model.RateStatus
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiRequestState
+import app.paradigmatic.paradigmaticapp.domain.model.CurrencyType
 import app.paradigmatic.paradigmaticapp.domain.model.DisplayResult
 import app.paradigmatic.paradigmaticapp.ui.theme.headerColor
 import app.paradigmatic.paradigmaticapp.ui.theme.staleColor
@@ -62,7 +63,8 @@ fun HomeHeader(
     amount: Double,
     onAmountChange: (Double) -> Unit,
     onRatesRefresh: () -> Unit,
-    onSwitchClick: () -> Unit
+    onSwitchClick: () -> Unit,
+    onCurrencyTypeSelect: (CurrencyType) -> Unit
 ) {
 
     Column(
@@ -81,7 +83,8 @@ fun HomeHeader(
         CurrencyInputsPanel(
             source = source,
             target = target,
-            onSwitchClick = onSwitchClick
+            onSwitchClick = onSwitchClick,
+            onCurrencyTypeSelect = onCurrencyTypeSelect
         )
         Spacer(modifier = Modifier.height(24.dp))
         AmountInput(
@@ -138,7 +141,8 @@ fun RatesStatusPanel(
 fun CurrencyInputsPanel(
     source: CurrencyApiRequestState<Currency>,
     target: CurrencyApiRequestState<Currency>,
-    onSwitchClick: () -> Unit
+    onSwitchClick: () -> Unit,
+    onCurrencyTypeSelect: (CurrencyType) -> Unit
 ) {
     var animationStarted by remember { mutableStateOf(false)}
     val animatedRotation by animateFloatAsState(
@@ -152,7 +156,17 @@ fun CurrencyInputsPanel(
         CurrencyViewPanel(
             placeholder = "from",
             currency = source,
-            onClick = {}
+            onClick = {
+                if (source.isSuccess()) {
+                    onCurrencyTypeSelect(
+                        CurrencyType.Source(
+                            currencyCode = CurrencyCode.valueOf(
+                                source.getSuccessData().code
+                            )
+                        )
+                    )
+                }
+            }
         )
         Spacer(modifier = Modifier.height(14.dp))
         IconButton(
@@ -176,7 +190,17 @@ fun CurrencyInputsPanel(
         CurrencyViewPanel(
             placeholder = "to",
             currency = target,
-            onClick = {}
+            onClick = {
+                if (target.isSuccess()) {
+                    onCurrencyTypeSelect(
+                        CurrencyType.Target(
+                            currencyCode = CurrencyCode.valueOf(
+                                target.getSuccessData().code
+                            )
+                        )
+                    )
+                }
+            }
         )
     }
 }
