@@ -26,7 +26,7 @@ class BottomNavigationMainScreen : Screen {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content() {
-        var selectedIndex by remember { mutableStateOf(0) }
+        var selectedIndex by remember { mutableStateOf(2) }
         
         Scaffold(
             topBar = {
