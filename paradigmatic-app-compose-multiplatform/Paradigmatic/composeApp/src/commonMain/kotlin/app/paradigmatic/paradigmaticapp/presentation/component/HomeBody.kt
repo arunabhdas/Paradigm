@@ -48,24 +48,6 @@ fun HomeBody(
 ) {
     var exchangedAmount by rememberSaveable() { mutableStateOf(0.0) }
 
-    // Store the initial values at the top level
-    var initialSourceCode by remember { mutableStateOf("") }
-    var initialTargetCode by remember { mutableStateOf("") }
-    var initialSourceValue by remember { mutableStateOf(0.0) }
-    var initialTargetValue by remember { mutableStateOf(0.0) }
-
-    // Update initial values only when we first get valid data
-    LaunchedEffect(source.isSuccess(), target.isSuccess()) {
-        if (source is CurrencyApiRequestState.Success && target is CurrencyApiRequestState.Success) {
-            if (initialSourceCode.isEmpty()) {
-                initialSourceCode = source.data.code
-                initialTargetCode = target.data.code
-                initialSourceValue =  source.data.value
-                initialTargetValue = target.data.value
-            }
-        }
-    }
-
     val animatedExchangedAmount by animateValueAsState(
         targetValue = exchangedAmount,
         animationSpec = tween(durationMillis = 300),
@@ -91,36 +73,29 @@ fun HomeBody(
                 textAlign = TextAlign.Center
             )
             AnimatedVisibility(visible = source.isSuccess() && target.isSuccess()) {
-                when {
-                    source is CurrencyApiRequestState.Success && target is CurrencyApiRequestState.Success -> {
-                        Column {
-                            Text(
-                                modifier = Modifier.fillMaxWidth(),
-                                text = "1 $initialSourceCode = " +
-                                        "${target.data.value} " +
-                                        target.data.code,
-                                fontSize = MaterialTheme.typography.bodySmall.fontSize,
-                                color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
-                                else Color.Black.copy(alpha = 0.5f),
-                                textAlign = TextAlign.Center,
-                                lineHeight = 20.sp
-                            )
-
-                            /* TODO-FIXME-CLEANUP
-                            Text(
-                                modifier = Modifier.fillMaxWidth(),
-                                text = "1 ${target.data.code} = " +
-                                        "${1.0 / target.data.value} " +
-                                        source.data.code,
-                                fontSize = MaterialTheme.typography.bodySmall.fontSize,
-                                color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
-                                else Color.Black.copy(alpha = 0.5f),
-                                textAlign = TextAlign.Center,
-                                lineHeight = 20.sp
-                            )
-                            */
-                        }
-                    }
+                Column {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = "1 ${source.getSuccessData().code} = " +
+                                "${target.getSuccessData().value} " +
+                                target.getSuccessData().code,
+                        fontSize = MaterialTheme.typography.bodySmall.fontSize,
+                        color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
+                        else Color.Black.copy(alpha = 0.5f),
+                        textAlign = TextAlign.Center,
+                        lineHeight = 20.sp
+                    )
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = "1 ${target.getSuccessData().code} = " +
+                                "${source.getSuccessData().value} " +
+                                source.getSuccessData().code,
+                        fontSize = MaterialTheme.typography.bodySmall.fontSize,
+                        color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
+                        else Color.Black.copy(alpha = 0.5f),
+                        textAlign = TextAlign.Center,
+                        lineHeight = 20.sp
+                    )
                 }
             }
         }
