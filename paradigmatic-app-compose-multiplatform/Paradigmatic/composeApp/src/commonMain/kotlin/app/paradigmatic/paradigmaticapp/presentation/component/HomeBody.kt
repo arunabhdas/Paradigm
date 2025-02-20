@@ -20,9 +20,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -46,10 +48,26 @@ fun HomeBody(
 ) {
     var exchangedAmount by rememberSaveable() { mutableStateOf(0.0) }
 
+    // Store the initial values at the top level
+    var initialSourceCode by remember { mutableStateOf("") }
+    var initialTargetCode by remember { mutableStateOf("") }
+    var initialTargetValue by remember { mutableStateOf(0.0) }
+
+    // Update initial values only when we first get valid data
+    LaunchedEffect(source.isSuccess(), target.isSuccess()) {
+        if (source is CurrencyApiRequestState.Success && target is CurrencyApiRequestState.Success) {
+            if (initialSourceCode.isEmpty()) {
+                initialSourceCode = source.data.code
+                initialTargetCode = target.data.code
+                initialTargetValue = target.data.value
+            }
+        }
+    }
+
     val animatedExchangedAmount by animateValueAsState(
         targetValue = exchangedAmount,
         animationSpec = tween(durationMillis = 300),
-        typeConverter =  DoubleConverter()
+        typeConverter = DoubleConverter()
     )
 
     Column(
@@ -59,7 +77,7 @@ fun HomeBody(
             .imePadding()
     ) {
         Column(
-           modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f),
             verticalArrangement = Arrangement.Center
         ) {
             Text(
@@ -74,9 +92,9 @@ fun HomeBody(
                 Column {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
-                        text = "1 ${source.getSuccessData().code} = " +
-                                "${target.getSuccessData().value} " +
-                                target.getSuccessData().code,
+                        text = "1 $initialSourceCode = " +
+                                "$initialTargetValue " +
+                                initialTargetCode,
                         fontSize = MaterialTheme.typography.bodySmall.fontSize,
                         color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
                         else Color.Black.copy(alpha = 0.5f),
@@ -85,9 +103,9 @@ fun HomeBody(
                     )
                     Text(
                         modifier = Modifier.fillMaxWidth(),
-                        text = "1 ${target.getSuccessData().code} = " +
-                                "${1.0 / target.getSuccessData().value} " +
-                                source.getSuccessData().code,
+                        text = "1 $initialTargetCode = " +
+                                "${1.0 / initialTargetValue} " +
+                                initialSourceCode,
                         fontSize = MaterialTheme.typography.bodySmall.fontSize,
                         color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
                         else Color.Black.copy(alpha = 0.5f),
