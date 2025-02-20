@@ -51,8 +51,8 @@ class PreferencesImpl(
             val savedDateTime = savedInstant.toLocalDateTime(TimeZone.currentSystemDefault())
 
             val daysDifference = currentDateTime.date.dayOfYear - savedDateTime.date.dayOfYear
-            print("currentDataTime is ${currentDateTime.date.dayOfYear}")
-            print("savedDataTime is ${savedDateTime.date.dayOfYear}")
+            print("currentDateTime is ${currentDateTime.date.dayOfYear}")
+            print("savedDateTime is ${savedDateTime.date.dayOfYear}")
             print("daysDifference is ${daysDifference}")
             daysDifference < 1
 

@@ -147,5 +147,6 @@ dependencies {
     implementation(libs.androidx.animation.android)
     implementation(libs.androidx.animation.core.android)
     implementation(libs.ui.android)
+    implementation(libs.androidx.room.runtime.android)
     debugImplementation(compose.uiTooling)
 }

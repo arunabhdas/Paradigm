@@ -18,7 +18,7 @@ enum class RateStatus (
         color = freshColor
     ),
     Stale(
-        title = "Hit refresh for latest rates",
+        title = "Rates are stale",
         color = staleColor
     )
 }
