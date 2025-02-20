@@ -24,7 +24,8 @@ class CurrencyApiServiceImpl(
 ) : CurrencyApiService {
 
     companion object {
-        const val ENDPOINT = "https://api.currencyapi.com/v3/latest"
+        // TODO-FIXME-CLEANUP-TEMP const val ENDPOINT = "https://api.currencyapi.com/v3/latest"
+        const val ENDPOINT = "https://chatoffside.onrender.com/currencyapi/latest"
         private val API_KEY = ApiConfig.CURRENCY_API_KEY
     }
 
