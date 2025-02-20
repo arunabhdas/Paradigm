@@ -44,7 +44,9 @@ import io.ktor.util.hex
 fun HomeBody(
     source: CurrencyApiRequestState<Currency>,
     target: CurrencyApiRequestState<Currency>,
-    amount: Double
+    amount: Double,
+    sourceDisplay: CurrencyApiRequestState<Currency>,
+    targetDisplay: CurrencyApiRequestState<Currency>
 ) {
     var exchangedAmount by rememberSaveable() { mutableStateOf(0.0) }
 
@@ -74,6 +76,7 @@ fun HomeBody(
             )
             AnimatedVisibility(visible = source.isSuccess() && target.isSuccess()) {
                 Column {
+                    /* TODO-FIXME-CLEANUP
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = "1 ${source.getSuccessData().code} = " +
@@ -90,6 +93,30 @@ fun HomeBody(
                         text = "1 ${target.getSuccessData().code} = " +
                                 "${source.getSuccessData().value} " +
                                 source.getSuccessData().code,
+                        fontSize = MaterialTheme.typography.bodySmall.fontSize,
+                        color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
+                        else Color.Black.copy(alpha = 0.5f),
+                        textAlign = TextAlign.Center,
+                        lineHeight = 20.sp
+                    )
+                    */
+
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = "1 ${sourceDisplay.getSuccessData().code} = " +
+                                "${targetDisplay.getSuccessData().value} " +
+                                targetDisplay.getSuccessData().code,
+                        fontSize = MaterialTheme.typography.bodySmall.fontSize,
+                        color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
+                        else Color.Black.copy(alpha = 0.5f),
+                        textAlign = TextAlign.Center,
+                        lineHeight = 20.sp
+                    )
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = "1 ${targetDisplay.getSuccessData().code} = " +
+                                "${1.0 / targetDisplay.getSuccessData().value} " +
+                                sourceDisplay.getSuccessData().code,
                         fontSize = MaterialTheme.typography.bodySmall.fontSize,
                         color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
                         else Color.Black.copy(alpha = 0.5f),

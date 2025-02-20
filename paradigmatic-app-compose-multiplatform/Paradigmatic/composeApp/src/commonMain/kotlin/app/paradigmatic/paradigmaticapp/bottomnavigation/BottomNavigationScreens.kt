@@ -98,6 +98,8 @@ class TabThreeScreen: Screen, KoinComponent {
         val allCurrencies = viewModel.allCurrencies
         val sourceCurrency by viewModel.sourceCurrency
         val targetCurrency by viewModel.targetCurrency
+        val sourceCurrencyDisplay by viewModel.sourceCurrencyDisplay
+        val targetCurrencyDisplay by viewModel.targetCurrencyDisplay
         var amount by rememberSaveable { mutableStateOf(0.0) }
 
         var selectedCurrencyType: CurrencyType by remember {
@@ -174,7 +176,9 @@ class TabThreeScreen: Screen, KoinComponent {
                 HomeBody(
                     source = sourceCurrency,
                     target = targetCurrency,
-                    amount = amount
+                    amount = amount,
+                    sourceDisplay = sourceCurrencyDisplay,
+                    targetDisplay = targetCurrencyDisplay
                 )
             }
         }

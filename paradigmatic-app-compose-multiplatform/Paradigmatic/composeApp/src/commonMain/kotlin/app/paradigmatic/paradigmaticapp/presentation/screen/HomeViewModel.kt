@@ -38,11 +38,19 @@ class HomeViewModel(
     private var _sourceCurrency: MutableState<CurrencyApiRequestState<Currency>> = mutableStateOf(CurrencyApiRequestState.Idle)
     val sourceCurrency: State<CurrencyApiRequestState<Currency>> = _sourceCurrency
 
+    private var _targetCurrency: MutableState<CurrencyApiRequestState<Currency>> = mutableStateOf(CurrencyApiRequestState.Idle)
+    val targetCurrency: State<CurrencyApiRequestState<Currency>> = _targetCurrency
+
+    private var _sourceCurrencyDisplay: MutableState<CurrencyApiRequestState<Currency>> = mutableStateOf(CurrencyApiRequestState.Idle)
+    val sourceCurrencyDisplay: State<CurrencyApiRequestState<Currency>> = _sourceCurrencyDisplay
+
+    private var _targetCurrencyDisplay: MutableState<CurrencyApiRequestState<Currency>> = mutableStateOf(CurrencyApiRequestState.Idle)
+    val targetCurrencyDisplay: State<CurrencyApiRequestState<Currency>> = _targetCurrencyDisplay
+
     private var _allCurrencies = mutableStateListOf<Currency>()
     val allCurrencies: List<Currency> = _allCurrencies
 
-    private var _targetCurrency: MutableState<CurrencyApiRequestState<Currency>> = mutableStateOf(CurrencyApiRequestState.Idle)
-    val targetCurrency: State<CurrencyApiRequestState<Currency>> = _targetCurrency
+
 
     init {
         screenModelScope.launch {
@@ -84,8 +92,10 @@ class HomeViewModel(
                val selectedCurrency = _allCurrencies.find { it.code == currencyCode.name }
                if (selectedCurrency != null) {
                    _sourceCurrency.value = CurrencyApiRequestState.Success(data = selectedCurrency)
+                   _sourceCurrencyDisplay.value = CurrencyApiRequestState.Success(data = selectedCurrency)
                } else {
                    _sourceCurrency.value = CurrencyApiRequestState.Error(message = "Couldn't find the selected currency")
+                   _sourceCurrencyDisplay.value = CurrencyApiRequestState.Error(message = "Couldn't find the selected currency")
                }
            }
         }
@@ -97,8 +107,10 @@ class HomeViewModel(
                 val selectedCurrency = _allCurrencies.find { it.code == currencyCode.name }
                 if (selectedCurrency != null) {
                     _targetCurrency.value = CurrencyApiRequestState.Success(data = selectedCurrency)
+                    _targetCurrencyDisplay.value = CurrencyApiRequestState.Success(data = selectedCurrency)
                 } else {
                     _targetCurrency.value = CurrencyApiRequestState.Error(message = "Couldn't find the selected currency")
+                    _targetCurrencyDisplay.value = CurrencyApiRequestState.Error(message = "Couldn't find the selected currency")
                 }
             }
         }
