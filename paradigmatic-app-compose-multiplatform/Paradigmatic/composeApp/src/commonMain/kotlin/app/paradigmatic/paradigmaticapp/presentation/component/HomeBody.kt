@@ -76,31 +76,6 @@ fun HomeBody(
             )
             AnimatedVisibility(visible = source.isSuccess() && target.isSuccess()) {
                 Column {
-                    /* TODO-FIXME-CLEANUP
-                    Text(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "1 ${source.getSuccessData().code} = " +
-                                "${target.getSuccessData().value} " +
-                                target.getSuccessData().code,
-                        fontSize = MaterialTheme.typography.bodySmall.fontSize,
-                        color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
-                        else Color.Black.copy(alpha = 0.5f),
-                        textAlign = TextAlign.Center,
-                        lineHeight = 20.sp
-                    )
-                    Text(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "1 ${target.getSuccessData().code} = " +
-                                "${source.getSuccessData().value} " +
-                                source.getSuccessData().code,
-                        fontSize = MaterialTheme.typography.bodySmall.fontSize,
-                        color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
-                        else Color.Black.copy(alpha = 0.5f),
-                        textAlign = TextAlign.Center,
-                        lineHeight = 20.sp
-                    )
-                    */
-
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = "1 ${sourceDisplay.getSuccessData().code} = " +
