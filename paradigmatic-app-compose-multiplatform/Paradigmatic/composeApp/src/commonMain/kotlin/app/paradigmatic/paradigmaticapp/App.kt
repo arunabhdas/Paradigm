@@ -48,8 +48,8 @@ fun App() {
     val colors = if (!isSystemInDarkTheme()) {
         // TODO-FIXME
         // TODO-FIXME-Commenting out to force darkScheme
-        //  lightScheme
-        darkScheme
+        lightScheme
+        // darkScheme
     } else {
         darkScheme
     }
