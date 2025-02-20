@@ -18,6 +18,10 @@ Paradigmatic app is based on the ideas outlined in the [Planet Critical Podcast]
 
 - https://www.udemy.com/course/compose-multiplatform-iosandroid-development-with-kotlin/learn/lecture/43411740#content 
 
+## Endpoints
+
+https://app.currencyapi.com/
+
 ## Links
 
 https://youtu.be/HVub2u8DpDQ?si=IBmFPHPCJTun-WMW
