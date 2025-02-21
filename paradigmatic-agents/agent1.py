@@ -16,9 +16,6 @@ search_box = page.wait_for_selector('input[placeholder="Search..."]')
 search_box.fill("neural network")
 search_box.press('Enter')
 
-# Click the search button - using locator instead of wait_for_selector
-# search_button = page.locator('button:has-text("Search")')
-# search_button.click()
 
 print(page.title())
 
