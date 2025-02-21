@@ -78,6 +78,17 @@ fun HomeBody(
                 Column {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
+                        text = "${source.getSuccessData().code} to " +
+                                target.getSuccessData().code,
+                        fontSize = MaterialTheme.typography.bodySmall.fontSize,
+                        color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
+                        else Color.Black.copy(alpha = 0.5f),
+                        textAlign = TextAlign.Center,
+                        lineHeight = 20.sp
+                    )
+                    /* TODO-FIXME
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
                         text = "1 ${sourceDisplay.getSuccessData().code} = " +
                                 "${targetDisplay.getSuccessData().value} " +
                                 targetDisplay.getSuccessData().code,
@@ -98,6 +109,7 @@ fun HomeBody(
                         textAlign = TextAlign.Center,
                         lineHeight = 20.sp
                     )
+                    */
                 }
             }
         }
