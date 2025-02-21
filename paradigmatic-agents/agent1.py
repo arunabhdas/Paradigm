@@ -9,13 +9,21 @@ browser = pw.firefox.launch(
 
 page = browser.new_page()
 
-page.goto("https://google.com")
+page.goto("https://arxiv.org")
 
-print(page.content())
+# Wait for the search box to be visible and interactable
+search_box = page.wait_for_selector('input[placeholder="Search..."]')
+search_box.fill("neural network")
+search_box.press('Enter')
+
+# Click the search button - using locator instead of wait_for_selector
+# search_button = page.locator('button:has-text("Search")')
+# search_button.click()
 
 print(page.title())
 
 page.screenshot(path="agent_screenshot_1.png")
 
-browser.close
+browser.close()
+pw.stop()
 
