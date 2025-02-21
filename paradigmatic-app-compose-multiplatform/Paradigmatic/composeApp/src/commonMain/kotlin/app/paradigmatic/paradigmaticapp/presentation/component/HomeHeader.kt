@@ -248,27 +248,6 @@ fun RowScope.CurrencyViewPanel(
                     )
                 }
             )
-            /* TODO-FIXME-CLEANUP
-            if (currency.isSuccess()) {
-                Icon(
-                    modifier = Modifier.size(24.dp),
-                    painter = painterResource(
-                        CurrencyCode.valueOf(
-                            currency.getSuccessData().code
-                        ).flag
-                    ),
-                    tint = Color.Unspecified,
-                    contentDescription = "Country Flag"
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = CurrencyCode.valueOf(currency.getSuccessData().code).name,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = MaterialTheme.typography.titleLarge.fontSize,
-                    color = Color.White
-                )
-            }
-            */
         }
     }
 }

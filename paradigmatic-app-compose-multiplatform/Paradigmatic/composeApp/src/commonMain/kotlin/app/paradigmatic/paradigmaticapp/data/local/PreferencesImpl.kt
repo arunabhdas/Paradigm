@@ -54,7 +54,7 @@ class PreferencesImpl(
             print("currentDateTime is ${currentDateTime.date.dayOfYear}")
             print("savedDateTime is ${savedDateTime.date.dayOfYear}")
             print("daysDifference is ${daysDifference}")
-            daysDifference < 1
+            daysDifference < 10
 
         } else false
     }
