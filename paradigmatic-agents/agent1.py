@@ -9,12 +9,14 @@ browser = pw.firefox.launch(
 
 page = browser.new_page()
 
-page.goto("https://arxiv.org")
+page.goto("https://arxiv.org/search")
 
 # Wait for the search box to be visible and interactable
-search_box = page.wait_for_selector('input[placeholder="Search..."]')
+search_box = page.wait_for_selector('input[placeholder="Search term..."]')
 search_box.fill("neural network")
-search_box.press('Enter')
+# search_box.press('Enter)
+
+page.get_by_role("button", name="Search").nth(1).click()
 
 
 print(page.title())
