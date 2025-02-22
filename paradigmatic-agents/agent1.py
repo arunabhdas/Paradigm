@@ -4,7 +4,7 @@ pw = sync_playwright().start()
 
 browser = pw.firefox.launch(
     headless=False,
-    slow_mo=2000,
+    # slow_mo=2000,
 )
 
 page = browser.new_page()
@@ -20,6 +20,12 @@ search_box.fill("neural networks")
 search_button = page.get_by_role("button", name="Search").nth(1)
 search_button.click()
 
+pdf_links = page.locator(
+    "xpath=//a[contains(@href, 'arxiv.org/pdf')]"
+).all()
+
+for pdf_link in pdf_links:
+    print(pdf_link.get_attribute("href"))
 
 print(page.title())
 
