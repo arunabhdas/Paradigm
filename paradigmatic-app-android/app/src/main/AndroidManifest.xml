@@ -53,7 +53,7 @@
 
         <service android:name=".services.BeaconProToolsService" android:foregroundServiceType="location"/>
         <receiver
-            android:name="app.paradigmatic.paradigmaticapp.Receiver.PropzProAppBroadcastReceiver"
+            android:name="app.paradigmatic.paradigmaticapp.receiver.ParadigmaticAppBroadcastReceiver"
             android:exported="false"
             >
             <intent-filter>
