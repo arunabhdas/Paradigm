@@ -131,3 +131,4 @@ docs/pages/versions/*/react-native/*.diff
 **/ios/.xcode.env.local
 
 venv/
+playwright_data/
