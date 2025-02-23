@@ -1,4 +1,5 @@
 from playwright.sync_api import sync_playwright
+from urllib.request import urlretrieve
 
 pw = sync_playwright().start()
 
@@ -26,6 +27,8 @@ pdf_links = page.locator(
 
 for pdf_link in pdf_links:
     print(pdf_link.get_attribute("href"))
+    url = pdf_link.get_attribute("href")
+    urlretrieve(url, "data/" + url[-5:] + ".pdf")
 
 print(page.title())
 
