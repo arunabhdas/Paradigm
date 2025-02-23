@@ -3,7 +3,11 @@ from urllib.request import urlretrieve
 
 pw = sync_playwright().start()
 
+user_data_dir = os.path.join(os.getcwd(), "data")
+os.makedirs(user_data_dir, exist_ok=True)
+
 browser = pw.firefox.launch(
+    user_data_dir,
     headless=False,
     # slow_mo=2000,
 )
