@@ -17,6 +17,7 @@ def scrape_indeed(playwright):
 
     # initiate the page
     page = browser.new_page()
+    time.sleep(1)
 
     # keeping track of page count
     page_count = 0
