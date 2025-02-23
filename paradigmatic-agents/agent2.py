@@ -11,7 +11,6 @@ def scrape_indeed(playwright):
 
     browser = playwright.chromium.launch_persistent_context(
         user_data_dir,
-        headless=False,
         channel="chrome",
         no_viewport=True,
     )
