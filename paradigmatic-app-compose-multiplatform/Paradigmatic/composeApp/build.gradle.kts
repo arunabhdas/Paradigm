@@ -20,7 +20,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -31,13 +31,13 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         iosMain.dependencies {
             implementation(libs.sqldelight.ios)
             implementation(libs.ktor.client.darwin)
         }
-        
+
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -110,12 +110,14 @@ android {
         println("API Key found: ${apiKey.isNotBlank()}")
 
         if (apiKey.isBlank()) {
-            throw GradleException("""
+            throw GradleException(
+                """
                 Missing CURRENCY_API_KEY in local.properties
                 Please add: CURRENCY_API_KEY=your_api_key_here
                 to your local.properties file at:
                 ${rootProject.file("local.properties").absolutePath}
-            """.trimIndent())
+            """.trimIndent()
+            )
         }
         buildConfigField("String", "CURRENCY_API_KEY", "\"$apiKey\"")
     }
@@ -149,6 +151,20 @@ dependencies {
     implementation(libs.androidx.foundation.android)
     // Lifecycle dependencies from version catalog
     implementation(libs.androidx.lifecycle.runtime.compose)
+
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+
+    implementation(libs.koin.core)
+    implementation(libs.koin.compose)
+    implementation(libs.koin.compose.viewmodel)
+
+    implementation(libs.kotlinx.datetime)
+
+    implementation(libs.multiplatform.settings)
+    implementation(libs.multiplatform.settings.no.arg)
+
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.foundation.layout.android)
     implementation(libs.androidx.benchmark.macro)
