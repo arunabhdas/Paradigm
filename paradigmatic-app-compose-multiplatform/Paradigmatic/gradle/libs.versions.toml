@@ -40,6 +40,7 @@ koin = "4.0.1"
 # date-time = "0.6.1"
 kotlinDateTime = "0.6.1"
 firebaseCrashlyticsBuildtools = "3.0.3"
+lifecycleViewmodelAndroid = "2.8.7"
 
 [libraries]
 
@@ -96,6 +97,7 @@ ui-android = { group = "androidx.compose.ui", name = "ui-android", version.ref =
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 androidx-room-runtime-android = { group = "androidx.room", name = "room-runtime-android", version.ref = "roomRuntimeAndroid" }
 firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
+androidx-lifecycle-viewmodel-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-android", version.ref = "lifecycleViewmodelAndroid" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

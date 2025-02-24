@@ -175,6 +175,7 @@ dependencies {
     implementation(libs.ui.android)
     implementation(libs.androidx.room.runtime.android)
     implementation(libs.firebase.crashlytics.buildtools)
+    implementation(libs.androidx.lifecycle.viewmodel.android)
     debugImplementation(compose.uiTooling)
 }
 

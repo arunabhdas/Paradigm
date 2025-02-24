@@ -1,4 +1,4 @@
-package app.paradigmatic.paradigmaticapp.presentation.screen
+package app.paradigmatic.paradigmaticapp.presentation.viewmodel
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
