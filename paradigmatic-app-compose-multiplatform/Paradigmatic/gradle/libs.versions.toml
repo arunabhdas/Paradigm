@@ -8,8 +8,6 @@ compose = "1.7.6"
 androidx-lifecycle = "2.8.4"
 compose-multiplatform = "1.7.0"
 kotlin = "2.0.20"
-ktor = "3.0.1"
-date-time = "0.6.1"
 multiplatformSettings = "1.2.0"
 voyager = "1.1.0-beta02"
 koinCore = "4.0.1"
@@ -33,6 +31,13 @@ animationCoreAndroid = "1.7.8"
 uiAndroidVersion = "1.7.8"
 timber = "5.0.1"
 roomRuntimeAndroid = "2.7.0-beta01"
+
+sqldelight = "2.0.2"
+ktor = "3.0.1"
+settings = "1.2.0"
+koin = "4.0.0"
+# dateTime = "0.6.1"
+date-time = "0.6.1"
 
 [libraries]
 
