@@ -19,6 +19,9 @@ class ParadigmaticDatabaseSdk (
     ) {
     @Throws(Exception::class)
     suspend fun getAllPosts(): PostApiRequestState<List<Post>> {
+
+        /*
+        TODO-FIXME-UNCOMMENT-BELOW-TO-BRING-BACK-CACHING
         return try {
             val cachedPosts = database.readAllPosts()
             if (cachedPosts.isEmpty()) {
@@ -46,6 +49,11 @@ class ParadigmaticDatabaseSdk (
                     )
                 } else PostApiRequestState.Success(cachedPosts)
             }
+         */
+        return try {
+                PostApiRequestState.Success(
+                    api.fetchAllPosts()
+                )
         } catch(e: Exception) {
             PostApiRequestState.Error(e.message.toString())
         }
