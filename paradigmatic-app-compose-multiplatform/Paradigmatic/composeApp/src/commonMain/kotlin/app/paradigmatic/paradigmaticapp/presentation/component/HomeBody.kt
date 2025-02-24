@@ -86,17 +86,7 @@ fun HomeBody(
                         textAlign = TextAlign.Center,
                         lineHeight = 20.sp
                     )
-                    Text(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "1 ${source.getSuccessData().code} = " +
-                                "${1.0 / source.getSuccessData().value} " +
-                                target.getSuccessData().code,
-                        fontSize = MaterialTheme.typography.bodySmall.fontSize,
-                        color = if (isSystemInDarkTheme()) Color.White.copy(alpha = 0.5f)
-                        else Color.Black.copy(alpha = 0.5f),
-                        textAlign = TextAlign.Center,
-                        lineHeight = 20.sp
-                    )
+
                     /* TODO-FIXME
                     Text(
                         modifier = Modifier.fillMaxWidth(),
