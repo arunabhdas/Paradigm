@@ -176,3 +176,11 @@ dependencies {
     implementation(libs.androidx.room.runtime.android)
     debugImplementation(compose.uiTooling)
 }
+
+sqldelight {
+    databases {
+        create("PostDatabase") {
+            packageName.set("app.paradigmatic.paradigmaticapp")
+        }
+    }
+}
