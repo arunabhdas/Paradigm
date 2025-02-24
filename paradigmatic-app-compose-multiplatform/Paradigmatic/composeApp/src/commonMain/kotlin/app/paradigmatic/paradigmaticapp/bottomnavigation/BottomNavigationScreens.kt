@@ -14,7 +14,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -28,7 +27,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -39,7 +37,7 @@ import app.paradigmatic.paradigmaticapp.presentation.component.CurrencyPickerDia
 import app.paradigmatic.paradigmaticapp.presentation.component.HomeHeader
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.HomeUiEvent
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.HomeViewModel
-import app.paradigmatic.paradigmaticapp.presentation.viewmodel.MainViewModel
+import app.paradigmatic.paradigmaticapp.presentation.viewmodel.PostViewModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import org.koin.core.component.KoinComponent
@@ -49,7 +47,7 @@ class TabOneScreen: Screen, KoinComponent {
     private val currencyApiService: CurrencyApiService by inject()
     @Composable
     override fun Content() {
-        val viewModel = getScreenModel<MainViewModel>()
+        val viewModel = getScreenModel<PostViewModel>()
         val allPosts by viewModel.allPosts
         LaunchedEffect(Unit) {
             println("TabOneScreen")

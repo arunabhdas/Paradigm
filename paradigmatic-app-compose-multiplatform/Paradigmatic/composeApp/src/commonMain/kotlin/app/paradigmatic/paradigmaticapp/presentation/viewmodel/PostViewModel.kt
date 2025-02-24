@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 typealias CachedPosts = MutableState<PostApiRequestState<List<Post>>>
 
-class MainViewModel (
+class PostViewModel (
     private val sdk: ParadigmaticDatabaseSdk
 ): ScreenModel {
 

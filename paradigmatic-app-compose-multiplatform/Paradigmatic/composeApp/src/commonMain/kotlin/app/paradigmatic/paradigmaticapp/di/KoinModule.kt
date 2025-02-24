@@ -1,7 +1,6 @@
 package app.paradigmatic.paradigmaticapp.di
 
 import app.paradigmatic.paradigmaticapp.data.ParadigmaticDatabaseSdk
-import app.paradigmatic.paradigmaticapp.data.local.DatabaseDriverFactory
 import app.paradigmatic.paradigmaticapp.data.local.LocalDatabase
 import app.paradigmatic.paradigmaticapp.data.local.MongoImpl
 import app.paradigmatic.paradigmaticapp.data.local.PreferencesImpl
@@ -11,7 +10,7 @@ import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
 import app.paradigmatic.paradigmaticapp.domain.MongoRepository
 import app.paradigmatic.paradigmaticapp.domain.PreferencesRepository
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.HomeViewModel
-import app.paradigmatic.paradigmaticapp.presentation.viewmodel.MainViewModel
+import app.paradigmatic.paradigmaticapp.presentation.viewmodel.PostViewModel
 import org.koin.dsl.module
 import com.russhwolf.settings.Settings
 import org.koin.core.KoinApplication
@@ -47,7 +46,7 @@ val sharedModule = module {
             settings = get()
         )
     }
-    factory { MainViewModel(
+    factory { PostViewModel(
             sdk = get()
         )
     }
