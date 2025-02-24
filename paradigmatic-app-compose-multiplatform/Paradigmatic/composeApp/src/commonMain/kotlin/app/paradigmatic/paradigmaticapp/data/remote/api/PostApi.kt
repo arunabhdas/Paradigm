@@ -8,7 +8,7 @@ import app.paradigmatic.paradigmaticapp.domain.model.Post
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 
-const val ALLPOSTS_ENDPOINT = "https://jsonplaceholder.typicode.com/"
+const val ALLPOSTS_ENDPOINT = "https://jsonplaceholder.typicode.com/posts"
 class PostApi {
     private val httpClient = HttpClient {
         install(ContentNegotiation) {

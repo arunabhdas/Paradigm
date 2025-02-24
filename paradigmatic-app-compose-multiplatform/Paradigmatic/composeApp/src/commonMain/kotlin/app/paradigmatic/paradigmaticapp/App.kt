@@ -44,7 +44,7 @@ fun App() {
 @Composable
 @Preview
 fun App() {
-    initializeKoin()
+    // TODO-FIXME-BRINGBACK initializeKoin()
     val colors = if (!isSystemInDarkTheme()) {
         // TODO-FIXME
         // TODO-FIXME-Commenting out to force darkScheme

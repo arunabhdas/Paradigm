@@ -2,6 +2,7 @@ package app.paradigmatic.paradigmaticapp.di
 
 import app.paradigmatic.paradigmaticapp.data.ParadigmaticDatabaseSdk
 import app.paradigmatic.paradigmaticapp.data.local.DatabaseDriverFactory
+import app.paradigmatic.paradigmaticapp.data.local.LocalDatabase
 import app.paradigmatic.paradigmaticapp.data.local.MongoImpl
 import app.paradigmatic.paradigmaticapp.data.local.PreferencesImpl
 import app.paradigmatic.paradigmaticapp.data.remote.api.CurrencyApiServiceImpl
@@ -34,6 +35,9 @@ val sharedModule = module {
     }
 
     single<PostApi> { PostApi() }
+    single<LocalDatabase> { LocalDatabase(
+        databaseDriverFactory = get()
+    ) }
     single<Settings> { Settings() }
 
     single<ParadigmaticDatabaseSdk> {

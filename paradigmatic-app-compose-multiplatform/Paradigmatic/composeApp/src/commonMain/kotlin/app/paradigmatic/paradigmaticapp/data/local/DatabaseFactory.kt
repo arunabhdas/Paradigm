@@ -10,7 +10,6 @@ interface DatabaseDriverFactory {
 
 class LocalDatabase(
     databaseDriverFactory: DatabaseDriverFactory
-
 ) {
     private val database = ParadigmaticDatabase(
         databaseDriverFactory.createDriver()

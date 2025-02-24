@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
+import app.paradigmatic.paradigmaticapp.di.initializeKoin
 import timber.log.Timber
 
 class MainActivity : ComponentActivity() {
@@ -21,6 +22,12 @@ class MainActivity : ComponentActivity() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+        try {
+            initializeKoin()
+        } catch (e: Exception) {
+            Timber.e(e, "Error initializing Koin")
+        }
+
         enableEdgeToEdge()
         setContent {
             App()

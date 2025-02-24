@@ -5,14 +5,19 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -23,6 +28,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
 import app.paradigmatic.paradigmaticapp.presentation.component.HomeBody
@@ -31,6 +39,7 @@ import app.paradigmatic.paradigmaticapp.presentation.component.CurrencyPickerDia
 import app.paradigmatic.paradigmaticapp.presentation.component.HomeHeader
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.HomeUiEvent
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.HomeViewModel
+import app.paradigmatic.paradigmaticapp.presentation.viewmodel.MainViewModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import org.koin.core.component.KoinComponent
@@ -40,6 +49,8 @@ class TabOneScreen: Screen, KoinComponent {
     private val currencyApiService: CurrencyApiService by inject()
     @Composable
     override fun Content() {
+        val viewModel = getScreenModel<MainViewModel>()
+        val allPosts by viewModel.allPosts
         LaunchedEffect(Unit) {
             println("TabOneScreen")
             currencyApiService.getLatestExchangeRates()
@@ -49,16 +60,53 @@ class TabOneScreen: Screen, KoinComponent {
             contentAlignment = Alignment.Center
         ) {
             Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Icon(
-                    imageVector = Icons.Default.Menu,
-                    contentDescription = "Markets",
-                    modifier = Modifier.size(48.dp)
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                Text("Markets Screen")
+                if (allPosts.isSuccess()) {
+                    val data = remember { allPosts.getSuccessData() }
+                    LazyColumn {
+                        items(
+                            items = data,
+                            key = { it.id }
+                        ) {
+                            Spacer(modifier = Modifier.height(16.dp))
+                            Text(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 24.dp),
+                                text = "(${it.id} - ${it.title})",
+                                style = MaterialTheme.typography.titleLarge,
+                                fontWeight = FontWeight.Medium
+                            )
+                            Text(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 24.dp),
+                                text = it.body,
+                                style = MaterialTheme.typography.titleLarge,
+                                fontWeight = FontWeight.Medium
+                            )
+                            Spacer(modifier = Modifier.height(16.dp))
+
+                        }
+                    }
+                } else if (allPosts.isError()){
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(all = 48.dp),
+                            contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = allPosts.getErrorMessage(),
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
+
             }
         }
     }
