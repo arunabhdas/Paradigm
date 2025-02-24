@@ -179,7 +179,7 @@ dependencies {
 
 sqldelight {
     databases {
-        create("PostDatabase") {
+        create("ParadigmaticDatabase") {
             packageName.set("app.paradigmatic.paradigmaticapp")
         }
     }

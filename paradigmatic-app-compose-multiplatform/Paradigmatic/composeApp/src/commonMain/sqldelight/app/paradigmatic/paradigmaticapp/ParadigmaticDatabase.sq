@@ -1,0 +1,6 @@
+CREATE TABLE PostTable (
+    userId INTEGER NOT NULL,
+    id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    body TEXT NOT NULL,
+);
