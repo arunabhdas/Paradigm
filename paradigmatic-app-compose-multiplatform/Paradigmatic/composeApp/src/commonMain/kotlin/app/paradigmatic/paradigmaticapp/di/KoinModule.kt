@@ -9,7 +9,11 @@ import app.paradigmatic.paradigmaticapp.domain.PreferencesRepository
 import app.paradigmatic.paradigmaticapp.presentation.screen.HomeViewModel
 import org.koin.dsl.module
 import com.russhwolf.settings.Settings
+import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
+import org.koin.core.module.Module
+
+expect val targetModule: Module
 
 val appModule = module {
     single { Settings() }
@@ -26,8 +30,9 @@ val appModule = module {
     }
 }
 
-fun initializeKoin() {
+fun initializeKoin(config: (KoinApplication.() -> Unit)? = null) {
     startKoin {
+        config?.invoke(this)
         modules(appModule)
     }
 }
