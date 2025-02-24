@@ -33,11 +33,20 @@ kotlin {
     }
     
     sourceSets {
+        iosMain.dependencies {
+            implementation(libs.sqldelight.ios)
+            implementation(libs.ktor.client.darwin)
+        }
         
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            implementation(libs.sqldelight.android)
             implementation(libs.ktor.client.android)
+
+            implementation(libs.koin.android)
+
             implementation(libs.timber)  // Add Timber for logging
         }
         commonMain.dependencies {
