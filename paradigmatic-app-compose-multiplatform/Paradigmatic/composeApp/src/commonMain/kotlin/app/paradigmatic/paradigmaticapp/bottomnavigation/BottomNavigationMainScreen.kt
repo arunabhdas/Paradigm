@@ -78,7 +78,7 @@ class BottomNavigationMainScreen : Screen {
             Box(modifier = Modifier.padding(paddingValues)) {
                 when (selectedIndex) {
                     0 -> TabOneScreen().Content()
-                    1 -> TabTwoScreen()
+                    1 -> TabTwoScreen().Content()
                     2 -> TabThreeScreen().Content()
                     3 -> TabFourScreen()
                     4 -> TabFiveScreen()
