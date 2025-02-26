@@ -9,7 +9,6 @@ androidx-lifecycle = "2.8.4"
 compose-multiplatform = "1.7.0"
 kotlin = "2.0.20"
 multiplatformSettings = "1.2.0"
-voyager = "1.1.0-beta02"
 # koinCore = "4.0.1"
 realm = "3.0.0"
 coroutines = "1.9.0"
@@ -39,6 +38,7 @@ koin = "4.0.1"
 kotlinDateTime = "0.6.1"
 firebaseCrashlyticsBuildtools = "3.0.3"
 lifecycleViewmodelAndroid = "2.8.7"
+voyager = "1.1.0-beta03"
 
 [libraries]
 
@@ -46,8 +46,10 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 
-
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+voyager-navigator-tabs = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
+voyager-navigator-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+
 voyager-screenModel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
 voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
 voyager-tabNavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
