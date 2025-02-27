@@ -22,6 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.transitions.SlideTransition
 
 class BottomNavigationMainScreen : Screen {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -80,7 +81,7 @@ class BottomNavigationMainScreen : Screen {
                 when (selectedIndex) {
                     0 -> TabOneScreen().Content()
                     1 -> Navigator(TabTwoScreen()) { navigator ->
-                        navigator.lastItem.Content()
+                        SlideTransition(navigator)
                     }
                     2 -> TabThreeScreen().Content()
                     3 -> TabFourScreen()

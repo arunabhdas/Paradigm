@@ -23,6 +23,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 
+/* TODO-FIXME-BRINGBACK
 data class TabTwoScreenDetail(val number: Int) : Screen {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
@@ -61,3 +62,33 @@ data class TabTwoScreenDetail(val number: Int) : Screen {
         }
     }
 }
+*/
+
+
+data class TabTwoScreenDetail(val number: Int) : Screen {
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    override fun Content() {
+        val navigator = LocalNavigator.current
+
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Create,
+                        contentDescription = "Detail",
+                        modifier = Modifier.size(48.dp)
+                    )
+
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text("Details Screen ($number)")
+                }
+            }
+    }
+}
+
