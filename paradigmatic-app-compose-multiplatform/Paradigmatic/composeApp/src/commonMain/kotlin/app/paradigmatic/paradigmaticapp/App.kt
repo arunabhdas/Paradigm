@@ -23,6 +23,7 @@ import app.paradigmatic.paradigmaticapp.ui.theme.lightScheme
 import app.paradigmatic.paradigmaticapp.ui.theme.darkScheme
 import app.paradigmatic.paradigmaticapp.navigation.MainScreen
 import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.transitions.SlideTransition
 
 /* TODO-FIXME-CLEANUP
 @Composable
@@ -55,7 +56,9 @@ fun App() {
     }
     MaterialTheme(colorScheme = colors) {
         Surface {
-            Navigator(BottomNavigationMainScreen())
+            Navigator(BottomNavigationMainScreen()) { navigator ->
+                SlideTransition(navigator)
+            }
         }
     }
 }
