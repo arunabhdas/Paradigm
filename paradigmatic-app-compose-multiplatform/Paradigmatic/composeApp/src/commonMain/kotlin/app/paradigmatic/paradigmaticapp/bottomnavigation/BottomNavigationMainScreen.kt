@@ -21,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.Navigator
 
 class BottomNavigationMainScreen : Screen {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -78,7 +79,9 @@ class BottomNavigationMainScreen : Screen {
             Box(modifier = Modifier.padding(paddingValues)) {
                 when (selectedIndex) {
                     0 -> TabOneScreen().Content()
-                    1 -> TabTwoScreen().Content()
+                    1 -> Navigator(TabTwoScreen()) { navigator ->
+                        navigator.lastItem.Content()
+                    }
                     2 -> TabThreeScreen().Content()
                     3 -> TabFourScreen()
                     4 -> TabFiveScreen()
@@ -87,5 +90,3 @@ class BottomNavigationMainScreen : Screen {
         }
     }
 }
-
-
