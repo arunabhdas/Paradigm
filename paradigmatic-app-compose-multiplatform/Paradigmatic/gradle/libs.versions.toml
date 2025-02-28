@@ -29,7 +29,7 @@ animationAndroid = "1.7.8"
 animationCoreAndroid = "1.7.8"
 uiAndroidVersion = "1.7.8"
 timber = "5.0.1"
-roomRuntimeAndroid = "2.7.0-beta01"
+room = "2.7.0-rc01"
 
 sqldelight = "2.0.2"
 ktor = "3.0.1"
@@ -40,6 +40,7 @@ firebaseCrashlyticsBuildtools = "3.0.3"
 lifecycleViewmodelAndroid = "2.8.7"
 voyager = "1.1.0-beta03"
 landscapist = "2.4.7"
+sqlite = "2.5.0-alpha08"
 [libraries]
 
 landscapist-coil3 = { module = "com.github.skydoves:landscapist-coil3", version.ref = "landscapist"}
@@ -97,7 +98,11 @@ androidx-animation-android = { group = "androidx.compose.animation", name = "ani
 androidx-animation-core-android = { group = "androidx.compose.animation", name = "animation-core-android", version.ref = "animationCoreAndroid" }
 ui-android = { group = "androidx.compose.ui", name = "ui-android", version.ref = "uiAndroidVersion" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
-androidx-room-runtime-android = { group = "androidx.room", name = "room-runtime-android", version.ref = "roomRuntimeAndroid" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-room-runtime-android = { group = "androidx.room", name = "room-runtime-android", version.ref = "room" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite"}
+
 firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
 androidx-lifecycle-viewmodel-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-android", version.ref = "lifecycleViewmodelAndroid" }
 
