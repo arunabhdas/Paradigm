@@ -29,4 +29,14 @@ interface MemeDao {
     @Query("SELECT * FROM meme ORDER BY isFavorite DESC")
     fun readAllMemesSortByFavorite(): Flow<List<Meme>>
 
+    @Transaction
+    @Query("SELECT * FROM meme")
+    fun readAllBooks(): Flow<List<Meme>>
+
+    @Query("UPDATE meme SET isFavorite = :isFavorite WHERE _id = :meme")
+    suspend fun setFavoriteMeme(isFavorite: Boolean, memeId: Int)
+
+    @Transaction
+    @Query("DELETE FROM meme WHERE _id = :memeId")
+    suspend fun deleteMemeById(memeId: Int)
 }
