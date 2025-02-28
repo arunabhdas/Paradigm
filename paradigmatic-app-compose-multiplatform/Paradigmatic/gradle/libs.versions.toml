@@ -39,8 +39,10 @@ kotlinDateTime = "0.6.1"
 firebaseCrashlyticsBuildtools = "3.0.3"
 lifecycleViewmodelAndroid = "2.8.7"
 voyager = "1.1.0-beta03"
-
+landscapist = "2.4.7"
 [libraries]
+
+landscapist-coil3 = { module = "com.github.skydoves:landscapist-coil3", version.href = "landscapist"}
 
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
