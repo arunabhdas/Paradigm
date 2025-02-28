@@ -12,6 +12,8 @@ plugins {
     alias(libs.plugins.realm.plugin)
     alias(libs.plugins.kotlinxSerialization)
     alias(libs.plugins.sqlDelight)
+    alias(libs.plugins.room)
+    alias(libs.plugins.ksp)
 }
 
 kotlin {
@@ -49,6 +51,7 @@ kotlin {
             implementation(libs.koin.android)
 
             implementation(libs.timber)  // Add Timber for logging
+            implementation(libs.koin.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -78,6 +81,14 @@ kotlin {
             implementation(libs.mongodb.realm)
             implementation(libs.kotlin.coroutines)
             implementation(libs.stately.common)
+
+            implementation(libs.landscapist.coil3)
+            implementation(libs.room.runtime)
+            implementation(libs.sqlite.bundled)
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+
         }
 
         iosMain.dependencies {
