@@ -29,7 +29,6 @@ animationAndroid = "1.7.8"
 animationCoreAndroid = "1.7.8"
 uiAndroidVersion = "1.7.8"
 timber = "5.0.1"
-room = "2.7.0-rc01"
 
 sqldelight = "2.0.2"
 ktor = "3.0.1"
@@ -40,7 +39,9 @@ firebaseCrashlyticsBuildtools = "3.0.3"
 lifecycleViewmodelAndroid = "2.8.7"
 voyager = "1.1.0-beta03"
 landscapist = "2.4.7"
-sqlite = "2.5.0-alpha08"
+room = "2.7.0-rc01"
+ksp = "2.0.20-1.0.25"
+sqlite = "2.5.0-rc01"
 [libraries]
 
 landscapist-coil3 = { module = "com.github.skydoves:landscapist-coil3", version.ref = "landscapist"}
@@ -115,3 +116,5 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 realm-plugin = { id = "io.realm.kotlin", version.ref = "realm" }
 kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinx-serialization" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqldelight"}
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version.ref = "room" }
