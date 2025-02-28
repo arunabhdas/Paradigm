@@ -22,6 +22,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import app.paradigmatic.paradigmaticapp.ui.theme.lightScheme
 import app.paradigmatic.paradigmaticapp.ui.theme.darkScheme
 import app.paradigmatic.paradigmaticapp.navigation.MainScreen
+import app.paradigmatic.paradigmaticapp.presentation.screen.LandingScreen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.SlideTransition
 
@@ -56,7 +57,12 @@ fun App() {
     }
     MaterialTheme(colorScheme = colors) {
         Surface {
+            /* TODO-FIXME-CLEANUP
             Navigator(BottomNavigationMainScreen()) { navigator ->
+                SlideTransition(navigator)
+            }
+            */
+            Navigator(LandingScreen()) { navigator ->
                 SlideTransition(navigator)
             }
         }
