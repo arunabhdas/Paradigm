@@ -7,7 +7,7 @@ import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
 import androidx.room.Room
 
-fun getDatabase(): RoomDatabase.Builder<MemeDatabase> {
+fun getDatabaseBuilder(): RoomDatabase.Builder<MemeDatabase> {
     val dbFile = documentDirectory() + "/meme.db"
     return Room.databaseBuilder(
         name = dbFile
