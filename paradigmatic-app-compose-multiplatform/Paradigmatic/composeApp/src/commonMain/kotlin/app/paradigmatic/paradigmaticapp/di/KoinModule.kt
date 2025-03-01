@@ -11,6 +11,7 @@ import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
 import app.paradigmatic.paradigmaticapp.domain.MongoRepository
 import app.paradigmatic.paradigmaticapp.domain.PreferencesRepository
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.HomeViewModel
+import app.paradigmatic.paradigmaticapp.presentation.viewmodel.MemeViewModel
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.PostViewModel
 import org.koin.dsl.module
 import com.russhwolf.settings.Settings
@@ -54,6 +55,12 @@ val sharedModule = module {
 
     single { getRoomDatabase(
             builder = get()
+        )
+    }
+
+    factory {
+        MemeViewModel(
+            database = get()
         )
     }
 }
