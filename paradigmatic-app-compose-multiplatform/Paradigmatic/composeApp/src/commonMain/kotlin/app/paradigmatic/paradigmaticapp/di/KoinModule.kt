@@ -6,6 +6,7 @@ import app.paradigmatic.paradigmaticapp.data.local.MongoImpl
 import app.paradigmatic.paradigmaticapp.data.local.PreferencesImpl
 import app.paradigmatic.paradigmaticapp.data.remote.api.CurrencyApiServiceImpl
 import app.paradigmatic.paradigmaticapp.data.remote.api.PostApi
+import app.paradigmatic.paradigmaticapp.data.room.getRoomDatabase
 import app.paradigmatic.paradigmaticapp.domain.CurrencyApiService
 import app.paradigmatic.paradigmaticapp.domain.MongoRepository
 import app.paradigmatic.paradigmaticapp.domain.PreferencesRepository
@@ -48,6 +49,11 @@ val sharedModule = module {
     }
     factory { PostViewModel(
             database = get()
+        )
+    }
+
+    single { getRoomDatabase(
+            builder = get()
         )
     }
 }
