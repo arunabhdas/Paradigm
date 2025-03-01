@@ -36,7 +36,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import app.paradigmatic.paradigmaticapp.presentation.meme.MemeView
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.draw.alpha
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -93,7 +95,11 @@ class TabFourScreen(
                         modifier = Modifier.align(Alignment.CenterHorizontally)
                             .background(surfaceContainerDark)
                     ) {
-                        Text(text = "Sort by favorite")
+                        Icon(
+                            modifier = Modifier.alpha(if(sortedByFavorite.value) 1f else 0.38f),
+                            imageVector = Icons.Default.Star,
+                            contentDescription = "Sorting Icon"
+                        )
                     }
                     Spacer(modifier = Modifier.height(16.dp))
                     memes.DisplayResult(
