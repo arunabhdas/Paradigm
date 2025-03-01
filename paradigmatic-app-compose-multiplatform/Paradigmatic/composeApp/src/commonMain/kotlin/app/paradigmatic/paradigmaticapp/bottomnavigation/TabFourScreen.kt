@@ -88,8 +88,8 @@ class TabFourScreen(
                                             bottom = it.calculateBottomPadding()
                                         ),
                                     verticalArrangement = Arrangement.spacedBy(12.dp)
-                                ) {
-
+                                ){
+                                    
                                 }
                             } else {
                                 ErrorView()
