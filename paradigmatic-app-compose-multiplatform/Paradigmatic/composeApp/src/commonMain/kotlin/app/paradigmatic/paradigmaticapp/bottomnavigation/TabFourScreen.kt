@@ -33,17 +33,23 @@ import org.koin.core.component.KoinComponent
 import app.paradigmatic.paradigmaticapp.presentation.screen.LoadingView
 import app.paradigmatic.paradigmaticapp.presentation.screen.ErrorView
 import androidx.compose.foundation.lazy.LazyColumn
-
+import app.paradigmatic.paradigmaticapp.presentation.meme.MemeView
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class TabFourScreen(
-    onMemeSelect: (Int) -> Unit,
-    onCreateClick: () -> Unit
 ): Screen, KoinComponent {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.current
+        val scope = rememberCoroutineScope()
+        val listState = rememberLazyListState()
+
         val viewModel = koinViewModel<MemeViewModel>()
         val memes by viewModel.memes
         val sortedByFavorite = viewModel.sortedByFavorite
@@ -72,7 +78,22 @@ class TabFourScreen(
                         modifier = Modifier.align(Alignment.CenterHorizontally)
                             .background(surfaceContainerDark)
                     ) {
-                        Text(text = "View Memes")
+                        Text(text = "Add Memes to Portfolio")
+                    }
+                    Button(
+                        onClick = {
+                            if (memes.isSucces() && memes.getSuccessData().size >= 2) {
+                                viewModel.toggleSortByFavorite()
+                                scope.launch {
+                                    delay(100)
+                                    listState.animateScrollToItem(0)
+                                }
+                            }
+                        },
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                            .background(surfaceContainerDark)
+                    ) {
+                        Text(text = "Sort by favorite")
                     }
                     Spacer(modifier = Modifier.height(16.dp))
                     memes.DisplayResult(
@@ -89,7 +110,15 @@ class TabFourScreen(
                                         ),
                                     verticalArrangement = Arrangement.spacedBy(12.dp)
                                 ){
-                                    
+                                    items(
+                                        items = data,
+                                        key = { it._id }
+                                    ) {
+                                        MemeView(
+                                            meme = it,
+                                            onClick = { /* TODO-FIXME-IMPLEMENT */ }
+                                        )
+                                    }
                                 }
                             } else {
                                 ErrorView()
