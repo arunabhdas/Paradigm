@@ -87,7 +87,7 @@ class BottomNavigationMainScreen : Screen {
                     3 -> Navigator(TabFourScreen()) { navigator ->
                        SlideTransition(navigator)
                     }
-                    4 -> TabFiveScreen()
+                    4 -> TabFiveScreen().Content()
                 }
             }
         }
