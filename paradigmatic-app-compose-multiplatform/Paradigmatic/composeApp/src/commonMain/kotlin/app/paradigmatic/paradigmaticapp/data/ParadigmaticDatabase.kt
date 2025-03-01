@@ -57,6 +57,9 @@ class ParadigmaticDatabase (
             PostApiRequestState.Error(e.message.toString())
         }
     }
+
+
+
     private fun isDataStale(): Boolean {
         val savedTimestamp = Instant.fromEpochMilliseconds(
             settings.getLong(FRESH_DATA_KEY, defaultValue = 0L)
