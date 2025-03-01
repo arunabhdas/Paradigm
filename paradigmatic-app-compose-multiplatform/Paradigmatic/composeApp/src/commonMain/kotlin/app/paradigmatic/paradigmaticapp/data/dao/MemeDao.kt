@@ -33,7 +33,7 @@ interface MemeDao {
     @Query("SELECT * FROM meme")
     fun readAllBooks(): Flow<List<Meme>>
 
-    @Query("UPDATE meme SET isFavorite = :isFavorite WHERE _id = :meme")
+    @Query("UPDATE meme SET isFavorite = :isFavorite WHERE _id = :memeId")
     suspend fun setFavoriteMeme(isFavorite: Boolean, memeId: Int)
 
     @Transaction

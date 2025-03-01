@@ -43,6 +43,7 @@ room = "2.7.0-rc01"
 ksp = "2.0.20-1.0.25"
 sqlite = "2.5.0-rc01"
 navigationRuntimeAndroidVersion = "2.9.0-alpha07"
+roomCommonJvm = "2.7.0-rc01"
 [libraries]
 
 landscapist-coil3 = { module = "com.github.skydoves:landscapist-coil3", version.ref = "landscapist"}
@@ -108,6 +109,7 @@ sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sql
 firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
 androidx-lifecycle-viewmodel-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-android", version.ref = "lifecycleViewmodelAndroid" }
 navigation-runtime-android = { group = "androidx.navigation", name = "navigation-runtime-android", version.ref = "navigationRuntimeAndroidVersion" }
+androidx-room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
