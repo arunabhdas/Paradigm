@@ -1,6 +1,5 @@
 package app.paradigmatic.paradigmaticapp.data
 
-import androidx.compose.ui.graphics.CloseSegment
 import app.paradigmatic.paradigmaticapp.data.local.LocalDatabase
 import app.paradigmatic.paradigmaticapp.data.remote.api.PostApi
 import app.paradigmatic.paradigmaticapp.domain.model.PostApiRequestState
@@ -12,7 +11,7 @@ import app.paradigmatic.paradigmaticapp.domain.model.Post
 
 const val FRESH_DATA_KEY = "freshDataTimestamp"
 
-class ParadigmaticDatabaseSdk (
+class ParadigmaticDatabase (
     private val api: PostApi,
     private val database: LocalDatabase,
     private val settings: Settings

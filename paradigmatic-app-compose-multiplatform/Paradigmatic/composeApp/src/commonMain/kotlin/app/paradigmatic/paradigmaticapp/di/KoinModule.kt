@@ -1,6 +1,6 @@
 package app.paradigmatic.paradigmaticapp.di
 
-import app.paradigmatic.paradigmaticapp.data.ParadigmaticDatabaseSdk
+import app.paradigmatic.paradigmaticapp.data.ParadigmaticDatabase
 import app.paradigmatic.paradigmaticapp.data.local.LocalDatabase
 import app.paradigmatic.paradigmaticapp.data.local.MongoImpl
 import app.paradigmatic.paradigmaticapp.data.local.PreferencesImpl
@@ -39,15 +39,15 @@ val sharedModule = module {
     ) }
     single<Settings> { Settings() }
 
-    single<ParadigmaticDatabaseSdk> {
-        ParadigmaticDatabaseSdk(
+    single<ParadigmaticDatabase> {
+        ParadigmaticDatabase(
             api = get(),
             database = get(),
             settings = get()
         )
     }
     factory { PostViewModel(
-            sdk = get()
+            database = get()
         )
     }
 }

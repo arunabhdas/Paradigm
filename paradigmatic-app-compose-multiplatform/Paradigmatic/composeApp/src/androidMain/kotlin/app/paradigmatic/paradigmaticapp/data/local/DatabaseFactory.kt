@@ -5,6 +5,8 @@ import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import app.paradigmatic.paradigmaticapp.ParadigmaticDatabase
 
+
+// SQLDelight & Ktor (Compose Multiplatform)
 class AndroidDatabaseDriverFactory (
     private val context: Context
 ): DatabaseDriverFactory {

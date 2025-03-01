@@ -1,8 +1,8 @@
 package app.paradigmatic.paradigmaticapp.data.local
 
 import app.cash.sqldelight.db.SqlDriver
-import app.paradigmatic.paradigmaticapp.ParadigmaticDatabase
 import app.paradigmatic.paradigmaticapp.domain.model.Post
+import app.paradigmatic.paradigmaticapp.data.ParadigmaticDatabase
 
 interface DatabaseDriverFactory {
     fun createDriver(): SqlDriver
@@ -11,7 +11,7 @@ interface DatabaseDriverFactory {
 class LocalDatabase(
     databaseDriverFactory: DatabaseDriverFactory
 ) {
-    private val database = ParadigmaticDatabase(
+    private val database = app.paradigmatic.paradigmaticapp.ParadigmaticDatabase(
         databaseDriverFactory.createDriver()
     )
     private val query = database.paradigmaticDatabaseQueries

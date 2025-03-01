@@ -3,7 +3,7 @@ package app.paradigmatic.paradigmaticapp.presentation.viewmodel
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import app.paradigmatic.paradigmaticapp.data.ParadigmaticDatabaseSdk
+import app.paradigmatic.paradigmaticapp.data.ParadigmaticDatabase
 import app.paradigmatic.paradigmaticapp.domain.model.Post
 import app.paradigmatic.paradigmaticapp.domain.model.PostApiRequestState
 import cafe.adriel.voyager.core.model.ScreenModel
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 typealias CachedPosts = MutableState<PostApiRequestState<List<Post>>>
 
 class PostViewModel (
-    private val sdk: ParadigmaticDatabaseSdk
+    private val database: ParadigmaticDatabase
 ): ScreenModel {
 
     /* TODO-FIXME-CLEANUP
@@ -25,7 +25,7 @@ class PostViewModel (
 
     init {
         screenModelScope.launch {
-           _allPosts.value = sdk.getAllPosts()
+           _allPosts.value = database.getAllPosts()
         }
     }
 }

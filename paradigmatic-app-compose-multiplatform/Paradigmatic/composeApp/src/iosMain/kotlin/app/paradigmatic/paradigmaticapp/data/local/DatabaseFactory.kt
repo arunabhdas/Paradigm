@@ -5,6 +5,7 @@ import app.cash.sqldelight.driver.native.NativeSqliteDriver
 import app.paradigmatic.paradigmaticapp.ParadigmaticDatabase
 import co.touchlab.sqliter.native.NativeStatement
 
+// SQLDelight & Ktor (Compose Multiplatform)
 class IOSDatabaseDriverFactory(): DatabaseDriverFactory {
     override fun createDriver(): SqlDriver {
         return NativeSqliteDriver(
