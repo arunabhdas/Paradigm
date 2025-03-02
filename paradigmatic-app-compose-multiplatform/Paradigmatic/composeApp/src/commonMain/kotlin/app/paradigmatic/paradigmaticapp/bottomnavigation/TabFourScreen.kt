@@ -80,7 +80,7 @@ class TabFourScreen(
                         modifier = Modifier.align(Alignment.CenterHorizontally)
                             .background(surfaceContainerDark)
                     ) {
-                        Text(text = "Add Memes to Portfolio")
+                        Text(text = "Manage Memes")
                     }
                     Button(
                         onClick = {
