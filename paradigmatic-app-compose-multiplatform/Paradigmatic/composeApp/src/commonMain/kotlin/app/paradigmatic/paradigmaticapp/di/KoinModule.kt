@@ -13,6 +13,7 @@ import app.paradigmatic.paradigmaticapp.domain.PreferencesRepository
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.HomeViewModel
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.MemeViewModel
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.PostViewModel
+import app.paradigmatic.paradigmaticapp.presentation.viewmodel.ManageViewModel
 import org.koin.dsl.module
 import com.russhwolf.settings.Settings
 import org.koin.core.KoinApplication
@@ -60,6 +61,12 @@ val sharedModule = module {
 
     factory {
         MemeViewModel(
+            database = get()
+        )
+    }
+
+    factory {
+        ManageViewModel(
             database = get()
         )
     }

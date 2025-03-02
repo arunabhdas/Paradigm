@@ -1,7 +1,5 @@
 package app.paradigmatic.paradigmaticapp.presentation.viewmodel
 
-import androidx.compose.runtime.mutableStateListOf
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import app.paradigmatic.paradigmaticapp.data.room.MemeDatabase
 import androidx.compose.runtime.mutableStateOf
@@ -13,8 +11,7 @@ import kotlinx.coroutines.launch
 const val IMAGE_URL = "https://mezza9.app/placeholder.jpg"
 
 class ManageViewModel(
-    private val database: MemeDatabase,
-    savedStateHandle: SavedStateHandle
+    private val database: MemeDatabase
 
 ): ViewModel() {
     val selectedBookId = 0
