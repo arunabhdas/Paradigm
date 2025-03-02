@@ -38,7 +38,7 @@ class ManageViewModel(
         }
     }
 
-    fun insertBook(
+    fun insertMeme(
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) {
@@ -62,6 +62,43 @@ class ManageViewModel(
                                 creator = creatorField.value,
                                 isFavorite = false
                             ),
+                        )
+                    onSuccess()
+                } else {
+                    onError("Fields cannot be empty")
+                }
+            } catch (e: Exception) {
+                onError(e.toString())
+            }
+        }
+    }
+
+    fun updateMeme(
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        viewModelScope.launch {
+            try {
+                if (
+                    titleField.value.isNotEmpty() &&
+                    descriptionField.value.isNotEmpty() &&
+                    categoryField.value.isNotEmpty() &&
+                    tagsField.value.isNotEmpty() &&
+                    creatorField.value.isNotEmpty()
+                    ) {
+                    database.memeDao()
+                        .updateMeme(
+                            meme = Meme(
+                                _id = selectedBookId,
+                                image = IMAGE_URL,
+                                title = titleField.value,
+                                description = descriptionField.value,
+                                category = categoryField.value,
+                                tags = tagsField.value,
+                                creator = creatorField.value,
+                                isFavorite = database.memeDao()
+                                    .getMemeById(selectedBookId).isFavorite
+                            )
                         )
                     onSuccess()
                 } else {
