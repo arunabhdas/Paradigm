@@ -12,6 +12,6 @@ data class Meme (
     val description: String,
     val isFavorite: Boolean,
     val category: String,
-    val tags: String,
+    val tags: List<String>,
     val creator: String
 )
