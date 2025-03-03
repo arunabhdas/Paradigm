@@ -4,6 +4,12 @@
 
 
 ## Screenshots
+![Screenshot](https://github.com/arunabhdas/Paradigmatic/blob/main/screenshots/screenshot_2_1.png?raw=true)
+
+![Screenshot](https://github.com/arunabhdas/Paradigmatic/blob/main/screenshots/screenshot_2_2.png?raw=true)
+
+![Screenshot](https://github.com/arunabhdas/Paradigmatic/blob/main/screenshots/screenshot_2_3.png?raw=true)
+
 ![Screenshot](https://github.com/arunabhdas/Paradigmatic/blob/main/screenshots/screenshot_4.png?raw=true)
 
 ![Screenshot](https://github.com/arunabhdas/Paradigmatic/blob/main/screenshots/screenshot_1.png?raw=true)
