@@ -70,10 +70,18 @@ class TabFourScreenManage(
                     },
                     actions = {
                         IconButton(onClick = {
-                            viewModel.insertMeme(
-                                onSuccess = { navigator?.pop() },
-                                onError = { println(it) }
-                            )
+                            if (number == -1) {
+                                viewModel.insertMeme(
+                                    onSuccess = { navigator?.pop() },
+                                    onError = { println(it) }
+                                )
+                            } else {
+                                viewModel.updateMeme(
+                                    onSuccess = {},
+                                    onError = { }
+                                )
+                            }
+
                         }) {
                             Icon(
                                 imageVector = Icons.Default.Add,

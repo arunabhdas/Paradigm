@@ -89,7 +89,7 @@ class TabFourScreen(
                         modifier = Modifier.align(Alignment.CenterHorizontally)
                             .background(surfaceContainerDark)
                     ) {
-                        Text(text = "Management Dashboard")
+                        Text(text = "Deficiency Management Dashboard")
                     }
                     Button(
                         onClick = {

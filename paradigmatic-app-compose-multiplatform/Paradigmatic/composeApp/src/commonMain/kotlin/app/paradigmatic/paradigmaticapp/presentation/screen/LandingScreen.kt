@@ -67,8 +67,14 @@ class LandingScreen(): Screen{
                     modifier = Modifier.fillMaxWidth()
                 )
                 */
-                Spacer(modifier = Modifier.height(8.dp))
-
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "Privacy focused, agentic AI platform for logistics and property management",
+                    color = Color.White,
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
+                Spacer(modifier = Modifier.height(4.dp))
                 Button(
                     onClick = {
                         navigator?.push(BottomNavigationMainScreen())
