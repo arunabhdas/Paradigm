@@ -28,13 +28,13 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import org.koin.compose.viewmodel.koinViewModel
 
-class TabFourScreenManage(
-    val number: Int,
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TabFourScreenManage(
+    number: Int,
     onBackClick: () -> Unit
 ) : Screen {
     @OptIn(ExperimentalMaterial3Api::class)
-    @Composable
-    override fun Content() {
         val navigator = LocalNavigator.current
         val viewModel = koinViewModel<ManageViewModel>()
 
@@ -47,30 +47,97 @@ class TabFourScreenManage(
 
         Scaffold(
             topBar = {
-
-            },
-        ) {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Create,
-                        contentDescription = "Detail",
-                        modifier = Modifier.size(48.dp)
+                TopAppBar(
+                    title = {
+                        Text(
+                            text = if (id == -1) "Create"
+                            else "Update"
+                        )
+                    },
+                    navigationIcon = {
+                        IconButton(onClick = onBackClick) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Default.ArrowBack,
+                                contentDescription = "Back arrow icon"
+                            )
+                        }
+                    },
+                    actions = {
+                        IconButton(onClick = {
+                            if (id == -1) {
+                                viewModel.insertMeme(
+                                    onSuccess = onBackClick,
+                                    onError = { println(it) }
+                                )
+                            } else {
+                                viewModel.updateMeme(
+                                    onSuccess = onBackClick,
+                                    onError = { println(it) }
+                                )
+                            }
+                        }) {
+                            Icon(
+                                imageVector = if (id == -1) Icons.Default.Add
+                                else Icons.Default.Check,
+                                contentDescription = null
+                            )
+                        }
+                    }
+                )
+            }
+        ) { padding ->
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(
+                        top = padding.calculateTopPadding(),
+                        bottom = padding.calculateBottomPadding()
                     )
-
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text("Details Screen ($number)")
-                }
+                    .padding(all = 12.dp)
+                    .verticalScroll(rememberScrollState())
+            ) {
+                TextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    value = imageField,
+                    onValueChange = { imageField = it },
+                    placeholder = { Text(text = "Image") }
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                TextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    value = titleField,
+                    onValueChange = { titleField = it },
+                    placeholder = { Text(text = "Title") }
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                TextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    value = summaryField,
+                    onValueChange = { summaryField = it },
+                    placeholder = { Text(text = "Summary") }
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                TextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    value = categoryField,
+                    onValueChange = { categoryField = it },
+                    placeholder = { Text(text = "Category") }
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                TextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    value = tagsField,
+                    onValueChange = { tagsField = it },
+                    placeholder = { Text(text = "Tags") }
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                TextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    value = authorField,
+                    onValueChange = { authorField = it },
+                    placeholder = { Text(text = "Author") }
+                )
             }
         }
-
-
-    }
 }
 
