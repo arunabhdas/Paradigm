@@ -11,10 +11,10 @@ import kotlinx.coroutines.launch
 const val IMAGE_URL = "https://mezza9.app/placeholder.jpg"
 
 class ManageViewModel(
-    private val database: MemeDatabase
+    private val database: MemeDatabase,
+    private val selectedMemeId: Int
 
 ): ViewModel() {
-    val selectedBookId = 0
     var imageField = mutableStateOf(IMAGE_URL)
     var titleField = mutableStateOf("")
     var descriptionField = mutableStateOf("")
@@ -24,13 +24,13 @@ class ManageViewModel(
 
     init {
         viewModelScope.launch {
-            if (selectedBookId != -1) {
-                val selectedBook = database.memeDao().getMemeById(selectedBookId)
-                titleField.value = selectedBook?.title ?: ""
-                descriptionField.value = selectedBook?.description ?: ""
-                categoryField.value = selectedBook?.category ?: ""
-                tagsField.value = selectedBook?.tags ?: ""
-                creatorField.value = selectedBook?.creator ?: ""
+            if (selectedMemeId != -1) {
+                val selectedMeme = database.memeDao().getMemeById(selectedMemeId)
+                titleField.value = selectedMeme?.title ?: ""
+                descriptionField.value = selectedMeme?.description ?: ""
+                categoryField.value = selectedMeme?.category ?: ""
+                tagsField.value = selectedMeme?.tags ?: ""
+                creatorField.value = selectedMeme?.creator ?: ""
             }
         }
     }
@@ -86,7 +86,7 @@ class ManageViewModel(
                     database.memeDao()
                         .updateMeme(
                             meme = Meme(
-                                _id = selectedBookId,
+                                _id = selectedMemeId,
                                 image = IMAGE_URL,
                                 title = titleField.value,
                                 description = descriptionField.value,
@@ -94,7 +94,7 @@ class ManageViewModel(
                                 tags = tagsField.value,
                                 creator = creatorField.value,
                                 isFavorite = database.memeDao()
-                                    .getMemeById(selectedBookId)?.isFavorite ?: false
+                                    .getMemeById(selectedMemeId)?.isFavorite ?: false
                             )
                         )
                     onSuccess()

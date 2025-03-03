@@ -19,6 +19,7 @@ import com.russhwolf.settings.Settings
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
+import org.koin.core.parameter.parametersOf
 
 expect val targetModule: Module
 
@@ -65,9 +66,10 @@ val sharedModule = module {
         )
     }
 
-    factory {
+    factory { parameters ->
         ManageViewModel(
-            database = get()
+            database = get(),
+            selectedMemeId = parameters.get()
         )
     }
 }
