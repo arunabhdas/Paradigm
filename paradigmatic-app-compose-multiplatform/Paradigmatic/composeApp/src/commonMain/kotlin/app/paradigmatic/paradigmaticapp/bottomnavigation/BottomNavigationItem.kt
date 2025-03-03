@@ -50,8 +50,8 @@ sealed class BottomNavigationItem(
     )
 
     data object TabFourItem: BottomNavigationItem(
-        title = "Porfolio",
-        route = "portfolio",
+        title = "Dashboard",
+        route = "dashboard",
         selectedIcon = Icons.Default.Notifications,
         unselectedIcon = Icons.Outlined.Notifications,
         hasNews = false,
