@@ -145,6 +145,11 @@ class TabFourScreenDetail(
                     text = selectedMeme?.creator ?: "",
                 )
                 Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    modifier = Modifier.alpha(0.5f),
+                    text = selectedMeme?.tags ?: "",
+                )
+                /* TODO-FIXME
                 FlowRow(
                     modifier = Modifier.fillMaxWidth(),
                 ) {
@@ -156,6 +161,7 @@ class TabFourScreenDetail(
                         Spacer(modifier = Modifier.width(6.dp))
                     }
                 }
+                */
             }
         }
     }
