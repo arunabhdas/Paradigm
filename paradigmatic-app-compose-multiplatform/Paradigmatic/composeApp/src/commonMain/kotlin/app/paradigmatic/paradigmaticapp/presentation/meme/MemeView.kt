@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Alignment
@@ -27,64 +28,74 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.material3.Text
+import androidx.compose.ui.text.font.FontWeight
 
 @Composable
 fun MemeView(
-   meme: Meme,
-   onClick: () -> Unit
+    meme: Meme,
+    onClick: () -> Unit
 ) {
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .clip(RoundedCornerShape(size = 12.dp))
-        .clickable {
-            onClick()
-        }
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(size = 12.dp))
+            .clickable { onClick() }
+            .padding(8.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(modifier = Modifier.size(120.dp)) {
+        Box(
+            modifier = Modifier
+                .size(120.dp)
+                .clip(RoundedCornerShape(size = 12.dp))
+        ) {
             CoilImage(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(size = 12.dp))
-                    .size(120.dp),
+                modifier = Modifier.fillMaxSize(),
                 imageModel = { meme.image },
                 imageOptions = ImageOptions(
                     contentScale = ContentScale.Crop,
                     alignment = Alignment.Center
                 )
             )
+
             if (meme.isFavorite) {
-                Row(
+                Box(
                     modifier = Modifier
-                        .padding(all = 6.dp)
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.End
+                        .fillMaxSize()
+                        .padding(8.dp),
+                    contentAlignment = Alignment.TopEnd
                 ) {
                     Icon(
                         imageVector = Icons.Default.Star,
-                        contentDescription = "Star Icon",
+                        contentDescription = "Favorite",
                         tint = Color.Yellow
                     )
                 }
             }
-            Spacer(modifier = Modifier.height(12.dp))
-            Column(
-                modifier = Modifier.padding(vertical = 6.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.Start
-            ) {
-                Text(
-                    text = meme.title,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis,
-                    fontSize = MaterialTheme.typography.bodyMedium.fontSize
-                )
+        }
 
-                Text(
-                    text = meme.description,
-                    maxLines = 3,
-                    overflow = TextOverflow.Ellipsis,
-                    fontSize = MaterialTheme.typography.bodyMedium.fontSize
-                )
-            }
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .padding(start = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            Text(
+                text = meme.title,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold
+            )
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Text(
+                text = meme.description,
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 }
