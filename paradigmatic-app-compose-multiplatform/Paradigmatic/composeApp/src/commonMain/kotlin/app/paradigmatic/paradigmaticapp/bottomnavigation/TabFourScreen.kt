@@ -126,7 +126,7 @@ class TabFourScreen(
                                     ) {
                                         MemeView(
                                             meme = it,
-                                            onClick = { navigator.push(TabFourScreenMange(number = -1)) }
+                                            onClick = { navigator?.push(TabFourScreenManage(number = 0)) }
                                         )
                                     }
                                 }
