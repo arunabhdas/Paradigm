@@ -59,7 +59,9 @@ class TabFourScreen(
 
         Scaffold (
             floatingActionButton = {
-                FloatingActionButton(onClick = {}){
+                FloatingActionButton(onClick = {
+                    navigator?.push(TabFourScreenManage(number = -1))
+                }){
 
                 }
             }
@@ -76,7 +78,7 @@ class TabFourScreen(
                     Button(
                         onClick = {
                             navigator?.push(TabFourScreenManage(
-                                number = 0
+                                number = -1
                             ))
                         },
                         modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -124,7 +126,7 @@ class TabFourScreen(
                                     ) {
                                         MemeView(
                                             meme = it,
-                                            onClick = { /* TODO-FIXME-IMPLEMENT */ }
+                                            onClick = { navigator.push(TabFourScreenMange(number = -1)) }
                                         )
                                     }
                                 }

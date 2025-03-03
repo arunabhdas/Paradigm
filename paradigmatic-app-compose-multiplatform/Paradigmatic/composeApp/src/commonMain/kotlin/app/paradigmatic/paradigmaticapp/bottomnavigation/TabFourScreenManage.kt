@@ -57,7 +57,7 @@ class TabFourScreenManage(
                 TopAppBar(
                     title = {
                         Text(
-                            text = "Create"
+                            text = if (number == -1) "Create" else "Update"
                         )
                     },
                     navigationIcon = {

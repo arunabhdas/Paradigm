@@ -26,11 +26,11 @@ class ManageViewModel(
         viewModelScope.launch {
             if (selectedBookId != -1) {
                 val selectedBook = database.memeDao().getMemeById(selectedBookId)
-                titleField.value = selectedBook.title
-                descriptionField.value = selectedBook.description
-                categoryField.value = selectedBook.category
-                tagsField.value = selectedBook.tags
-                creatorField.value = selectedBook.creator
+                titleField.value = selectedBook?.title ?: ""
+                descriptionField.value = selectedBook?.description ?: ""
+                categoryField.value = selectedBook?.category ?: ""
+                tagsField.value = selectedBook?.tags ?: ""
+                creatorField.value = selectedBook?.creator ?: ""
             }
         }
     }
@@ -94,7 +94,7 @@ class ManageViewModel(
                                 tags = tagsField.value,
                                 creator = creatorField.value,
                                 isFavorite = database.memeDao()
-                                    .getMemeById(selectedBookId).isFavorite
+                                    .getMemeById(selectedBookId)?.isFavorite ?: false
                             )
                         )
                     onSuccess()

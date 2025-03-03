@@ -19,7 +19,7 @@ interface MemeDao {
 
     @Transaction
     @Query("SELECT * FROM meme WHERE _id = :memeId")
-    suspend fun getMemeById(memeId: Int): Meme
+    suspend fun getMemeById(memeId: Int): Meme?
 
     @Transaction
     @Query("SELECT * FROM meme WHERE _id = :memeId")
