@@ -34,6 +34,11 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import org.koin.compose.viewmodel.koinViewModel
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 
 class TabFourScreenManage(
@@ -53,7 +58,13 @@ class TabFourScreenManage(
         var tagsField by viewModel.tagsField
         var creatorField by viewModel.creatorField
 
+        val snackBarHostState = remember { SnackbarHostState() }
+        val localCoroutineScope = rememberCoroutineScope()
+
         Scaffold(
+            snackbarHost = {
+                SnackbarHost(snackBarHostState)
+            },
             topBar = {
                 TopAppBar(
                     title = {
@@ -73,8 +84,17 @@ class TabFourScreenManage(
                         IconButton(onClick = {
                             if (number == -1) {
                                 viewModel.insertMeme(
-                                    onSuccess = { navigator?.pop() },
-                                    onError = { println(it) }
+                                    onSuccess = {
+                                        localCoroutineScope.launch {
+                                            snackBarHostState.showSnackbar("Insert Success")
+                                        }
+                                        navigator?.pop()
+                                    },
+                                    onError = {
+                                        localCoroutineScope.launch {
+                                            snackBarHostState.showSnackbar("Insert Error")
+                                        }
+                                    }
                                 )
                             } else {
                                 viewModel.updateMeme(
