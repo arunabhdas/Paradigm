@@ -33,14 +33,15 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import org.koin.compose.viewmodel.koinViewModel
 import androidx.compose.foundation.layout.fillMaxWidth
+import org.koin.core.component.KoinComponent
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TabFourScreenManage(
-    number: Int,
-    onBackClick: () -> Unit
-) {
+class TabFourScreenManage(
+    private val number: Int
+) : Screen, KoinComponent {
+    
     @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    override fun Content() {
         val navigator = LocalNavigator.current
         val viewModel = koinViewModel<ManageViewModel>()
 
@@ -60,7 +61,7 @@ fun TabFourScreenManage(
                         )
                     },
                     navigationIcon = {
-                        IconButton(onClick = onBackClick) {
+                        IconButton(onClick = { navigator?.pop() }) {
                             Icon(
                                 imageVector = Icons.Default.ArrowBack,
                                 contentDescription = "Back arrow icon"
@@ -70,7 +71,7 @@ fun TabFourScreenManage(
                     actions = {
                         IconButton(onClick = {
                             viewModel.insertMeme(
-                                onSuccess = onBackClick,
+                                onSuccess = { navigator?.pop() },
                                 onError = { println(it) }
                             )
                         }) {
@@ -136,5 +137,5 @@ fun TabFourScreenManage(
                 )
             }
         }
+    }
 }
-

@@ -76,8 +76,7 @@ class TabFourScreen(
                     Button(
                         onClick = {
                             navigator?.push(TabFourScreenManage(
-                                number = 0,
-                                onBackClick = {}
+                                number = 0
                             ))
                         },
                         modifier = Modifier.align(Alignment.CenterHorizontally)
