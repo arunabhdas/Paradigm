@@ -39,7 +39,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 fun TabFourScreenManage(
     number: Int,
     onBackClick: () -> Unit
-) : Screen {
+) {
     @OptIn(ExperimentalMaterial3Api::class)
         val navigator = LocalNavigator.current
         val viewModel = koinViewModel<ManageViewModel>()
