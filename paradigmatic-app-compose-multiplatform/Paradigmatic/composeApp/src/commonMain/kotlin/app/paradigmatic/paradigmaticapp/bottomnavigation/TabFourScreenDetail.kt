@@ -30,7 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import app.paradigmatic.paradigmaticapp.presentation.viewmodel.DetailsViewModel
+import app.paradigmatic.paradigmaticapp.presentation.viewmodel.DetailViewModel
 import com.skydoves.landscapist.coil3.CoilImage
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
@@ -39,7 +39,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.FlowRow
 
 class TabFourScreenDetail(
     val number: Int,
@@ -50,7 +49,7 @@ class TabFourScreenDetail(
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.current
-        val viewModel = koinViewModel<DetailsViewModel>(parameters = { parametersOf(number) })
+        val viewModel = koinViewModel<DetailViewModel>(parameters = { parametersOf(number) })
         val selectedMeme by viewModel.selectedMeme
         val isFavorite by viewModel.isFavorite
         Scaffold(
@@ -67,6 +66,9 @@ class TabFourScreenDetail(
                         IconButton(
                             onClick = {
                                 viewModel.setFavoriteMeme()
+                                navigator?.push(TabFourScreenManage(
+                                    number = -1
+                                ))
                             }
                         ) {
                             Icon(
@@ -78,7 +80,11 @@ class TabFourScreenDetail(
                         }
                         IconButton(
                             onClick = {
-                                viewModel.deleteMeme()
+                                // TODO-FIXME-BRINGBACK viewModel.deleteMeme()
+                                viewModel.setFavoriteMeme()
+                                navigator?.push(TabFourScreenManage(
+                                    number = number
+                                ))
                             }
                         ) {
                             Icon(

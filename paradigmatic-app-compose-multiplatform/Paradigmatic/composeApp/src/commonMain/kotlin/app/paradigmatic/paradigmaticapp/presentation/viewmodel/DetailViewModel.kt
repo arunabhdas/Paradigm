@@ -8,7 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class DetailsViewModel(
+class DetailViewModel(
     private val database: MemeDatabase,
     private val selectedMemeId: Int = 0
 ): ViewModel() {
@@ -26,13 +26,14 @@ class DetailsViewModel(
     init {
         viewModelScope.launch {
             if (selectedMemeId != -1) {
-                val selectedMeme = database.memeDao().getMemeById(selectedMemeId)
-                titleField.value = selectedMeme?.title ?: ""
-                descriptionField.value = selectedMeme?.description ?: ""
-                categoryField.value = selectedMeme?.category ?: ""
-                tagsField.value = selectedMeme?.tags ?: ""
-                creatorField.value = selectedMeme?.creator ?: ""
-                isFavorite.value = selectedMeme?.isFavorite ?: false
+                val meme = database.memeDao().getMemeById(selectedMemeId)
+                selectedMeme.value = meme
+                titleField.value = meme?.title ?: ""
+                descriptionField.value = meme?.description ?: ""
+                categoryField.value = meme?.category ?: ""
+                tagsField.value = meme?.tags ?: ""
+                creatorField.value = meme?.creator ?: ""
+                isFavorite.value = meme?.isFavorite ?: false
             }
         }
     }

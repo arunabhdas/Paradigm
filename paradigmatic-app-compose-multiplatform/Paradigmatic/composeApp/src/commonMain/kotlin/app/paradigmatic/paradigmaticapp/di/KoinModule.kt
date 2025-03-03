@@ -14,13 +14,12 @@ import app.paradigmatic.paradigmaticapp.presentation.viewmodel.HomeViewModel
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.MemeViewModel
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.PostViewModel
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.ManageViewModel
-import app.paradigmatic.paradigmaticapp.presentation.viewmodel.DetailsViewModel
+import app.paradigmatic.paradigmaticapp.presentation.viewmodel.DetailViewModel
 import org.koin.dsl.module
 import com.russhwolf.settings.Settings
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
-import org.koin.core.parameter.parametersOf
 
 expect val targetModule: Module
 
@@ -75,7 +74,7 @@ val sharedModule = module {
     }
 
     factory { parameters ->
-        DetailsViewModel(
+        DetailViewModel(
             database = get(),
             selectedMemeId = parameters.get()
         )

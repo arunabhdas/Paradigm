@@ -140,14 +140,25 @@ class TabFourScreen(
                                             modifier = Modifier
                                                 .fillMaxWidth()
                                                 .clickable{
-                                                    navigator?.push(TabFourScreenManage(number = meme._id))
+                                                    navigator?.push(TabFourScreenDetail(
+                                                        number = meme._id,
+                                                        onEditClick = {},
+                                                        onBackClick = {}
+                                                        )
+                                                    )
                                                 },
                                             elevation = CardDefaults.elevatedCardElevation(),
                                             shape = RoundedCornerShape(12.dp)
                                         ) {
                                             MemeView(
                                                 meme = meme,
-                                                onClick = { navigator?.push(TabFourScreenManage(number = meme._id)) }
+                                                onClick = { navigator?.push(TabFourScreenDetail(
+                                                    number = meme._id,
+                                                    onEditClick = {},
+                                                    onBackClick = {}
+                                                    )
+                                                )
+                                            }
                                             )
                                         }
 
