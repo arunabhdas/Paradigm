@@ -6,8 +6,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -15,6 +19,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -27,6 +32,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import org.koin.compose.viewmodel.koinViewModel
+import androidx.compose.foundation.layout.fillMaxWidth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,47 +44,38 @@ fun TabFourScreenManage(
         val navigator = LocalNavigator.current
         val viewModel = koinViewModel<ManageViewModel>()
 
-        val imageField by viewModel.imageField
+        var imageField by viewModel.imageField
         var titleField by viewModel.titleField
-        var description by viewModel.descriptionField
-        var category by viewModel.categoryField
-        var tags by viewModel.tagsField
-        var creator by viewModel.creatorField
+        var descriptionField by viewModel.descriptionField
+        var categoryField by viewModel.categoryField
+        var tagsField by viewModel.tagsField
+        var creatorField by viewModel.creatorField
 
         Scaffold(
             topBar = {
                 TopAppBar(
                     title = {
                         Text(
-                            text = if (id == -1) "Create"
-                            else "Update"
+                            text = "Create"
                         )
                     },
                     navigationIcon = {
                         IconButton(onClick = onBackClick) {
                             Icon(
-                                imageVector = Icons.AutoMirrored.Default.ArrowBack,
+                                imageVector = Icons.Default.ArrowBack,
                                 contentDescription = "Back arrow icon"
                             )
                         }
                     },
                     actions = {
                         IconButton(onClick = {
-                            if (id == -1) {
-                                viewModel.insertMeme(
-                                    onSuccess = onBackClick,
-                                    onError = { println(it) }
-                                )
-                            } else {
-                                viewModel.updateMeme(
-                                    onSuccess = onBackClick,
-                                    onError = { println(it) }
-                                )
-                            }
+                            viewModel.insertMeme(
+                                onSuccess = onBackClick,
+                                onError = { println(it) }
+                            )
                         }) {
                             Icon(
-                                imageVector = if (id == -1) Icons.Default.Add
-                                else Icons.Default.Check,
+                                imageVector = Icons.Default.Add,
                                 contentDescription = null
                             )
                         }
@@ -112,8 +109,8 @@ fun TabFourScreenManage(
                 Spacer(modifier = Modifier.height(12.dp))
                 TextField(
                     modifier = Modifier.fillMaxWidth(),
-                    value = summaryField,
-                    onValueChange = { summaryField = it },
+                    value = descriptionField,
+                    onValueChange = { descriptionField = it },
                     placeholder = { Text(text = "Summary") }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
@@ -133,8 +130,8 @@ fun TabFourScreenManage(
                 Spacer(modifier = Modifier.height(12.dp))
                 TextField(
                     modifier = Modifier.fillMaxWidth(),
-                    value = authorField,
-                    onValueChange = { authorField = it },
+                    value = creatorField,
+                    onValueChange = { creatorField = it },
                     placeholder = { Text(text = "Author") }
                 )
             }

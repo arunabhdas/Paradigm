@@ -75,7 +75,10 @@ class TabFourScreen(
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(
                         onClick = {
-                            navigator?.push(TabFourScreenManage(0))
+                            navigator?.push(TabFourScreenManage(
+                                number = 0,
+                                onBackClick = {}
+                            ))
                         },
                         modifier = Modifier.align(Alignment.CenterHorizontally)
                             .background(surfaceContainerDark)
