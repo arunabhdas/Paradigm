@@ -1,11 +1,13 @@
 package app.paradigmatic.paradigmaticapp.bottomnavigation
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -36,8 +38,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import app.paradigmatic.paradigmaticapp.presentation.meme.MemeView
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.draw.alpha
 import kotlinx.coroutines.delay
@@ -127,12 +132,25 @@ class TabFourScreen(
                                 ){
                                     items(
                                         items = data,
-                                        key = { it._id }
-                                    ) {
-                                        MemeView(
-                                            meme = it,
-                                            onClick = { navigator?.push(TabFourScreenManage(number = 0)) }
-                                        )
+                                        key = { meme ->
+                                            meme._id
+                                        }
+                                    ) { meme ->
+                                        ElevatedCard(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .clickable{
+                                                    navigator?.push(TabFourScreenManage(number = 0))
+                                                },
+                                            elevation = CardDefaults.elevatedCardElevation(),
+                                            shape = RoundedCornerShape(12.dp)
+                                        ) {
+                                            MemeView(
+                                                meme = meme,
+                                                onClick = { navigator?.push(TabFourScreenManage(number = 0)) }
+                                            )
+                                        }
+
                                     }
                                 }
                             } else {

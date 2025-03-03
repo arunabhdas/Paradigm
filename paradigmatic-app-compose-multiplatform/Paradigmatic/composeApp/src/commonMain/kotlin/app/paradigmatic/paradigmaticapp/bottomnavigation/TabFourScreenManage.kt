@@ -33,6 +33,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import org.koin.compose.viewmodel.koinViewModel
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.icons.filled.Check
 import org.koin.core.component.KoinComponent
 
 class TabFourScreenManage(
@@ -84,7 +85,8 @@ class TabFourScreenManage(
 
                         }) {
                             Icon(
-                                imageVector = Icons.Default.Add,
+                                imageVector = if (number == -1) Icons.Default.Add
+                                else Icons.Default.Check,
                                 contentDescription = null
                             )
                         }
