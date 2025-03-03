@@ -62,7 +62,10 @@ class TabFourScreen(
                 FloatingActionButton(onClick = {
                     navigator?.push(TabFourScreenManage(number = -1))
                 }){
-
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDesciption = "Add"
+                    )
                 }
             }
         ) {
