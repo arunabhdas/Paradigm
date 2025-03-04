@@ -34,6 +34,10 @@ import androidx.compose.ui.unit.sp
 import app.paradigmatic.paradigmaticapp.domain.model.Currency
 import app.paradigmatic.paradigmaticapp.domain.model.CurrencyApiRequestState
 import app.paradigmatic.paradigmaticapp.ui.theme.headerColor
+import app.paradigmatic.paradigmaticapp.ui.theme.primaryColor
+import app.paradigmatic.paradigmaticapp.ui.theme.primaryDark
+import app.paradigmatic.paradigmaticapp.ui.theme.secondaryDark
+import app.paradigmatic.paradigmaticapp.ui.theme.tertiaryDark
 import app.paradigmatic.paradigmaticapp.util.DoubleConverter
 import app.paradigmatic.paradigmaticapp.util.GetBebasFontFamily
 import app.paradigmatic.paradigmaticapp.util.calculateExchangeRate
@@ -137,8 +141,8 @@ fun HomeBody(
                 }
             },
             colors = ButtonDefaults.buttonColors(
-                containerColor = headerColor,
-                contentColor = Color.White
+                containerColor = primaryDark,
+                contentColor = Color.Black
             )
         ) {
             Text("Convert")
