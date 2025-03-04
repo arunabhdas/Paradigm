@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Button
@@ -64,6 +65,8 @@ class TabFourScreen(
 
 
         Scaffold (
+            modifier = Modifier
+                .fillMaxSize(),
             floatingActionButton = {
                 FloatingActionButton(onClick = {
                     navigator?.push(TabFourScreenManage(number = -1))
@@ -82,7 +85,7 @@ class TabFourScreen(
             ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
+                    verticalArrangement = Arrangement.Top
                 ) {
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(

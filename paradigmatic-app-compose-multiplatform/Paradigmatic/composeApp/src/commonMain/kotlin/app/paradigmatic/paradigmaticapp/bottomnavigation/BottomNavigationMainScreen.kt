@@ -1,7 +1,9 @@
 package app.paradigmatic.paradigmaticapp.bottomnavigation
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
@@ -31,6 +33,9 @@ class BottomNavigationMainScreen : Screen {
         var selectedIndex by remember { mutableStateOf(2) }
         
         Scaffold(
+            modifier = Modifier
+                .fillMaxSize()
+                .statusBarsPadding(),
             /* TODO-FIXME-CLEANUP
             topBar = {
                 TopAppBar(

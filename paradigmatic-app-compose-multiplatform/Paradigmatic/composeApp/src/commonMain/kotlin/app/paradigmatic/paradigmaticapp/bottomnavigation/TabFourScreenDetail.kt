@@ -5,10 +5,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -57,6 +60,8 @@ class TabFourScreenDetail(
         val selectedMeme by viewModel.selectedMeme
         val isFavorite by viewModel.isFavorite
         Scaffold(
+            modifier = Modifier
+                .fillMaxSize(),
             topBar = {
                 TopAppBar(
                     title = { Text(text = "Details")},
@@ -125,17 +130,12 @@ class TabFourScreenDetail(
                     }
 
                 )
-            },
-        )
-        { padding ->
+            }
+        ) { padding ->
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(start = 12.dp, end = 12.dp)
-                    .padding(
-                        top = padding.calculateTopPadding(),
-                        bottom = padding.calculateBottomPadding()
-                    )
+                    .padding(horizontal = 12.dp)
                     .verticalScroll(rememberScrollState())
             ) {
                 Box(
@@ -196,4 +196,3 @@ class TabFourScreenDetail(
         }
     }
 }
-
