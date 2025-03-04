@@ -141,6 +141,7 @@ class TabFourScreenDetail(
                 Box(
                     modifier = Modifier
                         .height(300.dp)
+                        .fillMaxSize()
                         .fillMaxWidth()
                 ) {
                     CoilImage(

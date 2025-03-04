@@ -1,5 +1,6 @@
 package app.paradigmatic.paradigmaticapp.bottomnavigation
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -26,11 +28,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import app.paradigmatic.paradigmaticapp.presentation.viewmodel.ManageViewModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
+import com.skydoves.landscapist.ImageOptions
+import com.skydoves.landscapist.coil3.CoilImage
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.component.KoinComponent
@@ -127,12 +134,15 @@ class TabFourScreenManage(
                     .padding(all = 12.dp)
                     .verticalScroll(rememberScrollState())
             ) {
+                /* TODO-FIXME-CLEANUP
                 TextField(
                     modifier = Modifier.fillMaxWidth(),
                     value = imageField,
                     onValueChange = { imageField = it },
                     placeholder = { Text(text = "Image") }
                 )
+                */
+
                 Spacer(modifier = Modifier.height(12.dp))
                 TextField(
                     modifier = Modifier.fillMaxWidth(),
@@ -168,6 +178,24 @@ class TabFourScreenManage(
                     onValueChange = { creatorField = it },
                     placeholder = { Text(text = "Builder") }
                 )
+                Spacer(modifier = Modifier.height(12.dp))
+                Box(
+                    modifier = Modifier
+                        .height(300.dp)
+                        .fillMaxSize()
+                        .fillMaxWidth()
+                ) {
+                    CoilImage(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(size = 12.dp))
+                            .fillMaxWidth(),
+                        imageModel = { imageField },
+                        imageOptions = ImageOptions(
+                            contentScale = ContentScale.Crop,
+                            alignment = Alignment.Center
+                        )
+                    )
+                }
             }
         }
     }
