@@ -122,7 +122,7 @@ class TabFourScreenDetail(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(all = 12.dp)
+                    .padding(start = 12.dp, end = 12.dp)
                     .padding(
                         top = padding.calculateTopPadding(),
                         bottom = padding.calculateBottomPadding()
