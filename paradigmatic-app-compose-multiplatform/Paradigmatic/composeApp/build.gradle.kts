@@ -51,6 +51,7 @@ kotlin {
 
             implementation(libs.timber)  // Add Timber for logging
             implementation(libs.koin.android)
+            implementation(libs.androidx.core.splashscreen)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
