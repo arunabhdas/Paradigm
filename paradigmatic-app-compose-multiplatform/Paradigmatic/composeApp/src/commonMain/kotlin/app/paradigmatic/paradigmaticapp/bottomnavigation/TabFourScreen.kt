@@ -87,6 +87,20 @@ class TabFourScreen(
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(
                         onClick = {
+                            /* TODO-FIXME-CLEANUP
+                            navigator?.push(TabFourScreenManage(
+                                number = -1
+                            ))
+                            */
+                        },
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                            .background(surfaceContainerDark)
+                    ) {
+                        Text(text = "Management Dashboard")
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Button(
+                        onClick = {
                             navigator?.push(TabFourScreenManage(
                                 number = -1
                             ))
@@ -94,7 +108,7 @@ class TabFourScreen(
                         modifier = Modifier.align(Alignment.CenterHorizontally)
                             .background(surfaceContainerDark)
                     ) {
-                        Text(text = "Management Dashboard")
+                        Text(text = "Add Item")
                     }
                     Button(
                         onClick = {
@@ -111,7 +125,7 @@ class TabFourScreen(
                     ) {
                         Icon(
                             modifier = Modifier.alpha(if(sortedByFavorite.value) 1f else 0.38f),
-                            imageVector = Icons.Default.Star,
+                            imageVector = Icons.Default.Add,
                             contentDescription = "Sorting Icon"
                         )
                     }
