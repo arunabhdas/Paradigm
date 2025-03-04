@@ -40,6 +40,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Favorite
 
@@ -61,6 +62,16 @@ class TabFourScreenDetail(
                     title = { Text(text = "Details")},
                     navigationIcon = {
                         IconButton(onClick = {
+                            navigator?.pop()
+                        }) {
+                            Icon(
+                                imageVector = Icons.Default.ArrowBack,
+                                contentDescription = "Back"
+                            )
+                        }
+                    },
+                    actions = {
+                        IconButton(onClick = {
                             navigator?.push(TabFourScreenManage(
                                 number = number
                             ))
@@ -70,8 +81,6 @@ class TabFourScreenDetail(
                                 contentDescription = "Edit icon"
                             )
                         }
-                    },
-                    actions = {
                         IconButton(
                             onClick = {
                                 navigator?.push(TabFourScreenManage(
