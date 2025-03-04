@@ -4,6 +4,8 @@
 
 
 ## Screenshots
+
+![Screencast](https://github.com/arunabhdas/Paradigmatic/blob/main/screenshots/screncast_1.gif)
 ![Screenshot](https://github.com/arunabhdas/Paradigmatic/blob/main/screenshots/screenshot_2_1.png?raw=true)
 
 ![Screenshot](https://github.com/arunabhdas/Paradigmatic/blob/main/screenshots/screenshot_2_2.png?raw=true)
