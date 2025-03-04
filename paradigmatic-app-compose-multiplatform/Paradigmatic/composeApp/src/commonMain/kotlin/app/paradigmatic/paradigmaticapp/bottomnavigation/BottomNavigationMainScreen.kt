@@ -31,6 +31,7 @@ class BottomNavigationMainScreen : Screen {
         var selectedIndex by remember { mutableStateOf(2) }
         
         Scaffold(
+            /* TODO-FIXME-CLEANUP
             topBar = {
                 TopAppBar(
                     title = { Text(text = "Paradigmatic") },
@@ -58,6 +59,7 @@ class BottomNavigationMainScreen : Screen {
                     }
                 )
             },
+            */
             bottomBar = {
                 NavigationBar {
                     listOf(

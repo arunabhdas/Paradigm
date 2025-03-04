@@ -59,8 +59,8 @@ sealed class BottomNavigationItem(
     )
 
     data object TabFiveItem: BottomNavigationItem(
-        title = "More",
-        route = "more",
+        title = "Profile",
+        route = "profile",
         selectedIcon = Icons.Default.AccountCircle,
         unselectedIcon = Icons.Outlined.AccountCircle,
         hasNews = false,
