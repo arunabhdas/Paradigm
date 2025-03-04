@@ -21,6 +21,7 @@ import com.skydoves.landscapist.ImageOptions
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Star
 import com.skydoves.landscapist.coil3.CoilImage
 import androidx.compose.material3.Icon
@@ -65,7 +66,7 @@ fun MemeView(
                     contentAlignment = Alignment.TopEnd
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Star,
+                        imageVector = Icons.Default.Favorite,
                         contentDescription = "Favorite",
                         tint = Color.Yellow
                     )
