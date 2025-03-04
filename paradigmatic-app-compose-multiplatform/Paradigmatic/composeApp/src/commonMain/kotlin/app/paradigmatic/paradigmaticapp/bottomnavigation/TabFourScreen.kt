@@ -71,7 +71,7 @@ class TabFourScreen(
                     Icon(
                         modifier = Modifier.alpha(if(sortedByFavorite.value) 1f else 0.38f),
                         imageVector = Icons.Default.Add,
-                        contentDescription = "Sorting Icon"
+                        contentDescription = "Add Icon"
                     )
                 }
             }
@@ -98,7 +98,7 @@ class TabFourScreen(
                     ) {
                         Text(text = "Management Dashboard")
                     }
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(4.dp))
                     Button(
                         onClick = {
                             navigator?.push(TabFourScreenManage(
@@ -110,6 +110,7 @@ class TabFourScreen(
                     ) {
                         Text(text = "Add Item")
                     }
+                    Spacer(modifier = Modifier.height(4.dp))
                     Button(
                         onClick = {
                             if (memes.isSucces() && memes.getSuccessData().size >= 2) {
@@ -125,11 +126,11 @@ class TabFourScreen(
                     ) {
                         Icon(
                             modifier = Modifier.alpha(if(sortedByFavorite.value) 1f else 0.38f),
-                            imageVector = Icons.Default.Add,
+                            imageVector = Icons.Default.Favorite,
                             contentDescription = "Sorting Icon"
                         )
                     }
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(4.dp))
                     memes.DisplayResult(
                         onLoading = { LoadingView() },
                         onError = { ErrorView(it) },
