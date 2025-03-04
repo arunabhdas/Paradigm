@@ -39,6 +39,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Favorite
 
@@ -73,10 +74,22 @@ class TabFourScreenDetail(
                     actions = {
                         IconButton(
                             onClick = {
-                                viewModel.setFavoriteMeme()
                                 navigator?.push(TabFourScreenManage(
                                     number = -1
                                 ))
+                            }
+                        ) {
+                            Icon(
+                                modifier = Modifier
+                                    .alpha(if (isFavorite) 1f else 0.38f),
+                                imageVector = Icons.Default.Add,
+                                contentDescription = "Star icon"
+                            )
+                        }
+                        IconButton(
+                            onClick = {
+                                viewModel.setFavoriteMeme()
+                                navigator?.pop()
                             }
                         ) {
                             Icon(

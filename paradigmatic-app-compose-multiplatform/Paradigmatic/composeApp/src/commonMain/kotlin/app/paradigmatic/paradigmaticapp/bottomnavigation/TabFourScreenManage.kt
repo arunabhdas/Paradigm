@@ -138,14 +138,14 @@ class TabFourScreenManage(
                     modifier = Modifier.fillMaxWidth(),
                     value = titleField,
                     onValueChange = { titleField = it },
-                    placeholder = { Text(text = "Title") }
+                    placeholder = { Text(text = "Summary") }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 TextField(
                     modifier = Modifier.fillMaxWidth(),
                     value = descriptionField,
                     onValueChange = { descriptionField = it },
-                    placeholder = { Text(text = "Summary") }
+                    placeholder = { Text(text = "Description") }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 TextField(
@@ -166,7 +166,7 @@ class TabFourScreenManage(
                     modifier = Modifier.fillMaxWidth(),
                     value = creatorField,
                     onValueChange = { creatorField = it },
-                    placeholder = { Text(text = "Author") }
+                    placeholder = { Text(text = "Builder") }
                 )
             }
         }
