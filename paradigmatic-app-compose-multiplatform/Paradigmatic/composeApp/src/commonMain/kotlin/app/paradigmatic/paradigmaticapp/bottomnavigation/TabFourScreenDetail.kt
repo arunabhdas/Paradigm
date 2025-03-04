@@ -59,7 +59,11 @@ class TabFourScreenDetail(
                 TopAppBar(
                     title = { Text(text = "Details")},
                     navigationIcon = {
-                        IconButton(onClick = {}) {
+                        IconButton(onClick = {
+                            navigator?.push(TabFourScreenManage(
+                                number = number
+                            ))
+                        }) {
                             Icon(
                                 imageVector = Icons.Default.Edit,
                                 contentDescription = "Edit icon"
