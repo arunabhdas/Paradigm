@@ -39,6 +39,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Favorite
 
 class TabFourScreenDetail(
     val number: Int,
@@ -63,6 +65,8 @@ class TabFourScreenDetail(
                                 contentDescription = "Edit icon"
                             )
                         }
+                    },
+                    actions = {
                         IconButton(
                             onClick = {
                                 viewModel.setFavoriteMeme()
@@ -74,7 +78,7 @@ class TabFourScreenDetail(
                             Icon(
                                 modifier = Modifier
                                     .alpha(if (isFavorite) 1f else 0.38f),
-                                imageVector = Icons.Default.Star,
+                                imageVector = Icons.Default.Favorite,
                                 contentDescription = "Star icon"
                             )
                         }
@@ -88,7 +92,7 @@ class TabFourScreenDetail(
                             }
                         ) {
                             Icon(
-                                imageVector = Icons.Default.Star,
+                                imageVector = Icons.Default.Delete,
                                 contentDescription = "Delete icon"
                             )
                         }
