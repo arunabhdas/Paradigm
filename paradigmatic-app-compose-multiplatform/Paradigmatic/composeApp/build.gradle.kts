@@ -189,6 +189,7 @@ dependencies {
     implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.androidx.lifecycle.viewmodel.android)
     debugImplementation(compose.uiTooling)
+    implementation(libs.androidx.core.splashscreen)
 }
 
 sqldelight {
