@@ -26,6 +26,9 @@ const Welcome = () => {
       <Text style={styles.userName}>Paradigmatic helps consumers and business find alternate suppliers for their products</Text>
       <Text style={styles.welcomeMessage}>Find alternative supplier and markets</Text>
     </View>
+    <View style={styles.container}>
+
+    </View>
 
     <View style={styles.searchContainer}>
       <View style={styles.searchWrapper}>
@@ -68,6 +71,17 @@ const Welcome = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
       />
+    </View>
+
+    {/* Career Opportunities Section */}
+    <View style={styles.jobSection}>
+      <Text style={styles.welcomeMessage}>Career Opportunities</Text>
+      <TouchableOpacity
+          style={styles.jobButton}
+          onPress={() => router.push('/career-opportunities')}
+      >
+        <Text style={styles.jobButtonText}>View Career Opportunities</Text>
+      </TouchableOpacity>
     </View>
     
   </View>

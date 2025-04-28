@@ -68,6 +68,29 @@ const styles = StyleSheet.create({
     fontFamily: FONT.medium,
     color: activeJobType === item ? COLORS.secondary : COLORS.gray2,
   }),
+
+  jobSection: {
+    marginTop: SIZES.medium,
+    marginHorizontal: SIZES.medium,
+  },
+  jobButton: {
+    backgroundColor: COLORS.primary,
+    borderRadius: SIZES.medium,
+    padding: SIZES.medium,
+    marginTop: SIZES.small,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+  },
+  jobButtonText: {
+    color: COLORS.white,
+    fontFamily: FONT.bold,
+    fontSize: SIZES.medium,
+  }
 });
 
 export default styles;
