@@ -75,10 +75,10 @@ const Welcome = () => {
 
     {/* Career Opportunities Section */}
     <View style={styles.jobSection}>
-      <Text style={styles.welcomeMessage}>Career Opportunities</Text>
+      <Text style={styles.welcomeMessage}>Job Postings</Text>
       <TouchableOpacity
           style={styles.jobButton}
-          onPress={() => router.push('/career-opportunities')}
+          onPress={() => router.push('/jobpostings')}
       >
         <Text style={styles.jobButtonText}>View Career Opportunities</Text>
       </TouchableOpacity>
