@@ -1,0 +1,194 @@
+[
+    {
+        "name": "Turtle Rock",
+        "category": "Rivers",
+        "city": "Twentynine Palms",
+        "state": "California",
+        "id": 1001,
+        "isFeatured": true,
+        "isFavorite": true,
+        "park": "Joshua Tree National Park",
+        "coordinates": {
+            "longitude": -116.166868,
+            "latitude": 34.011286
+        },
+        "description": "Joshua Tree National Park is a surreal and majestic expanse in Southern California where two distinct desert ecosystems—the Mojave and the Colorado—collide to create a landscape of stark beauty and otherworldly charm. Towering rock formations, rugged mountains, and wide open skies set the stage for the park’s iconic namesake: the twisted, spiky Joshua trees, which stand like ancient sentinels scattered across the desert floor. By day, the golden sun casts dramatic shadows over vast boulder fields and cactus gardens, while hidden oases whisper tales of resilience. By night, the sky transforms into a stargazer’s dreamscape, free of city lights and brimming with celestial wonder. Whether you're a rock climber scaling monolithic granite formations, a hiker wandering through serene trails like Hidden Valley and Barker Dam, or a seeker of silence and inspiration, Joshua Tree offers a timeless invitation to reconnect—with nature, with stillness, and with yourself.",
+        "imageName": "turtlerock"
+    },
+    {
+        "name": "Silver Salmon Creek",
+        "category": "Lakes",
+        "city": "Port Alsworth",
+        "state": "Alaska",
+        "id": 1002,
+        "isFeatured": false,
+        "isFavorite": false,
+        "park": "Lake Clark National Park and Preserve",
+        "coordinates": {
+            "longitude": -152.665167,
+            "latitude": 59.980167
+        },
+        "description": "Lake Clark National Park and Preserve is a hidden jewel of Alaska’s wild frontier—a remote and pristine sanctuary where raw wilderness meets untamed beauty. Accessible only by plane or boat, this awe-inspiring park surrounds the turquoise waters of Lake Clark, nestled beneath snow-capped peaks and flanked by steaming volcanoes, vast tundra, and ancient glaciers. Here, the symphony of nature plays uninterrupted: brown bears fish for salmon in crystal-clear streams, caribou traverse wide alpine valleys, and the call of loons echoes across still waters. It’s a land where solitude reigns and adventure thrives, offering everything from backcountry hiking and kayaking to immersive wildlife encounters. Unspoiled and unforgettable, Lake Clark is not just a destination—it’s an experience in pure, unfiltered wilderness, where the rhythms of the natural world continue as they have for millennia.",
+        "imageName": "silversalmoncreek"
+    },
+    {
+        "name": "Chilkoot Trail",
+        "category": "Mountains",
+        "city": "Skagway",
+        "state": "Alaska",
+        "id": 1003,
+        "isFeatured": false,
+        "isFavorite": true,
+        "park": "Klondike Gold Rush National Historical Park",
+        "coordinates": {
+            "longitude": -135.334571,
+            "latitude": 59.560551
+        },
+        "description": "Klondike Gold Rush National Historical Park is a living time capsule that transports visitors to one of the most storied chapters of American and Canadian history—the great stampede for gold in the late 1890s. Centered in the historic town of Skagway, Alaska, and extending along the legendary Chilkoot Trail, the park preserves the spirit of adventure, ambition, and resilience that defined the Klondike Gold Rush. As you walk the wooden boardwalks of Skagway’s restored buildings, you step into a bygone era of bustling saloons, outfitters, and dreamers seeking fortune in the rugged Yukon wilderness. The park’s museums, ranger-led tours, and preserved landscapes offer powerful glimpses into the lives of those who risked everything in pursuit of gold. From the dramatic alpine passes to the echoes of pickaxes and perseverance, Klondike Gold Rush National Historical Park captures the heart of a frontier saga—where history isn’t just remembered, it’s felt in every stone, trail, and tale.",
+        "imageName": "chilkoottrail"
+    },
+    {
+        "name": "St. Mary Lake",
+        "category": "Lakes",
+        "city": "Browning",
+        "state": "Montana",
+        "id": 1004,
+        "isFeatured": true,
+        "isFavorite": true,
+        "park": "Glacier National Park",
+        "coordinates": {
+            "longitude": -113.536248,
+            "latitude": 48.69423
+        },
+        "description": "Glacier National Park is nature’s alpine masterpiece—an untouched sanctuary in the northern Rockies of Montana where jagged peaks, sparkling lakes, and ancient glaciers paint a breathtaking panorama. Known as the \"Crown of the Continent,\" the park is a place of sublime beauty and dramatic contrasts, where wildflower-filled meadows meet towering cliffs, and grizzly bears roam beneath big, open skies. With over 700 miles of trails, the park invites hikers, photographers, and dreamers alike to explore its glacier-carved valleys, rushing waterfalls, and turquoise lakes like Lake McDonald and Grinnell. The iconic Going-to-the-Sun Road winds through the heart of this majestic landscape, offering one of the most scenic drives in the world. Whether you come for the wildlife, the solitude, or the sheer grandeur of its mountain vistas, Glacier National Park offers a timeless experience—a journey into the wild heart of the American West, where nature still reigns supreme.",
+        "imageName": "stmarylake"
+    },
+    {
+        "name": "Twin Lake",
+        "category": "Lakes",
+        "city": "Twin Lakes",
+        "state": "Alaska",
+        "id": 1005,
+        "isFeatured": false,
+        "isFavorite": false,
+        "park": "Lake Clark National Park and Preserve",
+        "coordinates": {
+            "longitude": -153.849883,
+            "latitude": 60.641684
+        },
+        "description": "Lake Clark National Park and Preserve is Alaska at its most wild and elemental—a vast, untouched wilderness where the rhythms of nature pulse through glacier-fed rivers, steaming volcanoes, and emerald-green lakes. At its heart lies the dazzling Lake Clark, a turquoise jewel cradled between towering mountains and tundra-covered hills, reflecting the grandeur of the landscape that surrounds it. Accessible only by plane or boat, the park offers a rare glimpse into a world where brown bears fish for salmon in rushing streams, moose wander freely across open valleys, and solitude is broken only by the wind and the call of eagles. It’s a sanctuary for adventure—where hikers, kayakers, and backcountry explorers discover raw beauty in every direction. Remote, rugged, and reverent, Lake Clark is more than a destination—it’s a journey into the soul of Alaska, where wilderness still writes the story.",
+        "imageName": "twinlake"
+    },
+    {
+        "name": "Lake McDonald",
+        "category": "Mountains",
+        "city": "West Glacier",
+        "state": "Montana",
+        "id": 1006,
+        "isFeatured": false,
+        "isFavorite": false,
+        "park": "Glacier National Park",
+        "coordinates": {
+            "longitude": -113.934831,
+            "latitude": 48.56002
+        },
+        "description": "Glacier National Park is a breathtaking wilderness of rugged peaks, shimmering alpine lakes, and deep, glacier-carved valleys—a place where nature’s artistry is on full display. Nestled along the U.S.-Canada border in northern Montana, the park is often called the \"Crown of the Continent\" for its spectacular mountain scenery and rich biodiversity. With over a million acres of unspoiled terrain, visitors can explore more than 700 miles of trails that lead to hidden waterfalls, high mountain passes, and fields bursting with wildflowers. Iconic sights like Going-to-the-Sun Road offer sweeping views of jagged summits and crystal-clear lakes like Lake McDonald and St. Mary. Home to mountain goats, grizzly bears, and elusive lynx, Glacier is not just a park—it’s a living, breathing wilderness that invites awe, reflection, and a deep connection to the natural world. Whether you're hiking the backcountry or simply soaking in the alpine air, every moment here feels timeless.",
+        "imageName": "lakemcdonald"
+    },
+    {
+        "name": "Charley Rivers",
+        "category": "Rivers",
+        "city": "Eaking",
+        "state": "Alaska",
+        "id": 1007,
+        "isFeatured": true,
+        "isFavorite": false,
+        "park": "Charley Rivers National Preserve",
+        "coordinates": {
+            "longitude": -143.122586,
+            "latitude": 65.350021
+        },
+        "description": "Charley Rivers National Preserve is a remote Alaskan wilderness where silence speaks, rivers run wild, and time stands still. Tucked deep within the Yukon-Tanana Uplands, this untouched expanse of boreal forest, rolling hills, and winding waterways offers an intimate encounter with the raw, untamed beauty of interior Alaska.At the heart of the preserve flows the Charley River—a designated Wild and Scenic River known for its swift currents, clear waters, and world-class rafting and canoeing. Along its banks, moose, wolves, and bears roam freely, while golden eagles soar overhead in the vast northern sky. Far from crowds and roads, Charley Rivers is a sanctuary for solitude, self-reliance, and backcountry adventure. It’s a place where those with a pioneering spirit can trace the footsteps of Alaska’s early explorers and feel the land as it has existed for millennia—wild, free, and breathtakingly alive.",
+        "imageName": "charleyrivers"
+    },
+    {
+        "name": "Icy Bay",
+        "category": "Mountains",
+        "city": "Icy Bay",
+        "state": "Alaska",
+        "id": 1008,
+        "isFeatured": false,
+        "isFavorite": false,
+        "park": "Wrangell-St. Elias National Park and Preserve",
+        "coordinates": {
+            "longitude": -141.518167,
+            "latitude": 60.089917
+        },
+        "description": "Wrangell–St. Elias National Park and Preserve is America’s largest national park—an awe-inspiring realm of colossal mountains, mighty glaciers, and boundless wilderness that defies imagination. Encompassing over 13 million acres in southeastern Alaska, this untamed expanse is larger than Yellowstone, Yosemite, and Switzerland combined. Here, four major mountain ranges converge—the Wrangell, St. Elias, Chugach, and Alaska Ranges—forming a towering skyline that includes nine of the 16 highest peaks in the United States. Rivers carve deep valleys, glaciers sprawl for miles, and ancient volcanoes loom silently over a land shaped by ice and fire. From the ghost town ruins of Kennecott's copper mines to the raw splendor of the Nabesna and McCarthy roads, the park tells stories of both natural wonder and human perseverance. Grizzly bears, caribou, moose, and Dall sheep roam this vast domain, while adventurers hike, climb, raft, and explore one of the last truly wild frontiers on Earth. Wrangell–St. Elias is not just a park—it’s a journey into the sublime, where the scale is staggering, the silence profound, and the wilderness seemingly infinite.",
+        "imageName": "icybay"
+    },
+    {
+        "name": "Rainbow Lake",
+        "category": "Lakes",
+        "city": "Willow",
+        "state": "Alaska",
+        "id": 1009,
+        "isFeatured": false,
+        "isFavorite": false,
+        "park": "State Recreation Area",
+        "coordinates": {
+            "longitude": -150.086103,
+            "latitude": 61.694334
+        },
+        "description": "A State Recreation Area is a vibrant outdoor escape where nature and recreation come together in perfect harmony. Set amid scenic landscapes—ranging from lakeshores and forests to rolling hills and open meadows—these protected areas are designed for both relaxation and adventure. Whether you're camping beneath the stars, casting a line into calm waters, paddling through quiet coves, or hiking trails that wind through serene natural beauty, State Recreation Areas offer accessible and family-friendly opportunities to recharge and reconnect with the great outdoors. Many feature picnic areas, boat launches, wildlife viewing spots, and interpretive programs that help deepen your appreciation for the local environment. Perfect for day trips or weekend getaways, a State Recreation Area is a place where memories are made, traditions are born, and the spirit of the outdoors is always alive.",
+        "imageName": "rainbowlake"
+    },
+    {
+        "name": "Hidden Lake",
+        "category": "Lakes",
+        "city": "Newhalem",
+        "state": "Washington",
+        "id": 1010,
+        "isFeatured": false,
+        "isFavorite": false,
+        "park": "North Cascades National Park",
+        "coordinates": {
+            "longitude": -121.17799,
+            "latitude": 48.495442
+        },
+        "description": "North Cascades National Park is a wild sanctuary of dramatic peaks, cascading waterfalls, and emerald valleys—often called the “American Alps” for its rugged beauty and snow-capped majesty. Tucked away in the heart of Washington State, this remote and lesser-traveled gem boasts one of the most spectacular and pristine alpine landscapes in the country. With over 300 glaciers—more than any other U.S. park outside Alaska—the North Cascades glisten under the sun, feeding turquoise lakes and wild rivers that carve through deep, forested canyons. Towering spires and craggy ridgelines rise above carpets of heather and wildflowers, while black bears, mountain goats, and eagles roam freely across this untamed wilderness. Whether you're backpacking along windswept ridges, paddling the calm waters of Ross Lake, or simply soaking in the stillness, North Cascades National Park offers a rare kind of beauty—raw, remote, and profoundly humbling. It’s a place for true explorers and nature lovers seeking solitude, inspiration, and a deeper connection to the wild.",
+        "imageName": "hiddenlake"
+    },
+    {
+        "name": "Chincoteague",
+        "category": "Rivers",
+        "city": "Chincoteague",
+        "state": "Virginia",
+        "id": 1011,
+        "isFeatured": false,
+        "isFavorite": false,
+        "park": "Chincoteague National Wildlife Refuge",
+        "coordinates": {
+            "longitude": -75.383212,
+            "latitude": 37.91531
+        },
+        "description": "Chincoteague National Wildlife Refuge is a coastal sanctuary where wild beauty meets serene wonder. Located on the Virginia side of Assateague Island, this refuge is renowned for its pristine beaches, tidal marshes, and maritime forests that teem with life throughout the seasons. The refuge is most famous for its iconic Chincoteague ponies, a beloved herd of wild horses that roam freely across windswept dunes and salt meadows—capturing the imagination of visitors young and old. But these storied ponies are just one part of a rich tapestry of wildlife, including migratory birds, snowy egrets, ospreys, and endangered species like the piping plover. Visitors can explore scenic trails, kayak through quiet waterways, or simply watch the sunrise over the Atlantic, accompanied by the sounds of rustling reeds and distant shorebirds. From beachcombing and birdwatching to peaceful reflection, Chincoteague National Wildlife Refuge offers a timeless connection to nature on one of the East Coast’s most enchanting barrier islands.",
+        "imageName": "chincoteague"
+    },
+    {
+        "name": "Lake Umbagog",
+        "category": "Lakes",
+        "city": "Errol",
+        "state": "New Hampshire",
+        "id": 1012,
+        "isFeatured": false,
+        "isFavorite": false,
+        "park": "Umbagog National Wildlife Refuge",
+        "coordinates": {
+            "longitude": -71.056816,
+            "latitude": 44.747408
+        },
+        "description": "Umbagog National Wildlife Refuge is a serene, untamed haven straddling the border of northern New Hampshire and Maine—a place where tranquil waters meet boreal forests, and wildlife thrives in peaceful seclusion. Centered around the sparkling expanse of Lake Umbagog, one of New England’s most pristine lakes, the refuge offers a rich mosaic of habitats, from marshlands and rivers to dense woodlands and wetlands. This refuge is a paradise for wildlife lovers and outdoor adventurers alike. Bald eagles soar overhead, moose wade through quiet coves, and loons call hauntingly across the water. Visitors can paddle along still waterways, hike forested trails, or camp under star-filled skies, fully immersed in nature’s rhythm. Remote yet welcoming, Umbagog National Wildlife Refuge invites you to slow down, breathe deeply, and experience the wild heart of the northern Appalachians—a sanctuary where both people and wildlife find quiet refuge.",
+        "imageName": "umbagog"
+    }
+]

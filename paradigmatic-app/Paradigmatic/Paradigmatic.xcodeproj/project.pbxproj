@@ -29,9 +29,30 @@
 		DC40822E2D56A963006D1AC0 /* ParadigmaticUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParadigmaticUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		DC78FCD32E3BD62F00C067F9 /* Exceptions for "Paradigmatic" folder in "ParadigmaticTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resources/landmarkdata.json,
+			);
+			target = DC4082232D56A963006D1AC0 /* ParadigmaticTests */;
+		};
+		DC78FCD42E3BD62F00C067F9 /* Exceptions for "Paradigmatic" folder in "ParadigmaticUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resources/landmarkdata.json,
+			);
+			target = DC40822D2D56A963006D1AC0 /* ParadigmaticUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		DC4082142D56A961006D1AC0 /* Paradigmatic */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				DC78FCD32E3BD62F00C067F9 /* Exceptions for "Paradigmatic" folder in "ParadigmaticTests" target */,
+				DC78FCD42E3BD62F00C067F9 /* Exceptions for "Paradigmatic" folder in "ParadigmaticUITests" target */,
+			);
 			path = Paradigmatic;
 			sourceTree = "<group>";
 		};
