@@ -1,6 +1,8 @@
 //
 //  GithubUser.swift
 //
+//  Created by Arunabh Das on 7/31/25.
+//
 
 struct GitHubUser: Codable {
     let login: String
