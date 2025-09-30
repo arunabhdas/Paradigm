@@ -42,9 +42,4 @@ Created screencast GIF using https://gif.ski/
 gifski --fps 10 --width 640 -o screncast_1.gif screencast_input_1.mp4
 ```
 
-## Links
-
-https://youtu.be/HVub2u8DpDQ?si=IBmFPHPCJTun-WMW
-
-https://youtu.be/afobK3UbTeE?si=WkitT0tt7NFrX_Pr
 
