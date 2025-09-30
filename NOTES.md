@@ -1,5 +1,8 @@
 # Paradigmatic Notes
 
+## Links for paradigmatic-app-compose-multiplatform
+- https://github.com/stevdza-san/CurrencyApp/tree/main
+- https://www.udemy.com/course/compose-multiplatform-iosandroid-development-with-kotlin/learn/lecture/43411740#content 
 
 ## Links
 

@@ -24,11 +24,6 @@ Paradigmatic app is based on the ideas outlined in the [Planet Critical Podcast]
 1. Copy `api_keys.properties.template` to `api_keys.properties`
 2. Replace `your_api_key_here` with your actual API key in `api_keys.properties`
 
-## Links for paradigmatic-app-compose-multiplatform
-
-- https://github.com/stevdza-san/CurrencyApp/tree/main
-
-- https://www.udemy.com/course/compose-multiplatform-iosandroid-development-with-kotlin/learn/lecture/43411740#content 
 
 ## Endpoints
 
