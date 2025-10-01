@@ -39,7 +39,7 @@ fun CustomAppBar(
         }
         Image(
             painter = painterResource(id = R.drawable.top_center),
-            contentDescription = "PropzPro",
+            contentDescription = "Paradigm",
             modifier = Modifier.fillMaxWidth(0.5F)
                 .padding(
                     horizontal = 20.dp,

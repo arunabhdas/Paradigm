@@ -98,8 +98,8 @@
     <string name="location_permission_title">Location Permission</string>
     <string name="location_permission_desc">This app collects location data even when the app is closed or not in use. This app does not use the location data in any other way or for any other purpose.</string>
 
-    <string name="onBoardingTitle1">Propz Pro</string>
-    <string name="onBoardingText1">The Smart Property Management Platform Powered by AI</string>
+    <string name="onBoardingTitle1">Paradigm</string>
+    <string name="onBoardingText1">The Open Source Agentic ERP Platform Powered by AI</string>
     <string name="onBoardingTitle2">Unified Platform</string>
     <string name="onBoardingText2">Property overview, maintenance tracking, tenant communications</string>
     <string name="onBoardingTitle3">Real-Time Monitoring and Security</string>
