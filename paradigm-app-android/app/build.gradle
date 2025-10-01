@@ -9,6 +9,16 @@ plugins {
     id 'kotlinx-serialization'
 }
 
+// Load secrets from local.properties (and fall back to environment variables)
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+def googleMapsApiKey = localProperties.getProperty('GOOGLE_MAPS_API_KEY') ?: System.getenv('GOOGLE_MAPS_API_KEY') ?: ""
+
 android {
     namespace 'app.paradigmatic.paradigmaticapp'
     compileSdk 34
@@ -24,6 +34,11 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        // Provide placeholder for AndroidManifest.xml meta-data substitution
+        manifestPlaceholders = [
+                GOOGLE_MAPS_API_KEY: googleMapsApiKey
+        ]
     }
 
     buildTypes {
